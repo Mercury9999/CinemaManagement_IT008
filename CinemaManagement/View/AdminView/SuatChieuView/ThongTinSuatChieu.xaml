@@ -1,0 +1,125 @@
+﻿<Window x:Class="CinemaManagement.View.ThongTinSuatChieu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagement.View" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:QuanLySuatChieuVM}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Title="ThongTinSuatChieu"
+        Height="800" 
+        Width="1000"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        DataContext="{StaticResource ShowtimeVM}"
+        x:Name="thongtinscWindow">
+
+    <Border CornerRadius="25" Background="#eff2f7">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1" CornerRadius="0 25 25 0" Background="Gray"/>
+
+            <!-- Khi loading có thể thêm IsIndeterminate = True cho màu mè-->
+            <ProgressBar Grid.Column="0" 
+                         HorizontalAlignment="Right"
+                         Height="10"
+                         IsIndeterminate="False"
+                         Orientation="Vertical"
+                         Background="LightGray"
+            />
+
+            <Grid Grid.Column="0">
+                <StackPanel Margin="0 50 0 0">
+                    <Rectangle x:Name="ImageRectangle" Stroke="Black" StrokeThickness="2" Height="310" Width="244">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{Binding Phim.Poster}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+
+                    <Label FontSize="13" Content="Tên phim" FontWeight="Bold" Margin="20 20 0 0"/>
+                    <TextBlock Text="{Binding Phim.TenPhim}" Margin="23 0 0 0"/>
+
+                    <Label FontSize="13" Content="Phòng chiếu" FontWeight="Bold" Margin="20 20 0 0"/>
+                    <TextBlock Text="{Binding SoPhong}" Margin="23 0 0 0"/>
+
+                    <Label FontSize="13" Content="Ngày chiếu" FontWeight="Bold" Margin="20 20 0 0"/>
+                    <TextBlock Text="{Binding NgayChieu}" Margin="23 0 0 0"/>
+
+                    <Label FontSize="13" Content="Giá vé" FontWeight="Bold" Margin="20 20 0 0"/>
+                    <TextBlock Text="{Binding GiaVe}" Margin="23 0 0 0"/>
+                </StackPanel>
+
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <StackPanel>
+                    <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="GhostWhite" Text="CHỌN GHẾ - PHÒNG X" FontFamily="Cooper Black"/>
+
+                    <Line X1="80" Y1="50" X2="650" Y2="50" Stroke="White" StrokeThickness="2"/>
+
+                    <TextBlock Foreground="GhostWhite" HorizontalAlignment="Center" Margin="20" Text="Màn hình" FontSize="25"/>
+
+                    <ListBox ItemsSource="{Binding dsBanVe}"
+                             x:Name="SeatListBox1"
+                             Height="450"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Grid.Column="0"
+                             Margin="0 10 0 20"
+                             SelectedItem="{Binding SelectedTicket}">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem"
+                                   BasedOn="{StaticResource styleListBoxItems1}" />
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="14"
+                                             FlowDirection="RightToLeft" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border   BorderBrush="Green"
+                                          BorderThickness="2"
+                                          CornerRadius="3"
+                                          Width="38"
+                                          Height="38">
+                                    <Label Content="{Binding SoGheStr}"
+                                           Background="Transparent"
+                                           Foreground="black"
+                                           FontSize="11"
+                                           FontWeight="Bold"
+                                           x:Name="lbl1"
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center">
+                                    </Label>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+
+
+                    <!-- Operation Button -->
+                    <StackPanel HorizontalAlignment="Right" Margin="0 15 60 0" Orientation="Horizontal">
+                        <Button Padding="0" Margin="0 0 30 0" Width="90" BorderThickness="0"  Background="Green">
+                            <TextBlock Text="Đặt vé"/>
+                        </Button>
+                        <Button Padding="0" Width="90" BorderThickness="0"  Background="Red" Command="{Binding CloseWindowCM}" CommandParameter="{Binding ElementName=thongtinscWindow}">
+                            <TextBlock Text="Hủy"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
+
