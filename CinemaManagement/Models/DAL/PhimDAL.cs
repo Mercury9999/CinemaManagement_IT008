@@ -130,7 +130,7 @@ namespace CinemaManagement.Models.DAL
 
                     var p = new Phim()
                     {
-                        MaPhim = newMovieId, 
+                        MaPhim = newMovieId,
                         TenPhim = phim.TenPhim,
                         TheLoai = phim.TheLoai,
                         ThoiLuong = phim.ThoiLuong,
@@ -163,21 +163,21 @@ namespace CinemaManagement.Models.DAL
                 using (var context = new CinemaManagementEntities())
                 {
                     PhimDTO phim = (from p in context.Phims
-                                where p.MaPhim == Id
-                                select new PhimDTO 
-                                {
-                                    MaPhim = p.MaPhim,
-                                    TenPhim = p.TenPhim,
-                                    TheLoai = p.TheLoai,
-                                    ThoiLuong = p.ThoiLuong,
-                                    NuocSX = p.NuocSX,
-                                    NgayPH = p.NgayPH,
-                                    DaoDien = p.DaoDien,
-                                    NoiDung = p.NoiDung,
-                                    GioiHanTuoi = p.GioiHanTuoi,
-                                    Poster = p.Poster,
-                                    DoanhThu = p.DoanhThu
-                                }).FirstOrDefault();
+                                    where p.MaPhim == Id
+                                    select new PhimDTO
+                                    {
+                                        MaPhim = p.MaPhim,
+                                        TenPhim = p.TenPhim,
+                                        TheLoai = p.TheLoai,
+                                        ThoiLuong = p.ThoiLuong,
+                                        NuocSX = p.NuocSX,
+                                        NgayPH = p.NgayPH,
+                                        DaoDien = p.DaoDien,
+                                        NoiDung = p.NoiDung,
+                                        GioiHanTuoi = p.GioiHanTuoi,
+                                        Poster = p.Poster,
+                                        DoanhThu = p.DoanhThu
+                                    }).FirstOrDefault();
                     return phim;
                 }
             }

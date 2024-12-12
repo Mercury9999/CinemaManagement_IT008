@@ -129,29 +129,22 @@ namespace CinemaManagement.ViewModel.AdminVM
                 if(result == MessageBoxResult.Yes)
                 {
                     IsLoading = true;
-                    (bool trangthai, string message) = await PhimDAL.Instance.DeleteMovie(PhimSelected.MaPhim);
+                    GetDataFilm();
+                    int MaPhimDeleted = PhimSelected.MaPhim;
+                    (bool trangthai, string message) = await PhimDAL.Instance.DeleteMovie(MaPhimDeleted);
                     if(trangthai)
                     {
                         for (int i = 0; i < dsPhim.Count; i++)
                         {
-                            if (dsPhim[i].MaPhim == PhimSelected.MaPhim)
+                            if (dsPhim[i].MaPhim == MaPhimDeleted)
                             {
                                 dsPhim.Remove(dsPhim[i]);
                                 break;
                             }
                         }
                     }
-                    if (trangthai)
-                    {
-                        for (int i = 0; i < dsPhim.Count; i++)
-                        {
-                            if (allFilm[i].MaPhim == PhimSelected.MaPhim)
-                            {
-                                allFilm.Remove(allFilm[i]);
-                                break;
-                            }
-                        }
-                    }
+                    
+
                     CustomControls.MyMessageBox.Show(message);
                 }
             });

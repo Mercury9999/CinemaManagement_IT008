@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CinemaManagement.Models.DAL
 {
@@ -47,8 +48,8 @@ namespace CinemaManagement.Models.DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                throw ex;
+                MessageBox.Show("Lỗi: " + ex.ToString());
+                return null;
             }
         }
         public async Task<(bool, string)> DeleteProduct(int maspXoa)

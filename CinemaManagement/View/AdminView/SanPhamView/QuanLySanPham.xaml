@@ -43,11 +43,11 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal">
-                <TextBox 
+                <TextBox
                         materialDesign:HintAssist.Hint="Tìm kiếm theo tên..."
                         materialDesign:HintAssist.HintOpacity=".26"   
-                        Margin="50,40,50,0" VerticalAlignment="Top" Width="236"
-                        Text="{Binding Path = SearchText,UpdateSourceTrigger = PropertyChanged, Mode=TwoWay}" Height="43">
+                        Margin="50,30,50,0" VerticalAlignment="Top" Width="208"
+                        Text="{Binding Path = SearchText,UpdateSourceTrigger = PropertyChanged, Mode=TwoWay}">
                     <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding SearchData}"/>
@@ -55,7 +55,13 @@
                     </i:Interaction.Triggers>
                 </TextBox>
 
-                <ComboBox x:Name="searchtypeComboBox" Width="118" Height="30" IsEditable="True" VerticalAlignment="Top" Margin="0 54 0 0"
+                <Button BorderBrush="DarkGray" Margin="20" Height="60" Width="156" Background="#FFCC2F2F" Command="{Binding AddProductCM}">
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock Text="Thêm sản phẩm"/>
+                    </StackPanel>
+                </Button>
+                <ComboBox x:Name="searchtypeComboBox" Width="200" Height="30" IsEditable="True" VerticalAlignment="Top" Margin="50"
                           ItemsSource="{Binding dsLoaiSPTimKiem}"
                           SelectedItem="{Binding TimLoaiSP, Mode=TwoWay}">
                     <i:Interaction.Triggers>
@@ -64,14 +70,6 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </ComboBox>
-
-                <Button Style="{StaticResource productButton}" Cursor="Hand" Margin="40 30 0 20" Height="60" Width="156" Command="{Binding AddProductCM}">
-                    <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
-                        <TextBlock FontWeight="Bold" Text="Thêm sản phẩm" FontSize="15"/>
-                    </StackPanel>
-                </Button>
-
             </StackPanel>
 
             <materialDesign:Card Grid.Row="1"
@@ -196,8 +194,6 @@
                                                                 </i:EventTrigger>
                                                             </i:Interaction.Triggers>
                                                         </Border>
-
-
                                                         <Border BorderBrush="Black"
                                                                 BorderThickness="1"
                                                                 CornerRadius="4"
@@ -221,84 +217,16 @@
                                                                                      Width="30"
                                                                                      Height="30"
                                                                                      Cursor="Hand"/>
-                                                            <i:Interaction.Triggers>
-                                                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.DeleteProductCM}"/>
-                                                                </i:EventTrigger>
-                                                            </i:Interaction.Triggers>
-
                                                         </Border>
-
-
-
-                                                        <Border BorderBrush="Black"
-                                                                BorderThickness="1"
-                                                                CornerRadius="4"
-                                                                Margin="3"
-                                                                Cursor="Hand"
-                                                                Height="35"
-                                                                Width="35">
-                                                            <Border.Style>
-                                                                <Style TargetType="Border">
-                                                                    <Style.Triggers>
-                                                                        <Trigger Property="IsMouseOver"
-                                                                                 Value="True">
-                                                                            <Setter Property="Background"
-                                                                                    Value="LightGreen" />
-                                                                        </Trigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </Border.Style>
-                                                            <!--Nhap hang-->
-                                                            <icon:PackIconMaterial Kind="Plus"
-                                                                                   Width="30"
-                                                                                   Height="30"
-                                                                                   Cursor="Hand">
-                                                            </icon:PackIconMaterial>
-                                                            <i:Interaction.Triggers>
-                                                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.NhapHangCM}"/>
-                                                                </i:EventTrigger>
-                                                            </i:Interaction.Triggers>
-                                                        </Border>
-
-                                                        <Border BorderBrush="Black"
-                                                                BorderThickness="1"
-                                                                CornerRadius="4"
-                                                                Margin="3"
-                                                                Cursor="Hand"
-                                                                Height="35"
-                                                                Width="35">
-                                                            <Border.Style>
-                                                                <Style TargetType="Border">
-                                                                    <Style.Triggers>
-                                                                        <Trigger Property="IsMouseOver"
-                                                                                 Value="True">
-                                                                            <Setter Property="Background"
-                                                                                    Value="LightGreen" />
-                                                                        </Trigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </Border.Style>
-                                                            <!--Mua hang-->
-                                                            <icon:PackIconMaterial Kind="Shopping"
-                                                                                   Width="30"
-                                                                                   Height="30"
-                                                                                   Cursor="Hand">
-                                                            </icon:PackIconMaterial>
-                                                            <i:Interaction.Triggers>
-                                                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.NhapHangCM}"/>
-                                                                </i:EventTrigger>
-                                                            </i:Interaction.Triggers>
-                                                        </Border>
-
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                                <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.DeleteProductCM}"/>
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
                                                     </StackPanel>
-
-
                                                 </StackPanel>
                                             </Grid>
-
+                                            
                                             <!-- Ten sp -->
                                             <TextBlock Grid.Row="1"
                                                        x:Name="productName"

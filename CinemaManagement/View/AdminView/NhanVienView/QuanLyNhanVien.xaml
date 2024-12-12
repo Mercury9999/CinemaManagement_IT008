@@ -84,8 +84,6 @@
             <!-- Data grid -->
             <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
                       x:Name="staffGrid" 
-                      EnableColumnVirtualization="True"
-                      EnableRowVirtualization="True"
                       AutoGenerateColumns="False" IsReadOnly="True"
                       Grid.Row="1"
                       ItemsSource="{Binding dsNV}"

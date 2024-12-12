@@ -8,7 +8,6 @@ namespace CinemaManagement.DTOs
     
     public class PhongChieuDTO
     {
-       
         public PhongChieuDTO()
         {
             this.Ghe = new List<GheDTO>();

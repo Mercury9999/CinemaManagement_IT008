@@ -40,23 +40,6 @@ namespace CinemaManagement.Models.DAL
             context.HDNhapHangs.Add(HDNhap);
             return newBillReceiptId;
         }
-        public async Task<int> GetAllBillReceipt(CinemaManagementEntities context, HDNhapHangDTO hdNhap)
-        {
-            int maxBillReceiptId = await context.HDNhapHangs.MaxAsync(HDNhapHang => HDNhapHang.SoHDNhap);
-            int newBillReceiptId = maxBillReceiptId + 1;
-            HDNhapHang HDNhap = new HDNhapHang
-            {
-                SoHDNhap = newBillReceiptId,
-                NgayNhap = DateTime.Now,
-                MaNVNhap = hdNhap.MaNVNhap,
-                MaSPNhap = hdNhap.MaSPNhap,
-                DonGiaNhap = hdNhap.DonGiaNhap,
-                SoLuong = hdNhap.SoLuong,
-                ThanhTien = hdNhap.SoLuong * hdNhap.DonGiaNhap
-            };
-            context.HDNhapHangs.Add(HDNhap);
-            return newBillReceiptId;
-        }
     }
     
 }

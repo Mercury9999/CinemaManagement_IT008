@@ -46,8 +46,8 @@ namespace CinemaManagement.ViewModel.AdminVM
         public string SDT { get { return _sdt; } set { _sdt = value; OnPropertyChanged(); } }
         private string _email { get; set; }
         public string Email { get { return _email; } set { _email = value; OnPropertyChanged(); } }
-        private DateTime _ngaysinh { get; set; }
-        public DateTime NgaySinh { get { return _ngaysinh; } set { _ngaysinh = value; OnPropertyChanged(); } }
+        private string _ngaysinh { get; set; }
+        public string NgaySinh { get { return _ngaysinh; } set { _ngaysinh = value; OnPropertyChanged(); } }
         private string _gioitinh { get; set; }
         public string GioiTinh { get { return _gioitinh; } set { _gioitinh = value; OnPropertyChanged(); } }
         private string _ngayvaolam { get; set; }
@@ -175,7 +175,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             AccPassword = null;
             SDT = null;
             Email = null;
-            NgaySinh = new DateTime(day: 1, month: 1, year: 2000);
+            NgaySinh = null;
             GioiTinh = null;
             NgayVaoLam = null;
             ChucVu = null;

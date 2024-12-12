@@ -1,6 +1,5 @@
 ﻿using CinemaManagement.DTOs;
 using CinemaManagement.Models.DAL;
-using CinemaManagement.ViewModel.AdminVM.AccountVM;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +19,7 @@ namespace CinemaManagement.ViewModel.LoginVM
 
         #region Thuộc tính
         public Window LoginWindow { get; set; }
-        public AccountService accountService { get; set; } = AccountService.Instance;
+
         private string _username;
         public string Username
         {
@@ -86,9 +85,8 @@ namespace CinemaManagement.ViewModel.LoginVM
             if(loginStatus)
             {
                 LoginWindow.Hide();
-                accountService.CurrentAccount = nhanvien;
                 MainNavigation w1 = new MainNavigation();
-                w1.ShowDialog();
+                w1.Show();
                 LoginWindow.Close();
                 return;
             }

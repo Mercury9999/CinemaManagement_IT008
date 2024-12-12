@@ -1,0 +1,111 @@
+﻿<Window x:Class="CinemaManagement.View.AdminView.KhachHangView.SuaKH"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagement.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Title="ThemKH" 
+        Height="330" 
+        Width="400"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        >
+
+    <Border CornerRadius="30" Background="#ffffff">
+        <Grid>
+            <StackPanel>
+                <TextBox materialDesign:HintAssist.FloatingScale="0.50" materialDesign:TextFieldAssist.TextBoxViewMargin="20 0 1 0"
+                         FontSize="20"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="Sửa khách hàng"
+                         IsReadOnly="True"
+                         FontWeight="SemiBold"
+                />
+
+                <!-- Thông tin nhân viên -->
+                <TextBlock Text="Thông tin cá nhân" FontSize="15" Margin="10" FontWeight="DemiBold"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Họ và tên" Margin="10 10 0 0"/>
+                    <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="21"
+                             Margin="40 0 0 0"
+                             Padding="0"
+                             />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Giới tính" Margin="10 10 0 0"/>
+                    <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="72" Height="21"
+                             Margin="45 0 0 0"
+                             Padding="0"
+                             />
+                </StackPanel>
+
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Số điện thoại" Margin="10 10 0 0"/>
+                    <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="159" Height="21"
+                             Margin="20 0 0 0"
+                             Padding="0"
+                             />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ngày sinh" Margin="10 10 0 0"/>
+                    <DatePicker
+                              Width="130"
+                              materialDesign:HintAssist.Hint=""
+                              materialDesign:TextFieldAssist.HasClearButton="True"
+                              Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                              Margin="35 0 0 0" Height="26"
+                             Padding="0"
+                    />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Email" Margin="10 10 0 0"/>
+                    <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="21"
+                             Margin="60 0 0 0"
+                             Padding="0"
+                             />
+                </StackPanel>
+
+
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ngày đăng ký" Margin="10 10 0 0"/>
+                    <DatePicker
+                              Width="130"
+                              materialDesign:HintAssist.Hint=""
+                              materialDesign:TextFieldAssist.HasClearButton="True"
+                              Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                              Margin="17 0 0 0" Height="26"
+                        Padding="0"
+                    />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="250 30 0 0">
+                    <Button BorderThickness="0" Width="57" Padding="0">
+                        <TextBlock Text="Xác nhận" FontSize="10"/>
+                    </Button>
+                    <Button BorderThickness="0" Margin="20 0 0 0" Width="57" Padding="0" Background="#FFD93434">
+                        <TextBlock Text="Hủy bỏ" FontSize="10"/>
+                    </Button>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+    </Border>
+
+
+</Window>
+

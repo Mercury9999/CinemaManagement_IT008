@@ -3,12 +3,10 @@ using CinemaManagement.Ultis;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace CinemaManagement.Models.DAL
@@ -35,11 +33,8 @@ namespace CinemaManagement.Models.DAL
             {
                 using(var context = new CinemaManagementEntities())
                 {
-                    var p = suatchieu.Phim;
-                    if(p == null)
-                    {
-                        return (false, " Phim không tồn tại", 0);
-                    }
+                    var p = await context.Phims.FindAsync(suatchieu.MaPhim);
+                    if(p == null) return (false, "Phim không tồn tại", newShowtimeId);
                     var st = suatchieu.BatDau;
                     var ed = suatchieu.KetThuc;
                     TimeSpan thoigian = ed - st;
@@ -49,11 +44,9 @@ namespace CinemaManagement.Models.DAL
                         return (false, "Thời gian suất chiếu tối thiểu phải dài hơn thời lượng phim 20 phút", newShowtimeId);
                         //Thời gian suất chiếu min = thời gian chiếu phim + 20 phút, lúc in vé chỉ in thời gian bắt đầu và thời lượng phim
                     }
-                    var suatChieuList = context.SuatChieux.Where(sc => sc.SoPhongChieu == suatchieu.SoPhongChieu).ToList();
-
-                    var s = suatChieuList.Where(sc => IsTimeBetween(st, sc.BatDau, sc.KetThuc) || IsTimeBetween(ed, sc.BatDau, sc.KetThuc)).FirstOrDefault();
-
-                    if (s != null)
+                    var s = context.SuatChieux.Where(s => (IsTimeBetween(st, s.BatDau, s.KetThuc) || IsTimeBetween(ed, s.BatDau, s.KetThuc) == true)
+                                                           && s.SoPhongChieu == suatchieu.SoPhongChieu).FirstOrDefault(); 
+                    if(s != null)
                     {
                         return (false, $"Thời gian {ConvertDateTime.Clock(s.BatDau)} đến {ConvertDateTime.Clock(s.KetThuc)} đã có suất chiếu khác ", newShowtimeId);
                     }
@@ -78,7 +71,7 @@ namespace CinemaManagement.Models.DAL
                                  select ghe.MaGhe
                                 ).ToListAsync();
                     List<BanVe> banve = new List<BanVe>();
-                    foreach( var maghe in dsghe  )
+                    foreach(var maghe in dsghe)
                     {
                         banve.Add(new BanVe
                         {
@@ -87,52 +80,47 @@ namespace CinemaManagement.Models.DAL
                             DaBan = false
                         });
                     }
-                    context.BanVes.AddRange(banve);
+                    context.BanVes.AddRange( banve );
                     await context.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
             {
-                return (false, "Lỗi hệ thống: " + ex.Message, newShowtimeId);
+                Console.WriteLine(ex);
+                return (false, "Lỗi hệ thống", newShowtimeId);
             }
             return (true, "Thêm suất chiếu thành công", newShowtimeId);
         }
-        public async Task<List<SuatChieuDTO>> GetShowTimeByRoom(int soPhong, DateTime selectedDate)
+        public async Task<List<SuatChieuDTO>> GetShowTimeByRoom(int selectedRoom, DateTime selectedDate)
         {
-            List<SuatChieuDTO> dsSC = new List<SuatChieuDTO>();
             try
             {
                 using (var context = new CinemaManagementEntities())
                 {
-                    var suatChieuList = await (from sc in context.SuatChieux
-                                               join p in context.Phims on sc.MaPhim equals p.MaPhim
-                                               where sc.SoPhongChieu == soPhong && DbFunctions.TruncateTime(sc.BatDau) == selectedDate.Date
-                                               select new
-                                               {
-                                                   sc.MaSC,
-                                                   sc.BatDau,
-                                                   sc.KetThuc,
-                                                   sc.GiaVe,
-                                                   sc.SoPhongChieu,
-                                                   sc.MaPhim
-                                               }).ToListAsync();
-
-                    dsSC = suatChieuList.Select(sc => new SuatChieuDTO
+                    List<SuatChieuDTO> dsSC = new List<SuatChieuDTO>();
+                    dsSC = await (from sc in context.SuatChieux
+                                  where sc.SoPhongChieu == selectedRoom && sc.BatDau.Day == selectedDate.Day && sc.BatDau.Month == selectedDate.Month
+                                  select new SuatChieuDTO
+                                  {
+                                      MaSC = sc.MaSC,
+                                      BatDau = sc.BatDau,
+                                      KetThuc = sc.KetThuc,
+                                      GiaVe = sc.GiaVe,
+                                      SoPhongChieu = sc.SoPhongChieu,
+                                      MaPhim = sc.MaPhim,
+                                  }).ToListAsync();
+                    for(int i = 0;i<dsSC.Count;i++)
                     {
-                        MaSC = sc.MaSC,
-                        BatDau = sc.BatDau,
-                        KetThuc = sc.KetThuc,
-                        GiaVe = sc.GiaVe,
-                        SoPhongChieu = sc.SoPhongChieu,
-                        Phim = PhimDAL.Instance.GetMovieById(sc.MaPhim)
-                    }).ToList();
+                        dsSC[i].Phim = PhimDAL.Instance.GetMovieById(dsSC[i].MaPhim);
+                    }
+                    return dsSC;
                 }
             }
             catch (Exception ex)
             {
                 CustomControls.MyMessageBox.Show("Lỗi hệ thống: " + ex.Message);
+                return null;
             }
-            return dsSC;
         }
 
 

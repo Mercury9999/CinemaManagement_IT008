@@ -19,7 +19,7 @@ namespace CinemaManagement.DTOs
         {
             get
             {
-                if (MaKH == 0) return "Khách không có tài khoản";
+                if (MaKH == 0) return "Khách vãng lai";
                 else return _TenKH;
             }
             set
