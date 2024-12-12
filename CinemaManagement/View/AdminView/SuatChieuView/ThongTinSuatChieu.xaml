@@ -81,7 +81,7 @@
                         </ListBox.ItemContainerStyle>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <UniformGrid Columns="14"
+                                <UniformGrid Columns="10"
                                              FlowDirection="RightToLeft" />
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
