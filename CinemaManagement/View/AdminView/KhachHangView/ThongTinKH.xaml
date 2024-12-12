@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        Height="430"
-        Width="500"
+        Height="650"
+        Width="800"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
@@ -21,97 +20,90 @@
                            CommandParameter="{Binding ElementName=thongtinKhachHangWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border Background="#ffffff" CornerRadius="20" BorderThickness="2" BorderBrush="Black">
+    <Border Background="#ffffff" CornerRadius="20" Padding="20">
         <Grid>
-            <StackPanel>
-                <!-- Title -->
-                <TextBox materialDesign:HintAssist.FloatingScale="0.50" materialDesign:TextFieldAssist.TextBoxViewMargin="20 0 1 0"
-                        FontSize="25"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        Text="Thông tin khách hàng"
-                        IsReadOnly="True"
-                        FontWeight="SemiBold"
-               />
-                <!-- Thông tin khách hàng -->
-                <TextBlock Text="Thông tin cá nhân" FontSize="20" Margin="10" FontWeight="DemiBold"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Title -->
+            <Grid Grid.Row="0">
+                <TextBlock Text="Thông tin Khách Hàng" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" />
+                <Button Content="X" Style="{StaticResource buttonClose}" 
+                        Background="#FFFC6E6E" Foreground="White" Width="30" Height="30" 
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Command="{Binding CloseWindowCM}"
+                        CommandParameter="{Binding ElementName=thongtinKhachHangWindow}" />
+            </Grid>
+
+            <!-- Customer Info -->
+            <Grid Grid.Row="1" Margin="0,20,0,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Mã khách hàng -->
+                <Label Grid.Row="0" Grid.Column="0" Content="Mã Khách Hàng:" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding KhMaKH}" 
+                         IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+
                 <!-- Tên khách hàng -->
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Họ và tên" Margin="10 10 0 0" FontSize="20"/>
-                    <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="26"
-            Text="{Binding KhTen}"
-            Margin="52 0 0 0"
-            Padding="0 -5 0 0" IsReadOnly="True"   
-                            />
-                </StackPanel>
-
-                <!-- Số điện thoại -->
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Số điện thoại" Margin="10 10 0 0" FontSize="20"/>
-                    <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="159" Height="26"
-            Margin="20 0 0 0"
-            Text="{Binding KhSDT}"
-            Padding="0" IsReadOnly="True"
-                   />
-                </StackPanel>
-
-                <!-- Ngày sinh -->
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Ngày sinh" Margin="10 10 0 0" FontSize="20"/>
-                    <DatePicker 
-    Width="176"
-   SelectedDate="{Binding KhNgaySinh, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-    materialDesign:HintAssist.Hint=""
-    materialDesign:TextFieldAssist.HasClearButton="True"
-   Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
- Margin="45 0 0 0"
-Height="26"
-       FontSize="20"
-Padding="0"/>
-                </StackPanel>
-
-                <!-- Giới tính -->
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Giới tính" Margin="10 10 0 0" FontSize="20"/>
-                    <ComboBox ItemsSource="{Binding GenderOptions}" SelectedItem="{Binding KhGioiTinh}" 
-             Style="{StaticResource MaterialDesignComboBox}" Width="130" Height="26" FontSize="20" Padding="0 -5 0 0"
-             Margin="60 0 0 0" IsReadOnly="True">
-                    </ComboBox>
-                </StackPanel>
-
-                <!-- Chi tiêu -->
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Chi tiêu" Margin="10 10 0 0" FontSize="20" VerticalAlignment="Center"/>
-                    <TextBox Height="26" 
-                            FontSize="20" 
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                            Width="230" 
-                            Margin="65 0 0 0" 
-                            Padding="0 -5 0 0"
-                            Text="{Binding KhChiTieu}"
-                            IsReadOnly="True"/>
-                </StackPanel>
+                <Label Grid.Row="1" Grid.Column="0" Content="Tên Khách Hàng:" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding KhTen}" 
+                         IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
                 <!-- Email -->
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Email" Margin="10 10 0 0" FontSize="20"/>
-                    <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
-             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="26"
-             Margin="82 0 0 0"
-             Text="{Binding KhEmail}"
-             Padding="0 -5 0 0"
-                             IsReadOnly="True"/>
-                </StackPanel>
-                <!-- Các nút xác nhận và hủy bỏ -->
+                <Label Grid.Row="2" Grid.Column="0" Content="Email:" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding KhEmail}" 
+                         IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
-                <StackPanel Orientation="Horizontal" Margin="290 60 0 0">
-                    <Button BorderThickness="0" Margin="20 0 0 0" Width="80" Height="47" Padding="0" Background="#FFD93434" Command="{Binding CloseWindowCM}" CommandParameter="{Binding ElementName=thongtinKhachHangWindow}">
-                        <TextBlock Text="Thoát" FontSize="15"/>
-                    </Button>
-                </StackPanel>
-            </StackPanel>
+                <!-- Số điện thoại -->
+                <Label Grid.Row="3" Grid.Column="0" Content="Số Điện Thoại:" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding KhSDT}" 
+                         IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+
+                <!-- Giới tính -->
+                <Label Grid.Row="4" Grid.Column="0" Content="Giới Tính:" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding KhGioiTinh}" 
+                         IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+
+                <!-- Ngày sinh -->
+                <Label Grid.Row="5" Grid.Column="0" Content="Ngày Sinh:" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding KhNgaySinh}" 
+                         IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+
+                <!-- Ngày đăng ký -->
+                <Label Grid.Row="6" Grid.Column="0" Content="Ngày Đăng Ký:" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding KhNgayDK}" 
+                         IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+
+                <!-- Chi tiêu -->
+                <Label Grid.Row="7" Grid.Column="0" Content="Chi Tiêu:" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding KhChiTieu}" 
+                         IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+            </Grid>
+
+            <!-- Action Buttons -->
+            <Grid Grid.Row="2" HorizontalAlignment="Center">
+                <Button Width="100" Height="40" Content="Thoát" 
+                        Style="{StaticResource MaterialDesignRaisedButton}" 
+                        Command="{Binding CloseWindowCM}" 
+                        CommandParameter="{Binding ElementName=thongtinKhachHangWindow}" />
+            </Grid>
         </Grid>
-
     </Border>
 </Window>

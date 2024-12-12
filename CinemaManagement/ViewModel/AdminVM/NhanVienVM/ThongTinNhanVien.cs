@@ -19,7 +19,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             AccPassword = NVSelected.acc_password;
             SDT = NVSelected.SDT_NV;
             Email = NVSelected.email_NV;
-            NgaySinh = NVSelected.NgaySinh;
+            NgaySinh = ConvertDateTime.Day(NVSelected.NgaySinh);
             GioiTinh = NVSelected.GioiTinh;
             NgayVaoLam = ConvertDateTime.Day(NVSelected.NgayVaoLam);
             ChucVu = NVSelected.ChucVu;

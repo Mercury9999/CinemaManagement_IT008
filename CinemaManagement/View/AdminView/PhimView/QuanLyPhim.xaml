@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:CinemaManagement.View"
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
       xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=adminvm:QuanLyPhimVM}"
-      mc:Ignorable="d"      
+      mc:Ignorable="d"
+      
       DataContext="{StaticResource FilmVM}"
       d:DesignHeight="810" 
       d:DesignWidth="900"

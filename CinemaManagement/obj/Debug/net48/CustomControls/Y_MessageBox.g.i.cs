@@ -93,7 +93,7 @@ namespace CinemaManagement.CustomControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CinemaManagement;V1.0.0.0;component/customcontrols/y_messagebox.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CinemaManagement;component/customcontrols/y_messagebox.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\CustomControls\Y_MessageBox.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

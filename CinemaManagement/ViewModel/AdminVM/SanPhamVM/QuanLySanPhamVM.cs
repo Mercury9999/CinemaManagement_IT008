@@ -27,9 +27,6 @@ namespace CinemaManagement.ViewModel.AdminVM
         public ICommand ViewProductCM { get; set; }
         public ICommand AddProductCM { get; set; }
         public ICommand UpdateProductCM { get; set; }
-        public ICommand NhapHangCM { get; set; }
-        public ICommand SaveNhapHang { get; set; }
-
         public ICommand DeleteProductCM { get; set; }
 
         public ICommand LoadDataProductCM { get; set; }
@@ -64,7 +61,7 @@ namespace CinemaManagement.ViewModel.AdminVM
         public string SearchText { get { return _searchText; } set {_searchText = value; OnPropertyChanged(); } }
         private Window CurrentWindow { get; set; }
         private SanPhamDTO _SPSelected { get; set; }
-        public SanPhamDTO SPSelected { get { return _SPSelected; } set { _SPSelected = value; OnPropertyChanged(); if (SPSelected != null) { TenSP = SPSelected.TenSP; HinhAnhSP = SPSelected.HinhAnhSP; } } }
+        public SanPhamDTO SPSelected { get { return _SPSelected; } set { _SPSelected = value; OnPropertyChanged(); } }
         private ObservableCollection<SanPhamDTO> _dsSP { get; set; }
         public ObservableCollection<SanPhamDTO> dsSP { get { return _dsSP; } set { _dsSP = value; OnPropertyChanged(); } }
         private ObservableCollection<SanPhamDTO> _tatcaSP { get; set; }
@@ -104,7 +101,6 @@ namespace CinemaManagement.ViewModel.AdminVM
                     MyMessageBox.Show("Lỗi hệ thống: " + ex.Message);
                 }
             });
-
             UploadImageCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 string imagePath = ImageUtility.ImagePath();
@@ -182,56 +178,6 @@ namespace CinemaManagement.ViewModel.AdminVM
                 GetDataProduct();
                 w1.ShowDialog();
                 IsLoading = false;
-            });
-            NhapHangCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
-            {
-                IsLoading = true;
-                NhapHang w1 = new NhapHang();
-                w1.ShowDialog();
-                IsLoading = false;
-            });
-            SaveNhapHang = new RelayCommand<Window>((p) => { return true; }, async (p) =>
-            {
-                IsSaving = true;
-
-                try
-                {
-                    // Lấy sản phẩm đã chọn (giả sử SelectedSP là sản phẩm hiện tại bạn đã chọn)
-                    if (SPSelected != null && SoLuong > 0)
-                    {
-                        using (var dbContext = new CinemaManagementEntities())
-                        {
-                            var product = await dbContext.SanPhams.FindAsync(SPSelected.MaSP);
-                            if (product != null)
-                            {
-                                product.SoLuong += SoLuong;
-
-                                await dbContext.SaveChangesAsync();
-
-                                MyMessageBox.Show("Cập nhật số lượng thành công.");
-                            }
-                            else
-                            {
-                                MyMessageBox.Show("Không tìm thấy sản phẩm.");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MyMessageBox.Show("Vui lòng chọn sản phẩm và nhập số lượng hợp lệ.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Xử lý lỗi
-                    MyMessageBox.Show("Có lỗi xảy ra: " + ex.Message);
-                }
-                finally
-                {
-                    IsSaving = false;
-                }
-
-
             });
             SaveProductCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {

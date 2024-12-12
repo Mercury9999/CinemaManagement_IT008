@@ -19,7 +19,7 @@ namespace CinemaManagement.ViewModel.AdminVM
         {
             return !string.IsNullOrEmpty(TenNV) && !string.IsNullOrEmpty(AccUsername)
             && !string.IsNullOrEmpty(AccPassword) && !string.IsNullOrEmpty(SDT)
-            && !string.IsNullOrEmpty(Email) && NgaySinh != null
+            && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(NgaySinh)
             && !string.IsNullOrEmpty(GioiTinh) && !string.IsNullOrEmpty(ChucVu);
         }
         public async Task SaveNewStaff(Window w1)
@@ -33,14 +33,14 @@ namespace CinemaManagement.ViewModel.AdminVM
                     acc_password = AccPassword,
                     SDT_NV = SDT,
                     email_NV = Email,
-                    NgaySinh = NgaySinh,
+                    NgaySinh = Convert.ToDateTime(NgaySinh),
                     GioiTinh = GioiTinh,
                     ChucVu = ChucVu
                 };
                 (bool trangthai, string messages, int newStaffId) = await NhanVienDAL.Instance.AddStaff(NhanVien);
                 if (trangthai)
                 {
-                    CustomControls.MyMessageBox.Show(messages);
+                    MessageBox.Show(messages);
                     IsLoading = true;
                     NhanVien.MaNV = newStaffId;
                     dsNV.Add(NhanVien);

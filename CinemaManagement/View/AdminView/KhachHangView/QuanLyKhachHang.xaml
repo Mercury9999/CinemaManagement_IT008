@@ -100,9 +100,7 @@
             <!-- Data grid -->
             <DataGrid  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
                      x:Name="customerGrid" 
-                     EnableColumnVirtualization="True"
-                       EnableRowVirtualization="True"
-                       ItemsSource="{Binding dsKH}"
+                      ItemsSource="{Binding dsKH}"
                        SelectedItem="{Binding KHSelected}"
                      AutoGenerateColumns="False" IsReadOnly="True"
                      Grid.Row="1">

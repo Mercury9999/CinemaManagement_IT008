@@ -61,8 +61,8 @@ namespace CinemaManagement.View.AdminView.SuatChieuView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CinemaManagement;V1.0.0.0;component/view/adminview/suatchieuview/thongtinsuatchi" +
-                    "eubeta.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CinemaManagement;component/view/adminview/suatchieuview/thongtinsuatchieubeta.xa" +
+                    "ml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\View\AdminView\SuatChieuView\ThongTinSuatChieuBeta.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -107,14 +107,12 @@
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Margin="10,0,55,0"
                      Text="{Binding TheLoai}"
-                     IsReadOnly="True"
                 />
 
                 <TextBox Name="txtQuocGia" Grid.Column="1" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"                     
                      Margin="11,0,116,0"
                      VerticalAlignment="Stretch"
                      Text="{Binding NuocSX}"
-                     IsReadOnly="True"
                 />
 
                 <TextBox Grid.Column="2" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"

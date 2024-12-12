@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:fa="http://schemas.fontawesome.io/icons/" 
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:navigationvm="clr-namespace:CinemaManagement.ViewModel.NavigationVM" d:DataContext="{d:DesignInstance Type=navigationvm:MainNavigationVM}"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:navigationvm="clr-namespace:CinemaManagement.ViewModel.NavigationVM" 
         DataContext="{StaticResource NavigationVM}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -113,17 +113,7 @@
                 </Grid>
             </Button>
 
-            <Button Command="{Binding }" Style="{StaticResource menuButton}">
-                <Grid>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <fa:ImageAwesome Icon="Star" Style="{StaticResource buttonIcon }"/>
-                        <TextBlock Style="{StaticResource buttonText }">Thống kê</TextBlock>
-                    </StackPanel>
-                    <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
-                </Grid>
-            </Button>
-
-            <Button Style="{StaticResource menuButton}" Margin="0 180 -20 0" Command="{Binding AccountCM}">
+            <Button Style="{StaticResource menuButton}" Margin="0 180 -20 0">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <fa:ImageAwesome Icon="User" Style="{StaticResource buttonIcon }"/>

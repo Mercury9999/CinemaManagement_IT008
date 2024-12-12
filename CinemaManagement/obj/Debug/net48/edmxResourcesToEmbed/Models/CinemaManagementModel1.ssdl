@@ -213,6 +213,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__HDNHAPHAN__MaNVN__59063A47">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="HDNhapHang" Type="Self.HDNhapHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="HDNhapHang">
+        <PropertyRef Name="MaNVNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__HoaDon__MaKH__03F0984C">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
@@ -354,6 +366,10 @@
     <AssociationSet Name="FK__Ghe__SoPhong__5DCAEF64" Association="Self.FK__Ghe__SoPhong__5DCAEF64">
       <End Role="PhongChieu" EntitySet="PhongChieu" />
       <End Role="Ghe" EntitySet="Ghe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HDNHAPHAN__MaNVN__59063A47" Association="Self.FK__HDNHAPHAN__MaNVN__59063A47">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="HDNhapHang" EntitySet="HDNhapHang" />
     </AssociationSet>
     <AssociationSet Name="FK__HoaDon__MaKH__03F0984C" Association="Self.FK__HoaDon__MaKH__03F0984C">
       <End Role="KhachHang" EntitySet="KhachHang" />

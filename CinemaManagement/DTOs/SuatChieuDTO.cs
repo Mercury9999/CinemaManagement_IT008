@@ -13,13 +13,19 @@ namespace CinemaManagement.DTOs
         public int SoPhongChieu { get; set; }
         public System.DateTime BatDau { get; set; }
         public System.DateTime KetThuc { get; set; }
-        public string GioChieuStr { get { return $"{BatDau:HH:mm} -> {KetThuc:HH:mm}"; } }
         public decimal GiaVe { get; set; }
         public string GiaVeStr
         {
             get
             {
                 return MoneyFormat.FormatToVND(GiaVe);
+            }
+        }
+        public string GioChieuStr
+        {
+            get
+            {
+                return $"{BatDau:HH:mm} -> {KetThuc:HH:mm}";
             }
         }
         public PhimDTO Phim { get; set; }

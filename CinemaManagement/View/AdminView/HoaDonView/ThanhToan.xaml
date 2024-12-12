@@ -122,8 +122,7 @@
                                        FontSize="30"
                                        HorizontalAlignment="Center"
                                        Margin="10"
-                                       FontWeight="Bold"
-                                       />
+                                       FontWeight="Bold"/>
 
                             <Line Grid.Row="1" X1="0" X2="1" Stretch="Fill" Stroke="Black" StrokeThickness="2" Margin="50,0,50,10"/>
 

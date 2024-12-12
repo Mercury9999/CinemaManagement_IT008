@@ -9,11 +9,11 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="ThemSanPham"
-        Height="330" 
-        Width="500"
+        Height="280" 
+        Width="400"
         Background="Transparent"
         AllowsTransparency="True"
-        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
         DataContext="{StaticResource ProductVM}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -21,11 +21,11 @@
                                    CommandParameter="{Binding ElementName=suasanphamWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border CornerRadius="30" BorderThickness="2" BorderBrush="Black" Background="#ffffff">
+    <Border CornerRadius="30" Background="#ffffff">
         <Grid>
             <StackPanel>
                 <TextBox materialDesign:HintAssist.FloatingScale="0.50" materialDesign:TextFieldAssist.TextBoxViewMargin="20 0 1 0"
-             FontSize="25"
+             FontSize="20"
              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
              Text="Sửa sản phẩm"
              IsReadOnly="True"
@@ -34,58 +34,53 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <!-- Thông tin sp -->
                     <StackPanel Grid.Column="0">
 
-                        <TextBlock Text="Thông tin sản phẩm" FontSize="20" Margin="10" FontWeight="DemiBold"/>
+                        <TextBlock Text="Thông tin sản phẩm" FontSize="15" Margin="10" FontWeight="DemiBold"/>
 
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Tên" Margin="10 10 0 0" FontSize="20"/>
-                            <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="199" Height="26"
-                                     Margin="20 0 0 0"
-                                     Padding="0"
-                                     Text="{Binding TenSP}"
-                 />
+                            <TextBlock Text="Tên" Margin="10 10 0 0"/>
+                            <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="106" Height="21"
+                 Margin="20 0 0 0"
+                 Padding="0"
+                                Text="{Binding TenSP}"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Loại sản phẩm" Margin="10 10 0 0" FontSize="20"/>
-                            <ComboBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
-                              Width="130" Height="26"
+                            <TextBlock Text="Loại sản phẩm" Margin="10 10 0 0"/>
+                            <ComboBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                              Width="84" Height="21"
                               Margin="20 0 0 0"
                               Padding="0"
-                                      ItemsSource="{Binding dsLoaiSP}"
-                                      SelectedItem="{Binding LoaiSP, Mode=TwoWay}"/>
+                              ItemsSource="{Binding dsLoaiSP}"
+                              SelectedItem="{Binding LoaiSP, Mode=TwoWay}"  />
                         </StackPanel>
-
-
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Giá" Margin="10 10 0 0" FontSize="20"/>
-                            <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="128" Height="26"
+                            <TextBlock Text="Giá" Margin="10 10 0 0"/>
+                            <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="90" Height="21"
                                      Margin="50 0 0 0"
                                      Padding="0"
-                                     Text="{Binding GiaSP}"
-/>
+                                     Text="{Binding GiaSP}"/>
 
                         </StackPanel>
 
                     </StackPanel>
 
-
                     <!-- Anh san pham-->
-                    <Rectangle Grid.Column="1" x:Name="ImageRectangle" Stroke="Black" StrokeThickness="2" Margin="20,19,42,10">
+                    <Rectangle Grid.Column="1" x:Name="ImageRectangle" Stroke="Black" StrokeThickness="2" Margin="10,19,82,10">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="{Binding HinhAnhSP}"/>
                         </Rectangle.Fill>
                     </Rectangle>
 
-                    <Button Grid.Column="1" Margin="168,10,15,0" Style="{StaticResource gridEditButton}" Height="23" Width="22" Background="#FF86838E" VerticalAlignment="Top"
+                    <Button Grid.Column="1" Margin="123,19,55,0" Style="{StaticResource gridEditButton}" Height="23" Width="22" Background="#FF86838E" VerticalAlignment="Top"
                             Command="{Binding UploadImageCM}">
                         <TextBlock VerticalAlignment="Center" FontSize="15" Text="+"/>
                     </Button>
@@ -93,12 +88,12 @@
 
 
                 <StackPanel Orientation="Horizontal" Margin="250 30 0 0">
-                    <Button BorderThickness="0" Width="82" Padding="0" Command="{Binding SaveProductCM}" Height="43">
-                        <TextBlock Text="Xác nhận" FontSize="15"/>
+                    <Button BorderThickness="0" Width="57" Padding="0" Command="{Binding SaveProductCM}">
+                        <TextBlock Text="Xác nhận" FontSize="10"/>
                     </Button>
-                    <Button BorderThickness="0" Margin="20 0 0 0" Width="82" Padding="0" Background="#FFD93434" Command="{Binding CloseCM}"
-                            CommandParameter="{Binding ElementName=suasanphamWindow}" Height="43">
-                        <TextBlock Text="Hủy bỏ" FontSize="15"/>
+                    <Button BorderThickness="0" Margin="20 0 0 0" Width="57" Padding="0" Background="#FFD93434" Command="{Binding CloseCM}"
+                            CommandParameter="{Binding ElementName=suasanphamWindow}">
+                        <TextBlock Text="Hủy bỏ" FontSize="10"/>
                     </Button>
                 </StackPanel>
 

@@ -10,9 +10,6 @@
     <Compile Update="CustomControls\W_MessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="CustomControls\Y_MessageBox.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="MainNavigation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +19,9 @@
     <Compile Update="View\AdminView\HoaDonView\ChiTietHoaDon.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\AdminView\KhachHangView\SuaKH.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\AdminView\KhachHangView\ThongTinKH.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -29,12 +29,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\AdminView\NhanVienView\ThongTinNhanVien.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\AdminView\SanPhamView\MuaHang.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\AdminView\SanPhamView\NhapHang.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\AdminView\SanPhamView\QuanLyNhapHang.xaml.cs">
@@ -47,24 +41,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\AdminView\SanPhamView\ThongTinSanPham.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\AdminView\SuatChieuView\ThongTinSuatChieuBeta.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\AdminView\ThongKeView\ThongKeDoanhThuView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\AdminView\ThongKeView\ThongKeKHView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\AdminView\ThongKeView\ThongKePhimView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\AdminView\ThongKeView\ThongKeSanPhamView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\AdminView\ThongKeView\ThongKeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\LoginWindow\LoginWindow.xaml.cs">
@@ -126,6 +102,9 @@
     <Page Update="View\AdminView\HoaDonView\ChiTietHoaDon.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\AdminView\KhachHangView\SuaKH.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\AdminView\KhachHangView\ThongTinKH.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -133,12 +112,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AdminView\NhanVienView\ThongTinNhanVien.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\AdminView\SanPhamView\MuaHang.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\AdminView\SanPhamView\NhapHang.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AdminView\SanPhamView\QuanLyNhapHang.xaml">
@@ -151,24 +124,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AdminView\SanPhamView\ThongTinSanPham.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\AdminView\SuatChieuView\ThongTinSuatChieuBeta.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\AdminView\ThongKeView\ThongKeDoanhThuView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\AdminView\ThongKeView\ThongKeKHView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\AdminView\ThongKeView\ThongKePhimView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\AdminView\ThongKeView\ThongKeSanPhamView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\AdminView\ThongKeView\ThongKeView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\LoginWindow\LoginWindow.xaml">

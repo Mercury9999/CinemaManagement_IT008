@@ -5,7 +5,7 @@ namespace CinemaManagement.DTOs
 {
     public class BanVeDTO
     {
-        BanVeDTO() { }
+        public BanVeDTO() { }
         public int MaSC { get; set; }
         public int MaGhe { get; set; }
         public bool DaBan { get; set; } = false;

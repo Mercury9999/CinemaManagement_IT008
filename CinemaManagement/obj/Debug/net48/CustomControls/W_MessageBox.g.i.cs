@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using CinemaManagement;
 using CinemaManagement.CustomControls;
 using System;
 using System.Diagnostics;
@@ -86,7 +85,7 @@ namespace CinemaManagement.CustomControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CinemaManagement;V1.0.0.0;component/customcontrols/w_messagebox.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CinemaManagement;component/customcontrols/w_messagebox.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\CustomControls\W_MessageBox.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
