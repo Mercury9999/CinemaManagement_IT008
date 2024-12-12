@@ -1,0 +1,183 @@
+﻿<Page x:Class="CinemaManagement.View.QuanLyKhachHang"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+     xmlns:local="clr-namespace:CinemaManagement.View"
+     xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+     xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+      
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=adminvm:QuanLyKhachHangVM}"
+     mc:Ignorable="d"
+     
+     d:DesignHeight="810" 
+     d:DesignWidth="900"
+     Title="QuanLyPhim"
+     Background="Transparent"
+     x:Name="quanlykhachhangPage"
+    DataContext="{StaticResource CustomerVM}"
+     >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCustomerCM}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="quanlykhachhangPage"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooltoVis"/>
+    </Page.Resources>
+
+    <Border Background="#eff2f7" CornerRadius="30">
+        <Grid>
+            <!-- Main section -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0" Margin="0,40,0,0">
+                <!-- Search TextBox-->
+                <Grid Margin="30,0,0,0" VerticalAlignment="Center" Width="300" HorizontalAlignment="Left">
+                    <TextBox x:Name="txtSearch" Style="{StaticResource textboxSearch}" Height="31" Text="{Binding Path=SearchText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding SearchData}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+
+                    <icon:PackIconMaterial Kind="Magnify"  Width="15" Height="15" VerticalAlignment="Center"
+                                          Margin="0 0 15 0" Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+                </Grid>
+
+                <ComboBox materialDesign:ComboBoxAssist.MaxLength="2" materialDesign:HintAssist.Hint="Tìm theo..." materialDesign:HintAssist.HintOpacity=".26"
+                          IsEditable="True" Margin="358,21,394,0" VerticalAlignment="Top" Height="30"
+                          ItemsSource="{Binding SearchList}" SelectedItem="{Binding SearchProperties, Mode=TwoWay}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ResetData}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+
+                <!-- Add button-->
+                <Button Margin="717,24,30,25" Background="#FF2ABF2B" BorderBrush="#FFEDE7F8">
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Kind="BookAccount" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock Text="Xuất file Excel"/>
+                    </StackPanel>
+                </Button>
+                
+                <Button Margin="533,24,199,25" Background="#FF2A35BF" BorderBrush="#FFEDE7F8">
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock Text="Thêm khách hàng"/>
+                    </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding AddCustomerCM}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+            </Grid>
+
+            <!-- Data grid -->
+            <DataGrid  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                     x:Name="customerGrid" 
+                      ItemsSource="{Binding dsKH}"
+                       SelectedItem="{Binding KHSelected}"
+                     AutoGenerateColumns="False" IsReadOnly="True"
+                     Grid.Row="1">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding ViewCustomerCM}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn CanUserResize="False" Width="Auto" ElementStyle="{StaticResource CheckBoxStyle1}">
+                        <DataGridCheckBoxColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
+                            </DataTemplate>
+                        </DataGridCheckBoxColumn.HeaderTemplate>
+                    </DataGridCheckBoxColumn>
+
+                    <DataGridTextColumn Header="" IsReadOnly="True" CanUserResize="False" Width="Auto"/>
+
+                    <DataGridTextColumn Header="ID" IsReadOnly="True" Width="Auto" Binding="{Binding MaKHStr}"/>
+                    <DataGridTextColumn Header="Tên khách hàng" IsReadOnly="True" Width="250" Binding= "{Binding TenKH}"/>
+                    <DataGridTextColumn Header="Số điện thoại" IsReadOnly="True" Width="Auto" Binding="{Binding SDT_KH}"/>
+                    <DataGridTextColumn Header="Email" IsReadOnly="True" Width="Auto" Binding="{Binding email_KH}"/>
+                    <DataGridTextColumn Header="Ngày đăng ký" IsReadOnly="True" Width="Auto" Binding="{Binding NgayDK}"/>
+                    <DataGridTextColumn Header="Chi tiêu" IsReadOnly="True" Width="Auto" Binding="{Binding HDTichLuyStr}"/>
+                    <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{StaticResource gridEditButton}"
+                                            Command="{Binding ElementName=customerGrid, Path=DataContext.UpdateCustomerCM}"
+                                            >
+                                        <icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                    </Button>
+                                    <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0" 
+                                            Command="{Binding ElementName=customerGrid, Path=DataContext.DeleteCustomerCM}"
+                                           >
+                                        <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+
+
+            <!-- Pagination section -->
+            <Border Grid.Row="2" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+                   CornerRadius="5" Padding="5" Background="White" Margin="0 0 30 40">
+                <StackPanel Orientation="Horizontal">
+
+                    <Button Style="{StaticResource pagingButton}">
+                        <icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
+                    </Button>
+
+                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+                    <Button Style="{StaticResource pagingButton}" Content="1" Background="#7950f2" Foreground="#ffffff"/>
+                    <Button Style="{StaticResource pagingButton}" Content="2"/>
+                    <Button Style="{StaticResource pagingButton}" Content="3"/>
+
+                    <TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center" FontSize="15" Margin="10 0"/>
+
+                    <Button Style="{StaticResource pagingButton}" Content="7"/>
+                    <Button Style="{StaticResource pagingButton}" Content="8"/>
+                    <Button Style="{StaticResource pagingButton}" Content="9"/>
+
+                    <Button Style="{StaticResource pagingButton}">
+                        <icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+
+        </Grid>
+    </Border>
+</Page>
