@@ -490,3 +490,4 @@ D:\dev\CinemaManagement\CinemaManagement\obj\Debug\net48\CinemaManagement.csproj
 D:\dev\CinemaManagement\CinemaManagement\obj\Debug\net48\CinemaMa.F488B2C5.Up2Date
 D:\dev\CinemaManagement\CinemaManagement\obj\Debug\net48\CinemaManagement.exe
 D:\dev\CinemaManagement\CinemaManagement\obj\Debug\net48\CinemaManagement.pdb
+D:\dev\CinemaManagement\CinemaManagement\obj\Debug\net48\CinemaManagement.sourcelink.json

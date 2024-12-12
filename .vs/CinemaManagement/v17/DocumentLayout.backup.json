@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\dev\\CinemaManagement\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\mainnavigation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|solutionrelative:cinemamanagement\\mainnavigation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|solutionrelative:cinemamanagement\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +27,30 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\App.xaml",
+              "RelativeDocumentMoniker": "CinemaManagement\\App.xaml",
+              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\App.xaml",
+              "RelativeToolTip": "CinemaManagement\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-12T15:19:26.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainNavigation.xaml",
+              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\MainNavigation.xaml",
+              "RelativeDocumentMoniker": "CinemaManagement\\MainNavigation.xaml",
+              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\MainNavigation.xaml",
+              "RelativeToolTip": "CinemaManagement\\MainNavigation.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-12T15:18:58.8Z",
+              "EditorCaption": ""
             }
           ]
         }
