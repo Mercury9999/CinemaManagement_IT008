@@ -157,7 +157,8 @@ namespace CinemaManagement.ViewModel.AdminVM
                     {
                         TenPhim = phim.TenPhim,
                         TheLoai = phim.TheLoai,
-                        ThoiLuong = phim.ThoiLuong
+                        ThoiLuong = phim.ThoiLuong,
+                        Poster = phim.Poster
                     };
                     SuatChieuDTO suatChieu = new SuatChieuDTO()
                     {

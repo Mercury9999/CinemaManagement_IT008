@@ -1,59 +1,41 @@
 ﻿using CinemaManagement.DTOs;
-using CinemaManagement.Models;
-using CinemaManagement.ViewModel.AdminVM.AccountVM;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaManagement.ViewModel.AdminVM.ThanhToanVM
+namespace CinemaManagement.ViewModel.AdminVM.BillVM
 {
-    public partial class BillService : BaseViewModel
+    public class BillService : BaseViewModel
     {
-        private static BillService _ins;
-
-        public static BillService Ins
+        private static BillService _instance;
+        private static readonly object _lock = new object();
+        private BillService() { }
+        public static BillService Instance
         {
             get
             {
-                if (_ins == null)
+                lock (_lock)
                 {
-                    _ins = new BillService();
+                    if (_instance == null)
+                    {
+                        _instance = new BillService();
+                    }
+                    return _instance;
                 }
-                return _ins;
-            }
-            private set => _ins = value;
-        }
-
-        private BillService()
-        {
-
-        }
-
-        private ObservableCollection<SanPhamDTO> _listFood;
-        public ObservableCollection<SanPhamDTO> listFood
-        {
-            get => _listFood;
-            set
-            {
-                _listFood = value;
-                OnPropertyChanged();
             }
         }
-
-        private ObservableCollection<VeDTO> _listVe;
-        public ObservableCollection<VeDTO> listVe
+        private ObservableCollection<SanPhamDTO> _dsSanPhamHD {  get; set; }
+        public ObservableCollection<SanPhamDTO> dsSanPhamHD
         {
-            get => _listVe;
-            set
+            get
             {
-                _listVe = value;
-                OnPropertyChanged();
+                return _dsSanPhamHD;
             }
         }
 
     }
+
 }

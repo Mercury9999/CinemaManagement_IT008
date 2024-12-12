@@ -21,15 +21,6 @@ namespace CinemaManagement.View
     /// </summary>
     public partial class QuanLySuatChieu : Page
     {
-        public class SuatChieu
-        {
-            public string Ten { get; set; }
-            public string TheLoai { get; set; }
-            public string ThoiLuong { get; set; }
-
-        }
-
-        public ObservableCollection<SuatChieu> testData;
         public QuanLySuatChieu()
         {
             InitializeComponent();

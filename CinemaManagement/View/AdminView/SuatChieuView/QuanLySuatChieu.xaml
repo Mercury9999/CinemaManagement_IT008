@@ -18,12 +18,6 @@
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooltoVis"/>
     </Page.Resources>
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding DoiPhongChieuCM}"
-       CommandParameter="3"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
     <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">
             <BeginStoryboard>
@@ -45,8 +39,8 @@
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
-             <!--Search TextBox-->
+
+            <!--Search TextBox-->
             <Grid Grid.ColumnSpan="2" Width="300" Margin="50 70 0 0" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <TextBlock Margin="20 0 0 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="True" Text="Tìm tên phim"
                            Panel.ZIndex="1"
@@ -60,11 +54,11 @@
             <Button Content="Thêm phòng" Padding="0" Margin="10 0 10 0" Command="{Binding AddNewRoomCM}"/>
 
 
-            <!--Date Picker--> 
-          
-            
-            
-             <!--Film Grid-->
+            <!--Date Picker-->
+
+
+
+            <!--Film Grid-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -73,20 +67,15 @@
 
                 <StackPanel Margin="0 60 40 0" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0">
                     <!-- Add button-->
-                    <Button Width="155" Margin="0 0 150 0" >
+                    <Button Width="155" Command="{Binding AddShowtimeCM}">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
                             <TextBlock Text="Thêm suất chiếu"/>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding AddShowTimeCM}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
                         </StackPanel>
                     </Button>
 
                     <!-- Room Change-->
-                    <ComboBox materialDesign:HintAssist.Hint="Phòng" ItemsSource="{Binding dsPhong}" DisplayMemberPath="SoPhong" SelectedValuePath="SoPhong" Text="{Binding SelectedRoom, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="106" Margin="10 0 60 0">
+                    <ComboBox materialDesign:HintAssist.Hint="Phòng" ItemsSource="{Binding dsPhong}" DisplayMemberPath="SoPhong" SelectedValuePath="SoPhong" Text="{Binding SelectedRoom, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="106" Margin="10 0 60 0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding ChangeInfoCM}"/>
@@ -98,19 +87,19 @@
                     </ComboBox>
 
                     <!-- Date box-->
-                <DatePicker Text="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    <DatePicker Text="{Binding SelectedDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Grid.Row="0" Width="140"
                                 materialDesign:HintAssist.Hint="Suất chiếu"
                                 Style="{StaticResource MaterialDesignOutlinedDatePicker}"
                                 Margin="0 0 0 0"
                                 HorizontalAlignment="Right">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectedDateChanged">
-                            <i:InvokeCommandAction Command="{Binding ChangeInfoCM}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </DatePicker>
-            </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedDateChanged">
+                                <i:InvokeCommandAction Command="{Binding ChangeInfoCM}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </DatePicker>
+                </StackPanel>
 
 
                 <!--Data grid-->
@@ -130,11 +119,11 @@
                         </DataGridCheckBoxColumn>
 
                         <DataGridTextColumn Header="Tên Phim" IsReadOnly="True" Width="*" Binding="{Binding Phim.TenPhim}"/>
-                    <DataGridTextColumn Header="Thể loại" IsReadOnly="True" Width="*" Binding="{Binding Phim.TheLoai}"/>
-                    <DataGridTextColumn Header="Giờ chiếu" IsReadOnly="True" Width="*" Binding="{Binding GioChieuStr}"/>
-                    <DataGridTextColumn Header="Giá vé" IsReadOnly="True" Width="*" Binding="{Binding GiaVeStr}"/>
+                        <DataGridTextColumn Header="Thể loại" IsReadOnly="True" Width="*" Binding="{Binding Phim.TheLoai}"/>
+                        <DataGridTextColumn Header="Giờ chiếu" IsReadOnly="True" Width="*" Binding="{Binding GioChieuStr}"/>
+                        <DataGridTextColumn Header="Giá vé" IsReadOnly="True" Width="*" Binding="{Binding GiaVeStr}"/>
 
-                    <!-- Thông tin ngày suất chiếu / giờ chiếu hiện trong Chi tiết suất chiếu khi nhấn đúp chuột vào row -->
+                        <!-- Thông tin ngày suất chiếu / giờ chiếu hiện trong Chi tiết suất chiếu khi nhấn đúp chuột vào row -->
 
                         <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto">
                             <DataGridTemplateColumn.CellTemplate>
@@ -160,5 +149,5 @@
             </Grid>
         </Grid>
     </Border>
-    
+
 </Page>
