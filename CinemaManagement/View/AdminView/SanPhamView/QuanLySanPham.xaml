@@ -1,0 +1,361 @@
+﻿<Page x:Class="CinemaManagement.View.QuanLySanPham"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaManagement.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:QuanLySanPhamVM}"
+      mc:Ignorable="d" 
+      d:DesignHeight="810" d:DesignWidth="900"
+      Title="QuanLySanPham"
+      x:Name="quanlysanphamPage"
+      DataContext="{StaticResource ProductVM}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataProductCM}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="quanlysanphamPage"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
+
+
+    <Border CornerRadius="30" Background="#eff2f7">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBox 
+                        materialDesign:HintAssist.Hint="Tìm kiếm theo tên..."
+                        materialDesign:HintAssist.HintOpacity=".26"   
+                        Margin="50,40,50,0" VerticalAlignment="Top" Width="236"
+                        Text="{Binding Path = SearchText,UpdateSourceTrigger = PropertyChanged, Mode=TwoWay}" Height="43">
+                    <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding SearchData}"/>
+                    </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+
+                <ComboBox x:Name="searchtypeComboBox" Width="118" Height="30" IsEditable="True" VerticalAlignment="Top" Margin="0 54 0 0"
+                          ItemsSource="{Binding dsLoaiSPTimKiem}"
+                          SelectedItem="{Binding TimLoaiSP, Mode=TwoWay}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding TypeSearchProductCM}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+
+                <Button Style="{StaticResource productButton}" Cursor="Hand" Margin="40 30 0 20" Height="60" Width="156" Command="{Binding AddProductCM}">
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock FontWeight="Bold" Text="Thêm sản phẩm" FontSize="15"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+            <materialDesign:Card Grid.Row="1"
+                                 Margin="10,0,10,10" Background="Transparent"
+                                 >
+                <StackPanel>
+
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  Height="580"
+                                  VerticalAlignment="Top">
+                        <ListBox
+                                 x:Name="sanphamlistBox"
+                                 VerticalAlignment="Top"
+                                 materialDesign:ListBoxItemAssist.ShowSelection="False"
+                                 materialDesign:ListBoxAssist.IsToggle="False"
+                                 ItemsSource="{Binding dsSP}"
+                                 SelectedItem="{Binding SPSelected, Mode=TwoWay}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding ViewProductCM}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem"
+                                       BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="IsSelected"
+                                                    Value="True" />
+                                            <Setter Property="Background"
+                                                    Value="#FFD0EAF6" />
+
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Style.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius"
+                                                    Value="10" />
+                                            <Setter Property="Width"
+                                                    Value="300" />
+                                            <Setter Property="Padding"
+                                                    Value="0" />
+                                            <Setter Property="Margin"
+                                                    Value="0" />
+                                        </Style>
+                                    </Style.Resources>
+                                    <Setter Property="Padding"
+                                            Value="0" />
+                                    <Setter Property="Margin"
+                                            Value="5 5 6 5" />
+                                    <Setter Property="materialDesign:ListBoxItemAssist.ShowSelection"
+                                            Value="False" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="3" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="Black"
+                                            BorderThickness="1"
+                                            CornerRadius="10">
+                                        <Grid Background="Transparent">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="181" />
+                                                <RowDefinition Height="30" />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <StackPanel Grid.Row="0"
+                                                            Orientation="Horizontal">
+                                                    <Border BorderThickness="1"
+                                                            BorderBrush="Black"
+                                                            Margin="5,7,5,10"
+                                                            Width="210"
+                                                            Height="160">
+                                                        <StackPanel>
+                                                            <!-- Anh san pham-->
+                                                            <Image
+                                                                   x:Name="productImage"
+                                                                   Width="200"
+                                                                   Height="150"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center"
+                                                                   HorizontalAlignment="Center" 
+                                                                   Source="{Binding HinhAnhSP}"
+                                                                  />
+                                                        </StackPanel>
+                                                    </Border>
+
+                                                    <StackPanel Margin="-5,5,0,0">
+                                                        <Border BorderBrush="Black"
+                                                                BorderThickness="1"
+                                                                CornerRadius="4"
+                                                                Margin="3"
+                                                                Cursor="Hand"
+                                                                Height="35"
+                                                                Width="35">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver"
+                                                                                 Value="True">
+                                                                            <Setter Property="Background"
+                                                                                    Value="#00e5ff" />
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <!-- Sua sp-->
+                                                            <icon:PackIconMaterial Kind="Pencil"
+                                                                   Width="30"
+                                                                   Height="30"
+                                                                   Cursor="Hand">
+                                                            </icon:PackIconMaterial>
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.UpdateProductCM}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Border>
+
+
+                                                        <Border BorderBrush="Black"
+                                                                BorderThickness="1"
+                                                                CornerRadius="4"
+                                                                Margin="3"
+                                                                Cursor="Hand"
+                                                                Height="35"
+                                                                Width="35">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver"
+                                                                                 Value="True">
+                                                                            <Setter Property="Background"
+                                                                                    Value="#ff6255" />
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <!-- Xoa sp-->
+                                                            <materialDesign:PackIcon Kind="GarbageCanEmpty"
+                                                                                     Width="30"
+                                                                                     Height="30"
+                                                                                     Cursor="Hand"/>
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.DeleteProductCM}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+
+                                                        </Border>
+
+
+
+                                                        <Border BorderBrush="Black"
+                                                                BorderThickness="1"
+                                                                CornerRadius="4"
+                                                                Margin="3"
+                                                                Cursor="Hand"
+                                                                Height="35"
+                                                                Width="35">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver"
+                                                                                 Value="True">
+                                                                            <Setter Property="Background"
+                                                                                    Value="LightGreen" />
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <!--Nhap hang-->
+                                                            <icon:PackIconMaterial Kind="Plus"
+                                                                                   Width="30"
+                                                                                   Height="30"
+                                                                                   Cursor="Hand">
+                                                            </icon:PackIconMaterial>
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.NhapHangCM}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Border>
+
+                                                        <Border BorderBrush="Black"
+                                                                BorderThickness="1"
+                                                                CornerRadius="4"
+                                                                Margin="3"
+                                                                Cursor="Hand"
+                                                                Height="35"
+                                                                Width="35">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver"
+                                                                                 Value="True">
+                                                                            <Setter Property="Background"
+                                                                                    Value="LightGreen" />
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <!--Mua hang-->
+                                                            <icon:PackIconMaterial Kind="Shopping"
+                                                                                   Width="30"
+                                                                                   Height="30"
+                                                                                   Cursor="Hand">
+                                                            </icon:PackIconMaterial>
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.NhapHangCM}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Border>
+
+                                                    </StackPanel>
+
+
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <!-- Ten sp -->
+                                            <TextBlock Grid.Row="1"
+                                                       x:Name="productName"
+                                                       FontSize="20"
+                                                       Foreground="Black"
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Center"
+                                                       Margin="10 0 0 0" 
+                                                       Text="{Binding TenSP}"/>
+
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*" />
+                                                    <ColumnDefinition Width="50*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0"
+                                                            Orientation="Horizontal">
+                                                    <TextBlock Text="  SL "
+                                                               FontSize="18"
+                                                               Margin="0 0 0 3"
+                                                               VerticalAlignment="Bottom"
+                                                               HorizontalAlignment="Right" />
+                                                    <!-- So luong sp-->
+                                                    <TextBlock x:Name="productCount"
+                                                               FontSize="18"
+                                                               Margin="0 0 0 3"
+                                                               VerticalAlignment="Bottom"
+                                                               HorizontalAlignment="Right" 
+                                                               Text="{Binding SoLuong}"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1"
+                                                            Orientation="Horizontal"
+                                                            HorizontalAlignment="Right">
+                                                    <!-- Gia san pham-->
+                                                    <TextBlock 
+                                                               x:Name="productPrice"
+                                                               FontSize="18"
+                                                               VerticalAlignment="Bottom"
+                                                               HorizontalAlignment="Right"
+                                                               Margin="0 0 3 3"
+                                                               Text="{Binding GiaSP}"/>
+                                                    <icon:PackIconMaterial Kind="Card" 
+                                                           Margin=" 0 0 3 3"
+                                                           Height="22"
+                                                           Width="22" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+
+                </StackPanel>
+            </materialDesign:Card>
+        </Grid>
+    </Border>
+</Page>

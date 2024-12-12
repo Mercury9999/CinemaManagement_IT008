@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CinemaManagementModelStoreContainer" CdmEntityContainer="CinemaManagementEntities">
+    <EntitySetMapping Name="BanVes">
+      <EntityTypeMapping TypeName="CinemaManagementModel.BanVe">
+        <MappingFragment StoreEntitySet="BanVe">
+          <ScalarProperty Name="MaSC" ColumnName="MaSC" />
+          <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
+          <ScalarProperty Name="DaBan" ColumnName="DaBan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTHDSanPhams">
+      <EntityTypeMapping TypeName="CinemaManagementModel.CTHDSanPham">
+        <MappingFragment StoreEntitySet="CTHDSanPham">
+          <ScalarProperty Name="SoHD" ColumnName="SoHD" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ghes">
+      <EntityTypeMapping TypeName="CinemaManagementModel.Ghe">
+        <MappingFragment StoreEntitySet="Ghe">
+          <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
+          <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+          <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HDNhapHangs">
+      <EntityTypeMapping TypeName="CinemaManagementModel.HDNhapHang">
+        <MappingFragment StoreEntitySet="HDNhapHang">
+          <ScalarProperty Name="SoHDNhap" ColumnName="SoHDNhap" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+          <ScalarProperty Name="MaNVNhap" ColumnName="MaNVNhap" />
+          <ScalarProperty Name="MaSPNhap" ColumnName="MaSPNhap" />
+          <ScalarProperty Name="DonGiaNhap" ColumnName="DonGiaNhap" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDons">
+      <EntityTypeMapping TypeName="CinemaManagementModel.HoaDon">
+        <MappingFragment StoreEntitySet="HoaDon">
+          <ScalarProperty Name="SoHD" ColumnName="SoHD" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+          <ScalarProperty Name="NgayHD" ColumnName="NgayHD" />
+          <ScalarProperty Name="ChietKhau" ColumnName="ChietKhau" />
+          <ScalarProperty Name="GiaTriHD" ColumnName="GiaTriHD" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+          <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhachHangs">
+      <EntityTypeMapping TypeName="CinemaManagementModel.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="SDT_KH" ColumnName="SDT_KH" />
+          <ScalarProperty Name="email_KH" ColumnName="email_KH" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="HDTichLuy" ColumnName="HDTichLuy" />
+          <ScalarProperty Name="NgayDK" ColumnName="NgayDK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanViens">
+      <EntityTypeMapping TypeName="CinemaManagementModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+          <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+          <ScalarProperty Name="acc_username" ColumnName="acc_username" />
+          <ScalarProperty Name="acc_password" ColumnName="acc_password" />
+          <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+          <ScalarProperty Name="email_NV" ColumnName="email_NV" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="Staff_Level" ColumnName="Staff_Level" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phims">
+      <EntityTypeMapping TypeName="CinemaManagementModel.Phim">
+        <MappingFragment StoreEntitySet="Phim">
+          <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
+          <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
+          <ScalarProperty Name="ThoiLuong" ColumnName="ThoiLuong" />
+          <ScalarProperty Name="NuocSX" ColumnName="NuocSX" />
+          <ScalarProperty Name="NgayPH" ColumnName="NgayPH" />
+          <ScalarProperty Name="DaoDien" ColumnName="DaoDien" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="GioiHanTuoi" ColumnName="GioiHanTuoi" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
+          <ScalarProperty Name="DoanhThu" ColumnName="DoanhThu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhongChieux">
+      <EntityTypeMapping TypeName="CinemaManagementModel.PhongChieu">
+        <MappingFragment StoreEntitySet="PhongChieu">
+          <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
+          <ScalarProperty Name="SLGhe" ColumnName="SLGhe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanPhams">
+      <EntityTypeMapping TypeName="CinemaManagementModel.SanPham">
+        <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="LoaiSP" ColumnName="LoaiSP" />
+          <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="GiaSP" ColumnName="GiaSP" />
+          <ScalarProperty Name="HinhAnhSP" ColumnName="HinhAnhSP" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuatChieux">
+      <EntityTypeMapping TypeName="CinemaManagementModel.SuatChieu">
+        <MappingFragment StoreEntitySet="SuatChieu">
+          <ScalarProperty Name="MaSC" ColumnName="MaSC" />
+          <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
+          <ScalarProperty Name="SoPhongChieu" ColumnName="SoPhongChieu" />
+          <ScalarProperty Name="BatDau" ColumnName="BatDau" />
+          <ScalarProperty Name="KetThuc" ColumnName="KetThuc" />
+          <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuCoes">
+      <EntityTypeMapping TypeName="CinemaManagementModel.SuCo">
+        <MappingFragment StoreEntitySet="SuCo">
+          <ScalarProperty Name="MaSuCo" ColumnName="MaSuCo" />
+          <ScalarProperty Name="MaNVBao" ColumnName="MaNVBao" />
+          <ScalarProperty Name="DiaDiem" ColumnName="DiaDiem" />
+          <ScalarProperty Name="CTSuCo" ColumnName="CTSuCo" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="PhiSuaChua" ColumnName="PhiSuaChua" />
+          <ScalarProperty Name="NgayBaoSC" ColumnName="NgayBaoSC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ves">
+      <EntityTypeMapping TypeName="CinemaManagementModel.Ve">
+        <MappingFragment StoreEntitySet="Ve">
+          <ScalarProperty Name="SoHD" ColumnName="SoHD" />
+          <ScalarProperty Name="MaVe" ColumnName="MaVe" />
+          <ScalarProperty Name="MaSC" ColumnName="MaSC" />
+          <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
+          <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+          <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
