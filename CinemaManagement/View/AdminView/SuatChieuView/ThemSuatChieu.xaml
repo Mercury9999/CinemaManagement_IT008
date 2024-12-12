@@ -4,8 +4,8 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:CinemaManagement.View"
-            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" 
-            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:QuanLySuatChieuVM}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
             TextElement.FontWeight="Regular"
             TextElement.FontSize="13"
             TextOptions.TextFormattingMode="Ideal"
@@ -19,7 +19,7 @@
             WindowStyle="None"
             WindowStartupLocation="CenterScreen"
             x:Name="themSuatChieuWindow"
-            >
+            DataContext="{StaticResource ShowtimeVM}">
 
     <Border Background="#ffffff" CornerRadius="25">
         <Grid>
@@ -52,26 +52,28 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Label Margin="10 20 0 0" Grid.Column="0" Content="Tên Phim"/>
+                <Label Margin="10 20 0 0" Grid.Column="0" Content="Mã Phim"/>
                 <Label Margin="5 20 0 0" Grid.Column="1" Content="Ngày chiếu"/>
 
             </Grid>
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="41*"/>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="293*"/>
+                    <ColumnDefinition Width="350*"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBox Grid.Column="0" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="{Binding TenPhim}" Margin="10,0,55,0"
-            />
+            Text="{Binding MaPhim}" Margin="10,0,212,0" Grid.ColumnSpan="3"/>
 
-                <DatePicker Grid.Column="1"
+                <DatePicker Grid.Column="3"
                     Width="158"
                     Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-                    HorizontalAlignment="Left"                   
+                    HorizontalAlignment="Left"        
+                    Text="{Binding SelectedDate}"
                 />
             </Grid>
 
@@ -83,10 +85,11 @@
                     <ColumnDefinition Width="233*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Margin="10 20 0 0" Content="Giờ chiếu" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Label Margin="10 20 0 0" Content="Giờ bắt đầu" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Label Margin="10,90,188,-70" Content="Giờ kết thúc" Grid.Column="1" Grid.ColumnSpan="2"/>
                 <Label Margin="10,20,233,0" Content="Phòng chiếu" Grid.Column="2" Grid.ColumnSpan="2"/>
                 <Label Margin="0,20,10,0" Content="Giá vé" Grid.Column="3"/>
-            
+
             </Grid>
 
             <Grid Grid.Row="4">
@@ -101,19 +104,28 @@
                      Margin="10,0,116,0"
                      materialDesign:HintAssist.Hint="00:00"
                      TextAlignment="Center"
-                     x:Name="txtGioChieu"
+                     x:Name="txtBatDau"
+                     Text="{Binding BatDauStr}"
                 />
-
-                <ComboBox Grid.Column="1" materialDesign:ComboBoxAssist.MaxLength="2" materialDesign:HintAssist.Hint="" materialDesign:HintAssist.HintOpacity=".26"
-                          IsEditable="True" Margin="0,0,107,0" VerticalAlignment="Bottom" Height="30">
-                </ComboBox>
-
+                <TextBox Grid.Column="0" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"
+      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+      Margin="38,68,88,-68"
+      materialDesign:HintAssist.Hint="00:00"
+      TextAlignment="Center"
+      x:Name="txtKetThuc"
+                         Text="{Binding KetThucStr}"
+ />
                 <TextBox Grid.Column="2" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"
+         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+         Text="{Binding GiaVe}" Margin="0,0,125,0"
+         x:Name="txtPhongChieu"/>
+
+                <TextBox Grid.Column="1" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     Text="{Binding ThoiLuong}" Margin="0,0,125,0"
+                     Text="{Binding SoPhong}" Margin="0,0,125,0"
                      x:Name="txtGiaVe"
             />
-                
+
             </Grid>
 
             <Grid Grid.Row="5">
@@ -123,27 +135,15 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Label Margin="10 20 0 0" Grid.Column="0" Content="Mô tả"/>
-
             </Grid>
 
-            <Grid Grid.Row="6">
+            <Grid Grid.Row="3" Margin="-10,5,10,72" Grid.RowSpan="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="24*"/>
                     <ColumnDefinition Width="25*"/>
                     <ColumnDefinition Width="25*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Column="0" Height="152" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Mô tả"
-             AcceptsReturn="True"
-             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
-             Style="{StaticResource MaterialDesignOutlinedTextBox}"
-             TextWrapping="Wrap"
-             VerticalScrollBarVisibility="Auto" Margin="15,0,25,0"
-             Text="{Binding NoiDung}"
-             x:Name="txtNoiDung"
-             />
-             
 
                 <Grid Grid.Column="2">
                     <StackPanel Margin="0 70 0 0" Orientation="Horizontal">
@@ -154,8 +154,8 @@
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     ToolTip="MaterialDesignRaisedButton with Round Corners" Margin="0 0 0 0"
-                    Command="{Binding SaveNewFilmCM}"
-                    CommandParameter="{Binding ElementName=themPhimWindow}">
+                    Command="{Binding AddNewShowtimeCM}"
+                            CommandParameter="{Binding ElementName=themSuatChieuWindow}">
                             <TextBlock Text="Luu"/>
 
                         </Button>
@@ -168,7 +168,7 @@
                      Style="{StaticResource MaterialDesignRaisedButton}"
                      ToolTip="MaterialDesignRaisedButton with Round Corners" Margin="30 0 0 0"
                      Command="{Binding CloseWindowCM}"
-                     CommandParameter="{Binding ElementName=themPhimWindow}">
+                     CommandParameter="{Binding ElementName=themSuatChieuWindow}">
                             <TextBlock Text="Thoat" />
                         </Button>
                     </StackPanel>
