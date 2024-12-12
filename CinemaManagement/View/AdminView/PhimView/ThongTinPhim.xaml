@@ -1,0 +1,192 @@
+﻿<Window x:Class="CinemaManagement.View.ThongTinPhim"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:CinemaManagement.View"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:QuanLyPhimVM}"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d"
+    Height="500" 
+    Width="700"
+    Background="Transparent"
+    AllowsTransparency="True"
+    WindowStyle="None"
+    WindowStartupLocation="CenterScreen"
+    x:Name="thongtinPhimWindow"
+    DataContext="{StaticResource FilmVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetCurrentWindow}"
+                               CommandParameter="{Binding ElementName=thongtinPhimWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border Background="#ffffff" CornerRadius="25">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Title -->
+            <Grid Grid.Row="0">
+                <TextBox materialDesign:HintAssist.FloatingScale="0.50" materialDesign:TextFieldAssist.TextBoxViewMargin="20 0 1 0"
+             FontSize="20"
+             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+             Text="Thông tin Phim"
+             IsReadOnly="True"
+             FontWeight="SemiBold" Margin="0,0,300,0"
+            />
+                <Button Content="X" HorizontalAlignment="Left" Style="{StaticResource buttonClose}" Background="#FFFC6E6E" Foreground="#FFF7F3F3" Margin="634,0,0,0" Width="66"
+                        Command="{Binding CloseWindowCM}"
+                        CommandParameter="{Binding ElementName = thongtinPhimWindow}"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Margin="10 20 0 0" Grid.Column="0" Content="Ten Phim"/>
+                <Label Margin="5 20 0 0" Grid.Column="1" Content="Ngay Phat Hanh"/>
+                <Label Margin="188,16,-178,4" Grid.Column="1" Content="Mã phim"/>
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="57*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"
+                        Text="{Binding TenPhim}" Margin="10,0,55,0"
+                        IsReadOnly="True" Cursor="Arrow"/>
+
+                <TextBox IsReadOnly="True" Grid.Column="1" Text="{Binding NgayPH}"
+                         Margin="0,0,224,0" VerticalAlignment="Center" Height="30" Grid.ColumnSpan="2"/>
+                <TextBox IsReadOnly="True" Grid.Column="2" Text="{Binding MaPhim}"
+          Margin="121,0,38,0" VerticalAlignment="Center" Height="30"/>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="188*"/>
+                    <ColumnDefinition Width="233*"/>
+                    <ColumnDefinition Width="233*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Margin="10 20 0 0" Content="Thể loại" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Label Margin="10,20,233,0" Content="Quốc gia" Grid.Column="2" Grid.ColumnSpan="2"/>
+                <Label Margin="0,20,10,0" Content="Thời lượng" Grid.Column="3"/>
+                <Label Margin="130,20,-100,0" Content="Rating" Grid.Column="3"/>
+
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Name="txtTheLoai" Grid.Column="0" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Margin="10,0,55,0"
+                     Text="{Binding TheLoai}"
+                />
+
+                <TextBox Name="txtQuocGia" Grid.Column="1" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"                     
+                     Margin="11,0,116,0"
+                     VerticalAlignment="Stretch"
+                     Text="{Binding NuocSX}"
+                />
+
+                <TextBox Grid.Column="2" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Text="{Binding ThoiLuong}" Margin="0,0,125,0"
+                     x:Name="txtThoiLuong"
+                     IsReadOnly="True"
+            />
+                <TextBox Grid.Column="2" materialDesign:TextFieldAssist.TextBoxViewMargin="5 0 1 0" FontSize="15"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Text="{Binding GioiHanTuoi}" Margin="127,0,25,0"
+                    x:Name="txtRating"
+                    IsReadOnly="True"
+            />
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Margin="10 10 0 0" Grid.Column="0" Content="Noi dung"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <Label Margin="10 10 0 0" Grid.Column="1" Content="Poster"/>
+                </StackPanel>
+
+
+            </Grid>
+
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" Height="152" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Mô tả"
+             AcceptsReturn="True"
+             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
+             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+             TextWrapping="Wrap"
+             VerticalScrollBarVisibility="Auto" Margin="15,0,25,0"
+             Text="{Binding NoiDung}"
+             x:Name="txtNoiDung"
+             IsReadOnly="True"
+             />
+
+                <Grid Grid.Column="1">
+                    <Rectangle x:Name="ImageRectangle" Stroke="Black" StrokeThickness="2" Margin="10,10,55,10">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{Binding Poster}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <StackPanel Margin="0 70 0 0" Orientation="Horizontal">
+
+                        <Button
+                     Width="70"
+                     Height="30"
+                     materialDesign:ButtonAssist.CornerRadius="10"
+                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                     Style="{StaticResource MaterialDesignRaisedButton}"
+                     ToolTip="MaterialDesignRaisedButton with Round Corners" Margin="30 0 0 0"
+                     Command="{Binding CloseWindowCM}"
+                     CommandParameter="{Binding ElementName=thongtinPhimWindow}">
+                            <TextBlock Text="Thoat" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

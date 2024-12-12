@@ -1,0 +1,171 @@
+﻿<Page x:Class="CinemaManagement.View.AdminView.AccountView.AccountView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaManagement.View" 
+      xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      FontFamily="{DynamicResource MaterialDesignFont }"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      mc:Ignorable="d" 
+      d:DesignHeight="810" 
+      d:DesignWidth="900"
+      x:Name="AccountPage"
+      Background="Transparent">
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="AccountPage"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0"
+                             To="1"
+                             Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Border Background="#eff2f7" CornerRadius="30">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Avatar -->
+            <Grid Grid.Column="0" Grid.Row="0">
+                <StackPanel>
+                    <TextBlock Text="NV001" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 30 0 10" Foreground="#E5531795"/>
+                    <Ellipse Margin="0 0 0 10" Width="190" Height="179" Stroke="Black" StrokeThickness="2">
+                        <Ellipse.Fill>
+                            <ImageBrush Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <Button Height="40" HorizontalAlignment="Center" Style="{StaticResource ultisButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                            <TextBlock Text="Cập nhật ảnh"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!-- Thong tin ca nhan-->
+            <Grid Grid.Column="1" Grid.Row="0">
+                <StackPanel Margin="20 40 0 0">
+                    <!-- Thông tin nhân viên -->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Họ tên" FontWeight="Bold" FontSize="20" Margin="10 10 0 0"/>
+                        <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="21"
+              Padding="0"
+              Margin="39 0 0 0" IsReadOnly="True"
+              />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Số điện thoại" FontWeight="Bold" FontSize="20" Margin="10 20 0 0"/>
+                        <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="154" Height="21"
+              Margin="20 0 0 0"
+                 Padding="0" IsReadOnly="True"
+              />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ngày sinh" FontWeight="Bold" FontSize="20" Margin="10 20 0 0"/>
+                        <DatePicker
+                  Width="130"
+                  materialDesign:HintAssist.Hint=""
+                  materialDesign:TextFieldAssist.HasClearButton="True"
+                  Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                  Margin="35 0 0 0" Height="26"
+                  Padding="5"
+                  FontSize="15" IsEnabled="False"
+        />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Giới tính" FontWeight="Bold" FontSize="20" Margin="10 20 0 0"/>
+                        <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+              Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="60" Height="21"
+              Margin="45 0 0 0"
+              Padding="0"
+              TextAlignment="Center"
+              Text="{Binding GioiTinh}" IsReadOnly="True"
+         />
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Email" FontWeight="Bold" FontSize="20" Margin="10 20 0 0"/>
+                        <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="21"
+                                Margin="59 0 0 0"
+                                Padding="0" 
+                                 Text="{Binding Email}"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Chức vụ" FontWeight="Bold" FontSize="20" Margin="10 20 0 0"/>
+                        <ComboBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                  Width="140" Height="21"
+                  Margin="45 0 0 0"
+                  ItemsSource="{Binding dsChucVu}"
+                  Padding="0" IsReadOnly="True"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!-- Thong tin account-->
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <StackPanel Margin="20,30,0,0">
+                    <TextBlock Text="Thông tin tài khoản" FontSize="30" FontWeight="Bold" Margin="30 20 0 30"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Tên đăng nhập" FontWeight="Bold" FontSize="20" Margin="10 10 0 0"/>
+                        <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="21"
+                                Padding="0"
+                                Margin="39 0 0 0" IsReadOnly="True"
+                                />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Mật khẩu" FontWeight="Bold" FontSize="20" Margin="10 10 0 0"/>
+                        <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="15"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="21"
+                                Padding="0"
+                                Margin="90 0 0 0"
+                                 IsReadOnly="True"
+                                />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Margin="200 160 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button HorizontalAlignment="Center" Background="#21203b" Height="50" Style="{StaticResource ultisButton}" Width="187">
+                        <TextBlock Text="Đổi mật khẩu" HorizontalAlignment="Center" FontSize="20"/>
+                    </Button>
+                    <Button HorizontalAlignment="Center" Background="#21203b" Margin="10 20 0 0" Height="50" Style="{StaticResource ultisButton}" Width="187">
+                        <TextBlock Text="Đăng xuất" HorizontalAlignment="Center" FontSize="20"/>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+
+
+        </Grid>
+    </Border>
+
+
+</Page>
