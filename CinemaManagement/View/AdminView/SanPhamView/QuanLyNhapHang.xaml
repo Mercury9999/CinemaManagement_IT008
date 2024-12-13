@@ -9,7 +9,7 @@
       mc:Ignorable="d"     
       d:DesignHeight="810" 
       d:DesignWidth="900"
-      Title="QuanLyPhim"
+      Title="QuanLyNhaphang"
       Background="Transparent"
       x:Name="quanlyNhapHangPage"
       >
