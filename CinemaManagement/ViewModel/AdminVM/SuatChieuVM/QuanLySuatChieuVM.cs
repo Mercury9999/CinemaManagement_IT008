@@ -20,6 +20,7 @@ namespace CinemaManagement.ViewModel.AdminVM
 {
     public class QuanLySuatChieuVM : BaseViewModel
     {
+        BillService billService = BillService.Instance;
         private int _masc { get; set; }
         public int MaSC
         {
@@ -49,6 +50,12 @@ namespace CinemaManagement.ViewModel.AdminVM
         {
             get { return _selectedRoom; }
             set { _selectedRoom = value; OnPropertyChanged(); }
+        }
+        private BanVeDTO _selectedTicket { get; set; }
+        public BanVeDTO SelectedTicket
+        {
+            get { return _selectedTicket; }
+            set { _selectedTicket = value; OnPropertyChanged(); }
         }
         private SuatChieuDTO _selectedShowtime {  get; set; }
         public SuatChieuDTO SelectedShowtime
@@ -96,6 +103,7 @@ namespace CinemaManagement.ViewModel.AdminVM
         public ICommand GetRoomListCM {  get; set; }
         public ICommand ChangeInfoCM { get; set; }
         public ICommand ViewShowtimeCM { get; set; }
+        public ICommand OrderTicketCM { get; set; }
         public QuanLySuatChieuVM()
         {
             SelectedDate = DateTime.Now;
@@ -201,6 +209,11 @@ namespace CinemaManagement.ViewModel.AdminVM
                     Window w1 = new ThongTinSuatChieu();
                     w1.ShowDialog();
                 }
+            });
+            OrderTicketCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                billService.dsVeHD.Add(SelectedTicket);
+                MyMessageBox.Show("Đã thêm vé vào hoá đơn");
             });
         }
         public async Task GetNewData()

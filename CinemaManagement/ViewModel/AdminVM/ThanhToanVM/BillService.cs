@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaManagement.ViewModel.AdminVM.BillVM
+namespace CinemaManagement.ViewModel.AdminVM
 {
     public class BillService : BaseViewModel
     {
@@ -27,12 +27,28 @@ namespace CinemaManagement.ViewModel.AdminVM.BillVM
                 }
             }
         }
-        private ObservableCollection<SanPhamDTO> _dsSanPhamHD {  get; set; }
-        public ObservableCollection<SanPhamDTO> dsSanPhamHD
+        private List<SanPhamDTO> _dsSanPhamHD {  get; set; }
+        public List<SanPhamDTO> dsSanPhamHD
         {
             get
             {
                 return _dsSanPhamHD;
+            }
+            set
+            {
+                dsSanPhamHD = value; OnPropertyChanged();
+            }
+        }
+        private List<BanVeDTO> _dsVeHD { get; set; }
+        public List<BanVeDTO> dsVeHD
+        {
+            get
+            {
+                return _dsVeHD;
+            }
+            set
+            {
+                dsVeHD = value; OnPropertyChanged();
             }
         }
 
