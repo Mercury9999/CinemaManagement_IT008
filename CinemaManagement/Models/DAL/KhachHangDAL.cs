@@ -1,4 +1,5 @@
-﻿using CinemaManagement.DTOs;
+﻿using CinemaManagement.CustomControls;
+using CinemaManagement.DTOs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CinemaManagement.Models.DAL
 {
@@ -50,7 +52,7 @@ namespace CinemaManagement.Models.DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                MyMessageBox.Show(ex.Message);
                 throw ex;
             }
         }
@@ -72,12 +74,11 @@ namespace CinemaManagement.Models.DAL
             }
             catch (DbUpdateException ex)
             {
-                return (false, "Lỗi CSDL");
+                return (false, "Lỗi CSDL: " + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return (false, "Lỗi hệ thống");
+                return (false, "Lỗi hệ thống: " + ex.ToString());
             }
         }
         public async Task<(bool, string)> Updatecustomer(KhachHangDTO khcapnhat)
@@ -198,8 +199,42 @@ namespace CinemaManagement.Models.DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                MyMessageBox.Show("Lỗi dữ liệu: " + ex.ToString());
                 throw ex;
+            }
+        }
+        public async Task<KhachHangDTO> GetCustomerById(int id)
+        {
+            try
+            {
+                using (var context = new CinemaManagementEntities())
+                {
+                    var khachHang = (from kh in context.KhachHangs
+                                    where kh.MaKH == id
+                                    select new KhachHangDTO
+                                    {
+                                        MaKH = kh.MaKH,
+                                        TenKH = kh.TenKH,
+                                        SDT_KH = kh.SDT_KH,
+                                        email_KH = kh.email_KH,
+                                        NgaySinh = kh.NgaySinh,
+                                        GioiTinh = kh.GioiTinh,
+                                        NgayDK = kh.NgayDK,
+                                        HDTichLuy = kh.HDTichLuy,
+                                    }).FirstOrDefaultAsync();
+
+                    if (khachHang == null)
+                    {
+                        MyMessageBox.Show("Sai mã khách hàng");
+                        return null;
+                    }
+                    return await khachHang;
+                }
+            }
+            catch (Exception ex)
+            {
+                MyMessageBox.Show("Lỗi dữ liệu: " + ex.ToString());
+                throw;
             }
         }
     }

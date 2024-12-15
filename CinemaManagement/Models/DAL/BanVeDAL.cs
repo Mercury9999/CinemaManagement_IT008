@@ -1,4 +1,5 @@
-﻿using CinemaManagement.DTOs;
+﻿using CinemaManagement.CustomControls;
+using CinemaManagement.DTOs;
 using CinemaManagement.View;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -59,6 +60,19 @@ namespace CinemaManagement.Models.DAL
             {
                 MessageBox.Show("Lỗi: " + ex.ToString());
                 return null;
+            }
+        }
+        public async Task<bool> OrderTicket(List<BanVeDTO> dsVeMua)
+        {
+            using (var context = new CinemaManagementEntities())
+            {
+                for (int i = 0; i < dsVeMua.Count; i++)
+                {
+                    var ve = await context.BanVes.FindAsync(dsVeMua[i].MaSC, dsVeMua[i].MaGhe);
+                    if(ve != null) ve.DaBan = true;
+                }
+                await context.SaveChangesAsync();
+                return true;
             }
         }
     }

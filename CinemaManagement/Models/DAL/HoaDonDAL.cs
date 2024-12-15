@@ -5,6 +5,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace CinemaManagement.Models.DAL
 {
@@ -23,6 +26,42 @@ namespace CinemaManagement.Models.DAL
             }
             private set => _instance = value;
         }
+        public async Task<(bool, string, int)> AddNewBill(HoaDonDTO hoadon)
+        {
+            int newBillId = -1;
+            try
+            {
+                using (var context = new CinemaManagementEntities())
+                {
+                    int maxBillId;
+                    if (await context.HoaDons.AnyAsync()) maxBillId = await context.HoaDons.MaxAsync(s => s.SoHD);
+                    else maxBillId = 0;
+                    newBillId = maxBillId + 1;
+                    var hd = new HoaDon()
+                    {
+                        SoHD = newBillId,
+                        MaKH = hoadon.MaKH,
+                        MaNV = hoadon.MaNV,
+                        NgayHD = DateTime.Now,
+                        ChietKhau = hoadon.ChietKhau,
+                        GiamGia = hoadon.GiamGia,
+                        GiaTriHD = hoadon.GiaTriHD,
+                        ThanhTien = hoadon.ThanhTien
+                    };
+                    context.HoaDons.Add(hd);
+                    await context.SaveChangesAsync();
+                }
+            }
+            catch (DbUpdateException e)
+            {
+                return (false, "Lỗi CSDL", newBillId);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.ToString(), newBillId);
+            }
+            return (true, "Thêm sản phẩm thành công", newBillId);
+        }
         public async Task<List<HoaDonDTO>> GetAllBill()
         {
             try
@@ -30,11 +69,11 @@ namespace CinemaManagement.Models.DAL
                 using (var context = new CinemaManagementEntities())
                 {
                     var dshoadon = (from hoadon in context.HoaDons
+                                    orderby hoadon.NgayHD descending
                                     select new HoaDonDTO
                                     {
                                         SoHD = hoadon.SoHD,
                                         MaKH = hoadon.MaKH,
-                                        TenKH = hoadon.KhachHang.TenKH,
                                         MaNV = hoadon.MaNV,
                                         NgayHD = hoadon.NgayHD,
                                         ChietKhau = hoadon.ChietKhau,
@@ -62,13 +101,11 @@ namespace CinemaManagement.Models.DAL
                     {
                         SoHD = hoadon.SoHD,
                         MaNV = hoadon.MaNV,
-                        TenNV = hoadon.NhanVien.TenNV,
                         GiamGia = hoadon.GiamGia,
                         ChietKhau = hoadon.ChietKhau,
                         GiaTriHD = hoadon.GiaTriHD,
                         NgayHD = hoadon.NgayHD,
                         MaKH = hoadon.MaKH,
-                        TenKH = hoadon.KhachHang.TenKH,
                         CTSP = (from ct in hoadon.CTHDSanPhams
                                 select new CTHDSanPhamDTO
                                 {
@@ -94,8 +131,10 @@ namespace CinemaManagement.Models.DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.ToString());
+                return null;
             }
         }
+
     }
 }

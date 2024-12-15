@@ -12,7 +12,10 @@ namespace CinemaManagement.ViewModel.AdminVM
     {
         private static BillService _instance;
         private static readonly object _lock = new object();
-        private BillService() { }
+        private BillService()
+        {
+
+        }
         public static BillService Instance
         {
             get
@@ -27,7 +30,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 }
             }
         }
-        private List<SanPhamDTO> _dsSanPhamHD {  get; set; }
+        private List<SanPhamDTO> _dsSanPhamHD {  get; set; } = new List<SanPhamDTO>();
         public List<SanPhamDTO> dsSanPhamHD
         {
             get
@@ -39,7 +42,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 dsSanPhamHD = value; OnPropertyChanged();
             }
         }
-        private List<BanVeDTO> _dsVeHD { get; set; }
+        private List<BanVeDTO> _dsVeHD { get; set; } = new List<BanVeDTO>();
         public List<BanVeDTO> dsVeHD
         {
             get

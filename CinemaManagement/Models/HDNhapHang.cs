@@ -22,6 +22,7 @@ namespace CinemaManagement.Models
         public Nullable<decimal> DonGiaNhap { get; set; }
         public Nullable<int> SoLuong { get; set; }
     
+        public virtual NhanVien NhanVien { get; set; }
         public virtual SanPham SanPham { get; set; }
     }
 }

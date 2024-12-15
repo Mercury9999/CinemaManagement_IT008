@@ -110,7 +110,7 @@
 
                     <!-- Operation Button -->
                     <StackPanel HorizontalAlignment="Right" Margin="0 15 60 0" Orientation="Horizontal">
-                        <Button Padding="0" Margin="0 0 30 0" Width="90" BorderThickness="0"  Background="Green">
+                        <Button Padding="0" Margin="0 0 30 0" Width="90" BorderThickness="0"  Background="Green" Command="{Binding OrderTicketCM}">
                             <TextBlock Text="Đặt vé"/>
                         </Button>
                         <Button Padding="0" Width="90" BorderThickness="0"  Background="Red" Command="{Binding CloseWindowCM}" CommandParameter="{Binding ElementName=thongtinscWindow}">
