@@ -19,6 +19,7 @@ namespace CinemaManagement.ViewModel.NavigationVM
         public ICommand QuanLySuatChieuCM { get; set; }
         public ICommand QuanLySanPhamCM { get; set; }
         public ICommand QuanLyKhachHangCM { get; set; }
+        public ICommand QuanLyHoaDonCM { get; set; }
         public ICommand QuanLyNhanVienCM { get; set; }
         public ICommand GetNavigationFrameCM {  get; set; }
 
@@ -49,6 +50,10 @@ namespace CinemaManagement.ViewModel.NavigationVM
             QuanLyNhanVienCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 NavigationFrame.Navigate(new QuanLyNhanVien());
+            });
+            QuanLyHoaDonCM = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                NavigationFrame.Navigate(new ChiTietHoaDon());
             });
         }
     }

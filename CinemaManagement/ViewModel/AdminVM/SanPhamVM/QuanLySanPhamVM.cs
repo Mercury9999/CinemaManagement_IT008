@@ -23,7 +23,8 @@ namespace CinemaManagement.ViewModel.AdminVM
 {
     public partial class QuanLySanPhamVM : BaseViewModel
     {
-        #region
+        BillService billService = BillService.Instance;
+        #region Icommand
         public ICommand ViewProductCM { get; set; }
         public ICommand AddProductCM { get; set; }
         public ICommand UpdateProductCM { get; set; }
@@ -39,6 +40,8 @@ namespace CinemaManagement.ViewModel.AdminVM
         public ICommand NameSearchProductCM { get; set; }
         public ICommand TypeSearchProductCM { get; set; }
         public ICommand SearchData {  get; set; }
+        public ICommand OpenOrderProductCM { get; set; }
+        public ICommand OrderProductCM { get; set; }
         #endregion
         #region thuộc tính lưu dữ liệu
         private int? _masp {  get; set; }
@@ -74,6 +77,7 @@ namespace CinemaManagement.ViewModel.AdminVM
         public bool IsLoading { get; set; }
         public string TimLoaiSP { get; set; }
         public string TimTenSP {  get; set; }
+        public int SoLuongMua {  get; set; }
         #endregion
         public QuanLySanPhamVM()
         {
@@ -234,14 +238,31 @@ namespace CinemaManagement.ViewModel.AdminVM
 
             });
             SearchData = new RelayCommand<object>((p) => { return true;}, (p) =>
-          {
+            {
               dsSP = new ObservableCollection<SanPhamDTO>();
               for(int i = 0;i < SpForSearch.Count; i++)
               {
                   bool check = SpForSearch[i].TenSP.ToLower().Contains(SearchText.ToLower());
                   if(check) dsSP.Add(SpForSearch[i]);
               }
-          } );
+            });
+            OpenOrderProductCM = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                SoLuongMua = 0;
+                Window w1 = new MuaHang();
+                MaSP = SPSelected.MaSP;
+                w1.ShowDialog();
+            });
+            OrderProductCM = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                billService.dsSanPhamHD.Add(new SanPhamDTO
+                {
+                    MaSP = MaSP ?? 0,
+                    SoLuong = SoLuongMua
+                });
+                CurrentWindow.Close();
+                MyMessageBox.Show("Đã thêm sản phẩm vào hoá đơn");
+            });
         }
         private void ClearData()
         {

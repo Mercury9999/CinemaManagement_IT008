@@ -18,7 +18,7 @@ namespace CinemaManagement.ViewModel.AdminVM.AccountVM
             get { return accountService.CurrentAccount; }
         }
         #endregion
-        #region Icommand
+        #region 
         #endregion
         public AccountVM()
         {

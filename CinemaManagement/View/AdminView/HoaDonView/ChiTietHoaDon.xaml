@@ -4,16 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaManagement.View" xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:HoaDonVM}"
       mc:Ignorable="d" 
       d:DesignHeight="810" 
       d:DesignWidth="900"
       Title="ChiTietHoaDon"
-      Background="Transparent">
+      Background="Transparent"
+      DataContext="{StaticResource BillVM}">
 
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooltoVis"/>
     </Page.Resources>
-
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetAllBillCM}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border Background="#eff2f7" CornerRadius="30">
         <Grid>
             <!-- Main section -->
@@ -38,14 +44,14 @@
 
 
                 <!-- ThanhToan + Delete button-->
-                <Button Margin="717,24,30,25" Background="#FFBF2A2A" BorderBrush="#FFEDE7F8">
+                <Button Margin="717,24,30,25" Background="#FFBF2A2A" BorderBrush="#FFEDE7F8" Command="{Binding DeleteCurrentBillCM}">
                     <StackPanel Orientation="Horizontal">
                         <icon:PackIconMaterial Kind="BookAccount" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
-                        <TextBlock Text="Xóa hóa đơn"/>
+                        <TextBlock Text="Xoá hoá đơn hiện tại"/>
                     </StackPanel>
                 </Button>
 
-                <Button Margin="533,24,199,25" Background="#FF5438C1" BorderBrush="#FFEDE7F8">
+                <Button Margin="533,24,199,25" Background="#FF5438C1" BorderBrush="#FFEDE7F8" Command="{Binding OpenPayBillCM}">
                     <StackPanel Orientation="Horizontal">
                         <icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
                         <TextBlock Text="Thanh toán"/>
@@ -58,6 +64,7 @@
             <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
                      x:Name="hoadonGrid" 
                      AutoGenerateColumns="False" IsReadOnly="True"
+                     ItemsSource="{Binding dsHoaDon}"
                      Grid.Row="1">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn CanUserResize="False" Width="Auto" ElementStyle="{StaticResource CheckBoxStyle1}">
@@ -70,19 +77,17 @@
 
                     <DataGridTextColumn Header="" IsReadOnly="True" CanUserResize="False" Width="Auto"/>
 
-                    <DataGridTextColumn Header="Mã hóa đơn" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Loại sản phẩm" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Tên sản phẩm" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Số lượng" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Chiết khấu" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Thành tiền" IsReadOnly="True" Width="Auto"/>
+                    <DataGridTextColumn Header="Số hóa đơn" IsReadOnly="True" Width="Auto" Binding="{Binding SoHDStr}"/>
+                    <DataGridTextColumn Header="Nhân viên" IsReadOnly="True" Width="Auto" Binding="{Binding NhanVien.TenNV}"/>
+                    <DataGridTextColumn Header="Khách hàng" IsReadOnly="True" Width="Auto" Binding="{Binding KhachHang.TenKH}"/>
+                    <DataGridTextColumn Header="Thời gian" IsReadOnly="True" Width="Auto" Binding="{Binding NgayHDStr}"/>
+                    <DataGridTextColumn Header="Thành tiền" IsReadOnly="True" Width="Auto" Binding="{Binding ThanhTienStr}"/>
                     <!-- Delete button for rows-->
                     <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0"
-                                           >
+                                    <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0">
                                         <icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                     </Button>
                                 </StackPanel>

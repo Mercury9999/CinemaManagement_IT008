@@ -44,17 +44,9 @@
                     <!-- Thông tin sp -->
                     <StackPanel Grid.Column="0">
 
-                        <TextBlock Text="Thông tin sản phẩm" FontSize="20" Margin="10" FontWeight="DemiBold"/>
+                        <TextBlock Text="Nhập số lượng" FontSize="20" Margin="10" FontWeight="DemiBold"/>
 
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Tên" Margin="10 10 0 0" FontSize="20"/>
-                            <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="144" Height="26"
-                                     Margin="70 0 0 0"
-                                     Padding="0"
-                                     Text="{Binding TenSP}"
-                            />
-                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"/>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Số lượng" Margin="10 10 0 0" FontSize="20"/>
@@ -62,22 +54,13 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="149" Height="26"
                                      Margin="20 0 0 0"
                                      Padding="0"
-                                     Text="{Binding SoLuong}"
+                                     Text="{Binding SoLuongMua}"
                              />
 
                         </StackPanel>
 
 
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Giá mua" Margin="10 10 0 0" FontSize="20"/>
-                            <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="147" Height="26"
-                                     Margin="23 0 0 0"
-                                     Padding="0"
-                                     Text="{Binding GiaSP}"
-                            />
-
-                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"/>
 
                     </StackPanel>
 
@@ -85,7 +68,7 @@
 
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="50">
-                    <Button BorderThickness="0" Width="80" Padding="0" Command="{Binding }" Height="44">
+                    <Button BorderThickness="0" Width="80" Padding="0" Command="{Binding OrderProductCM}" Height="44">
                         <TextBlock Text="Xác nhận" FontSize="15"/>
                     </Button>
                     <Button BorderThickness="0" Margin="20 0 0 0" Width="80" Padding="0" Background="#FFD93434"

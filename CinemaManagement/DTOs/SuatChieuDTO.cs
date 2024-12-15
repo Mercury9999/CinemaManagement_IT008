@@ -28,6 +28,13 @@ namespace CinemaManagement.DTOs
                 return $"{BatDau:HH:mm} -> {KetThuc:HH:mm}";
             }
         }
+        public string NgayChieuStr
+        {
+            get
+            {
+                return $"{BatDau:dd:MM:yyyy}";
+            }
+        }
         public PhimDTO Phim { get; set; }
         public IList<VeDTO> Ves { get; set; }
         public PhongChieuDTO PhongChieu { get; set; }
