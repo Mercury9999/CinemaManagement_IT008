@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\dev\\CinemaManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\view\\adminview\\suatchieuview\\thongtinsuatchieu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|solutionrelative:cinemamanagement\\view\\adminview\\suatchieuview\\thongtinsuatchieu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\view\\adminview\\hoadonview\\thanhtoan.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|solutionrelative:cinemamanagement\\view\\adminview\\hoadonview\\thanhtoan.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\view\\adminview\\sanphamview\\quanlysanpham.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|solutionrelative:cinemamanagement\\view\\adminview\\sanphamview\\quanlysanpham.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\view\\adminview\\hoadonview\\thanhtoanbeta.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|solutionrelative:cinemamanagement\\view\\adminview\\hoadonview\\thanhtoanbeta.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\view\\adminview\\hoadonview\\chitiethoadon.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|solutionrelative:cinemamanagement\\view\\adminview\\hoadonview\\chitiethoadon.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\view\\adminview\\suatchieuview\\thongtinsuatchieu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|solutionrelative:cinemamanagement\\view\\adminview\\suatchieuview\\thongtinsuatchieu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4D7ED451-626D-411E-BA96-5586945E3725}|CinemaManagement\\CinemaManagement.csproj|d:\\dev\\cinemamanagement\\cinemamanagement\\resourcexaml\\mainresource.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -142,8 +154,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ThanhToan.xaml",
+              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\HoaDonView\\ThanhToan.xaml",
+              "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\HoaDonView\\ThanhToan.xaml",
+              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\HoaDonView\\ThanhToan.xaml",
+              "RelativeToolTip": "CinemaManagement\\View\\AdminView\\HoaDonView\\ThanhToan.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-15T07:57:15.532Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -151,30 +175,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ThongTinSuatChieu.xaml",
-              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieu.xaml",
-              "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieu.xaml",
-              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieu.xaml",
-              "RelativeToolTip": "CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieu.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-12T17:03:51.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainResource.xaml",
-              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\ResourceXAML\\MainResource.xaml",
-              "RelativeDocumentMoniker": "CinemaManagement\\ResourceXAML\\MainResource.xaml",
-              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\ResourceXAML\\MainResource.xaml",
-              "RelativeToolTip": "CinemaManagement\\ResourceXAML\\MainResource.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-12T16:49:01.927Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -190,7 +190,55 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ThanhToanBeta.xaml",
+              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\HoaDonView\\ThanhToanBeta.xaml",
+              "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\HoaDonView\\ThanhToanBeta.xaml",
+              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\HoaDonView\\ThanhToanBeta.xaml",
+              "RelativeToolTip": "CinemaManagement\\View\\AdminView\\HoaDonView\\ThanhToanBeta.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-15T07:59:20.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "ChiTietHoaDon.xaml",
+              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\HoaDonView\\ChiTietHoaDon.xaml",
+              "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\HoaDonView\\ChiTietHoaDon.xaml",
+              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\HoaDonView\\ChiTietHoaDon.xaml",
+              "RelativeToolTip": "CinemaManagement\\View\\AdminView\\HoaDonView\\ChiTietHoaDon.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-15T07:57:12.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ThongTinSuatChieu.xaml",
+              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieu.xaml",
+              "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieu.xaml",
+              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieu.xaml",
+              "RelativeToolTip": "CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieu.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-12T17:03:51.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainResource.xaml",
+              "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\ResourceXAML\\MainResource.xaml",
+              "RelativeDocumentMoniker": "CinemaManagement\\ResourceXAML\\MainResource.xaml",
+              "ToolTip": "D:\\dev\\CinemaManagement\\CinemaManagement\\ResourceXAML\\MainResource.xaml",
+              "RelativeToolTip": "CinemaManagement\\ResourceXAML\\MainResource.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-12T16:49:01.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "QuanLySuatChieu.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SuatChieuView\\QuanLySuatChieu.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SuatChieuView\\QuanLySuatChieu.xaml",
@@ -201,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "AccountVM.cs",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\ViewModel\\AdminVM\\AccountVM\\AccountVM.cs",
               "RelativeDocumentMoniker": "CinemaManagement\\ViewModel\\AdminVM\\AccountVM\\AccountVM.cs",
@@ -213,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "ThongKePhimView.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKePhimView.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKePhimView.xaml",
@@ -224,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "ThongKeKHView.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKeKHView.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKeKHView.xaml",
@@ -235,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "ThemSuatChieu.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SuatChieuView\\ThemSuatChieu.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SuatChieuView\\ThemSuatChieu.xaml",
@@ -246,7 +294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "ThongTinSuatChieuBeta.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieuBeta.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SuatChieuView\\ThongTinSuatChieuBeta.xaml",
@@ -257,7 +305,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "ThongKeDoanhThuView.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKeDoanhThuView.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKeDoanhThuView.xaml",
@@ -268,7 +316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "ThongTinSanPham.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SanPhamView\\ThongTinSanPham.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SanPhamView\\ThongTinSanPham.xaml",
@@ -279,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "AccountView.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\AccountView\\AccountView.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\AccountView\\AccountView.xaml",
@@ -290,7 +338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "ThongKeSanPhamView.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKeSanPhamView.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKeSanPhamView.xaml",
@@ -301,7 +349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "ThongKeView.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKeView.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\ThongKeView\\ThongKeView.xaml",
@@ -312,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "ThemSanPham.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SanPhamView\\ThemSanPham.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SanPhamView\\ThemSanPham.xaml",
@@ -323,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "SuaSanPham.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SanPhamView\\SuaSanPham.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SanPhamView\\SuaSanPham.xaml",
@@ -334,7 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "QuanLyNhapHang.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SanPhamView\\QuanLyNhapHang.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SanPhamView\\QuanLyNhapHang.xaml",
@@ -345,7 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "NhapHang.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SanPhamView\\NhapHang.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SanPhamView\\NhapHang.xaml",
@@ -356,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "MuaHang.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\SanPhamView\\MuaHang.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\SanPhamView\\MuaHang.xaml",
@@ -367,7 +415,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "ThongTinPhim.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\PhimView\\ThongTinPhim.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\PhimView\\ThongTinPhim.xaml",
@@ -378,7 +426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "ThemPhim.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\PhimView\\ThemPhim.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\PhimView\\ThemPhim.xaml",
@@ -389,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "SuaPhim.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\PhimView\\SuaPhim.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\PhimView\\SuaPhim.xaml",
@@ -400,7 +448,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "QuanLyPhim.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\PhimView\\QuanLyPhim.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\PhimView\\QuanLyPhim.xaml",
@@ -411,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "ThongTinKH.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\KhachHangView\\ThongTinKH.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\KhachHangView\\ThongTinKH.xaml",
@@ -422,7 +470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "ThemKH.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\KhachHangView\\ThemKH.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\KhachHangView\\ThemKH.xaml",
@@ -433,7 +481,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "SuaKhachHang.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\KhachHangView\\SuaKhachHang.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\KhachHangView\\SuaKhachHang.xaml",
@@ -444,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "ThemNhanVien.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\NhanVienView\\ThemNhanVien.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\NhanVienView\\ThemNhanVien.xaml",
@@ -455,7 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "ThongTinNhanVien.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\NhanVienView\\ThongTinNhanVien.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\NhanVienView\\ThongTinNhanVien.xaml",
@@ -466,7 +514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "QuanLyKhachHang.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\KhachHangView\\QuanLyKhachHang.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\KhachHangView\\QuanLyKhachHang.xaml",
@@ -477,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "QuanLyNhanVien.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\NhanVienView\\QuanLyNhanVien.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\NhanVienView\\QuanLyNhanVien.xaml",
@@ -488,7 +536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "SuaNhanVien.xaml",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\View\\AdminView\\NhanVienView\\SuaNhanVien.xaml",
               "RelativeDocumentMoniker": "CinemaManagement\\View\\AdminView\\NhanVienView\\SuaNhanVien.xaml",
@@ -499,7 +547,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "CinemaManagementModel1.edmx [Diagram1]",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\Models\\CinemaManagementModel1.edmx",
               "RelativeDocumentMoniker": "CinemaManagement\\Models\\CinemaManagementModel1.edmx",
@@ -511,7 +559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "App.Config",
               "DocumentMoniker": "D:\\dev\\CinemaManagement\\CinemaManagement\\App.Config",
               "RelativeDocumentMoniker": "CinemaManagement\\App.Config",
