@@ -203,38 +203,15 @@
                                         <Border BorderBrush="Gray" BorderThickness="0" Margin="5" Padding="5">
                                             <StackPanel x:Name="foodPanel">
                                                 <TextBlock Text="ĐỒ ĂN"
-                FontSize="20"
-                Margin="20 20 0 0"
-                FontWeight="DemiBold"/>
+                                                            FontSize="20"
+                                                            Margin="20 20 0 0"
+                                                            FontWeight="DemiBold"/>     
                                                 <TextBlock Text="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" Margin="20 0 0 10"/>
                                                 <Grid>
                                                     <TextBlock Text="Bánh mì" FontSize="19" HorizontalAlignment="Left" Margin="10 0 0 0"/>
                                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                                         <!-- So luong + "x" + Don gia-->
                                                         <TextBlock Text="1" FontSize="19" HorizontalAlignment="Right" FontWeight="SemiBold" Width="Auto"/>
-                                                        <TextBlock Text="x" FontSize="19" HorizontalAlignment="Right" Width="Auto"/>
-                                                        <TextBlock Text="30000" FontSize="19" HorizontalAlignment="Right" Width="Auto"/>
-                                                        <TextBlock Text="đ" FontSize="19" HorizontalAlignment="Right" Width="Auto" Margin="0 0 30 10"/>
-                                                    </StackPanel>
-
-                                                </Grid>
-
-                                                <Grid>
-                                                    <TextBlock Text="Bánh quy" FontSize="19" HorizontalAlignment="Left" Margin="10 0 0 0"/>
-                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <!-- So luong + "x" + Don gia-->
-                                                        <TextBlock Text="2" FontSize="19" HorizontalAlignment="Right" FontWeight="SemiBold" Width="Auto"/>
-                                                        <TextBlock Text="x" FontSize="19" HorizontalAlignment="Right" Width="Auto"/>
-                                                        <TextBlock Text="30000" FontSize="19" HorizontalAlignment="Right" Width="Auto"/>
-                                                        <TextBlock Text="đ" FontSize="19" HorizontalAlignment="Right" Width="Auto" Margin="0 0 30 10"/>
-                                                    </StackPanel>
-                                                </Grid>
-
-                                                <Grid>
-                                                    <TextBlock Text="Bánh gấu" FontSize="19" HorizontalAlignment="Left" Margin="10 0 0 0"/>
-                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <!-- So luong + "x" + Don gia-->
-                                                        <TextBlock Text="2" FontSize="19" HorizontalAlignment="Right" FontWeight="SemiBold" Width="Auto"/>
                                                         <TextBlock Text="x" FontSize="19" HorizontalAlignment="Right" Width="Auto"/>
                                                         <TextBlock Text="30000" FontSize="19" HorizontalAlignment="Right" Width="Auto"/>
                                                         <TextBlock Text="đ" FontSize="19" HorizontalAlignment="Right" Width="Auto" Margin="0 0 30 10"/>
