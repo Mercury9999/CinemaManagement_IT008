@@ -30,8 +30,8 @@ namespace CinemaManagement.ViewModel.AdminVM
                 }
             }
         }
-        private List<SanPhamDTO> _dsSanPhamHD {  get; set; } = new List<SanPhamDTO>();
-        public List<SanPhamDTO> dsSanPhamHD
+        private ObservableCollection<SanPhamDTO> _dsSanPhamHD {  get; set; } = new ObservableCollection<SanPhamDTO>();
+        public ObservableCollection<SanPhamDTO> dsSanPhamHD
         {
             get
             {
@@ -42,8 +42,8 @@ namespace CinemaManagement.ViewModel.AdminVM
                 dsSanPhamHD = value; OnPropertyChanged();
             }
         }
-        private List<BanVeDTO> _dsVeHD { get; set; } = new List<BanVeDTO>();
-        public List<BanVeDTO> dsVeHD
+        private ObservableCollection<BanVeDTO> _dsVeHD { get; set; } = new ObservableCollection<BanVeDTO>();
+        public ObservableCollection<BanVeDTO> dsVeHD
         {
             get
             {

@@ -88,6 +88,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             OpenPayBillCM = new RelayCommand<Window>(p => { return true; }, p =>
             {
+                MessageBox.Show(billService.dsVeHD[0].DaBanStr);
                 Window w1 = new ThanhToan();
                 w1.ShowDialog();
             });

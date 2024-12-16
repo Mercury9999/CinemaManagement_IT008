@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:CinemaManagement.View" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:QuanLySuatChieuVM}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
@@ -15,7 +16,12 @@
         Background="Transparent"
         DataContext="{StaticResource ShowtimeVM}"
         x:Name="thongtinscWindow">
-
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetCurrentWindowCM}"
+                               CommandParameter="{Binding ElementName=suasanphamWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border CornerRadius="25" Background="#eff2f7">
         <Grid>
 
@@ -56,7 +62,7 @@
                     <TextBlock Text="{Binding GiaVe}" Margin="23 0 0 0"/>
 
                     <StackPanel HorizontalAlignment="Right" Margin="0 15 60 0" Orientation="Horizontal">
-                        <Button Padding="0" Margin="0 0 30 0" Width="90" BorderThickness="0"  Background="Green">
+                        <Button Padding="0" Margin="0 0 30 0" Width="90" BorderThickness="0"  Background="Green" Command="{Binding OrderTicketCM}">
                             <TextBlock Text="Đặt vé"/>
                         </Button>
                         <Button Padding="0" Width="90" BorderThickness="0"  Background="Red" Command="{Binding CloseWindowCM}" CommandParameter="{Binding ElementName=thongtinscWindow}">

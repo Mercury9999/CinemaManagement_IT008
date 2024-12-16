@@ -112,7 +112,7 @@
                             </Button>
                         </StackPanel>
 
-                        <Button Padding="0" Width="130" Margin="10 10 0 0" Background="#FF4C4658" BorderBrush="#FF23202A">
+                        <Button Padding="0" Width="130" Margin="10 10 0 0" Background="#FF4C4658" BorderBrush="#FF23202A" Command="{Binding CloseWindowCM}">
                             <TextBlock Text="Hủy bỏ"/>
                         </Button>
 
@@ -157,7 +157,7 @@
                                                        Margin="20 0 0 10"/>
                                             <Grid>
                                                 <TextBlock Text="Tên phim" FontSize="19" HorizontalAlignment="Left" Margin="10 0 0 0"/>
-                                                <TextBlock Text="1" FontSize="19" HorizontalAlignment="Right" FontWeight="SemiBold" Margin="0 0 30 10" Width="Auto"/>
+                                                <TextBlock Text="123" FontSize="19" HorizontalAlignment="Right" FontWeight="SemiBold" Margin="0 0 30 10" Width="Auto"/>
                                             </Grid>
 
                                             <Grid>
@@ -176,13 +176,13 @@
 
                                             <Grid>
                                                 <TextBlock Text="Ghế" FontSize="19" HorizontalAlignment="Left" Margin="10 0 0 0"/>
-                                                <TextBlock Text="{Binding SoGheStr}" FontSize="19" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0 0 30 10" Width="Auto"/>
+                                                <TextBlock Text="123" FontSize="19" FontWeight="DemiBold" HorizontalAlignment="Right" Margin="0 0 30 10" Width="Auto"/>
                                             </Grid>
 
-                                                <Grid>
-                                                    <TextBlock Text="Loại chỗ ngồi" FontSize="19" HorizontalAlignment="Left" Margin="10 0 0 0"/>
-                                                    <TextBlock Text="Đơn" FontSize="19" HorizontalAlignment="Right" Margin="0 0 30 10" Width="Auto"/>
-                                                </Grid>
+                                            <Grid>
+                                                <TextBlock Text="Loại chỗ ngồi" FontSize="19" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+                                                <TextBlock Text="Đơn" FontSize="19" HorizontalAlignment="Right" Margin="0 0 30 10" Width="Auto"/>
+                                            </Grid>
 
                                             <Grid>
                                                 <TextBlock Text="Giá vé" FontSize="19" HorizontalAlignment="Left" Margin="10 0 0 0"/>
@@ -190,9 +190,7 @@
                                                     <TextBlock Text="{Binding SuatChieu.GiaVeStr}" FontSize="19" HorizontalAlignment="Right" Width="Auto"/>
                                                 </StackPanel>
                                             </Grid>
-
-                                            </StackPanel>
-                                        </Border>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
