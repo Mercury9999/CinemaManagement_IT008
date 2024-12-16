@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:fa="http://schemas.fontawesome.io/icons/" 
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:navigationvm="clr-namespace:CinemaManagement.ViewModel.NavigationVM" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:navigationvm="clr-namespace:CinemaManagement.ViewModel.NavigationVM" d:DataContext="{d:DesignInstance Type=navigationvm:MainNavigationVM}"
         DataContext="{StaticResource NavigationVM}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -92,7 +92,7 @@
                     <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                 </Grid>
             </Button>
-
+            
             <Button Command="{Binding QuanLyKhachHangCM}" Style="{StaticResource menuButton}">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -103,6 +103,16 @@
                 </Grid>
             </Button>
 
+            <Button Command="{Binding QuanLyHoaDonCM}" Style="{StaticResource menuButton}">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <fa:ImageAwesome Icon="Users" Style="{StaticResource buttonIcon}"/>
+                        <TextBlock Style="{StaticResource buttonText }">Quản lý hoá đơn</TextBlock>
+                    </StackPanel>
+                    <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
+                </Grid>
+            </Button>
+            
             <Button Command="{Binding QuanLyNhanVienCM}" Style="{StaticResource menuButton}">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -112,6 +122,7 @@
                     <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                 </Grid>
             </Button>
+            
 
             <Button Style="{StaticResource menuButton}" Margin="0 180 -20 0">
                 <Grid>

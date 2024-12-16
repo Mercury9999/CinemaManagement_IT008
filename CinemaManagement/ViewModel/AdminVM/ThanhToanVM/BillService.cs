@@ -6,13 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaManagement.ViewModel.AdminVM.BillVM
+namespace CinemaManagement.ViewModel.AdminVM
 {
     public class BillService : BaseViewModel
     {
         private static BillService _instance;
         private static readonly object _lock = new object();
-        private BillService() { }
+        private BillService()
+        {
+
+        }
         public static BillService Instance
         {
             get
@@ -27,12 +30,28 @@ namespace CinemaManagement.ViewModel.AdminVM.BillVM
                 }
             }
         }
-        private ObservableCollection<SanPhamDTO> _dsSanPhamHD {  get; set; }
-        public ObservableCollection<SanPhamDTO> dsSanPhamHD
+        private List<SanPhamDTO> _dsSanPhamHD {  get; set; } = new List<SanPhamDTO>();
+        public List<SanPhamDTO> dsSanPhamHD
         {
             get
             {
                 return _dsSanPhamHD;
+            }
+            set
+            {
+                dsSanPhamHD = value; OnPropertyChanged();
+            }
+        }
+        private List<BanVeDTO> _dsVeHD { get; set; } = new List<BanVeDTO>();
+        public List<BanVeDTO> dsVeHD
+        {
+            get
+            {
+                return _dsVeHD;
+            }
+            set
+            {
+                dsVeHD = value; OnPropertyChanged();
             }
         }
 
