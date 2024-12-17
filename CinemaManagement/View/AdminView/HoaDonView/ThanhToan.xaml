@@ -262,7 +262,7 @@
                             HorizontalAlignment="Right"
                             Margin="0,0,42,59"
                             Content="Thanh toán"
-                            Command="{Binding PayFullCM}">
+                            Command="{Binding PayCM}">
                         <Button.Style>
                             <Style TargetType="Button"
                                    BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -592,7 +592,7 @@
                                                                         Orientation="Horizontal"
                                                                         HorizontalAlignment="Right"
                                                                         VerticalAlignment="Bottom">
-                                                                <TextBlock Text="Từ từ"
+                                                                <TextBlock Text="{Binding TongTienStr}"
                                                                            FontSize="20"
                                                                            FontWeight="Medium"
                                                                            Margin="0 0 5 10" />
@@ -645,7 +645,7 @@
                                 <Label Content="Tổng tiền"
                                        FontSize="20"
                                        Grid.Column="0" />
-                                <Label Content="{Binding TotalPrice}"
+                                <Label Content="{Binding GiaTriHD}"
                                        FontSize="20"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right" />
@@ -671,7 +671,7 @@
                                 <Label Content="Khuyến mãi"
                                        FontSize="20"
                                        Grid.Column="0" />
-                                <Label Content="{Binding DiscountStr}"
+                                <Label Content="{Binding GiamGia}"
                                        FontSize="20"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right" />
@@ -681,10 +681,10 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Sau khuyến mãi"
+                                <Label Content="Thành tiền"
                                        FontSize="20"
                                        Grid.Column="0" />
-                                <Label Content="{Binding LastPriceStr}"
+                                <Label Content="{Binding ThanhTien}"
                                        FontSize="20"
                                        Grid.Column="1"
                                        FontWeight="Bold"
