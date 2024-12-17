@@ -19,6 +19,8 @@
         d:DesignWidth="1300"
         Title="TicketBillPage"
         x:Name="thanhtoanWindow"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource BillVM}">
 
     <ei:Interaction.Triggers>
@@ -29,36 +31,17 @@
     </ei:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="231*" />
+            <ColumnDefinition Width="220*" />
             <ColumnDefinition Width="419*" />
         </Grid.ColumnDefinitions>
 
-        <Border CornerRadius="90"
-                Height="55"
-                Width="55"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="15 15 0 0"
-                Cursor="Hand">
-            <Border.Style>
-                <Style TargetType="Border">
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Setter Property="Background"
-                                    Value="#e0e0e0" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Style>
 
-        </Border>
 
         <materialDesign:Card HorizontalAlignment="Left"
                              Width="360"
                              Height="70"
                              VerticalAlignment="Top"
-                             Margin="70 60 0 0"
+                             Margin="40 60 0 0"
                              UniformCornerRadius="6">
             <Label Content="THANH TOÁN HÓA ĐƠN"
                    VerticalAlignment="Center"
@@ -71,7 +54,7 @@
         <materialDesign:Card VerticalAlignment="Stretch"
                              HorizontalAlignment="Left"
                              Width="360"
-                             Margin="70 170 0 20"
+                             Margin="40 170 0 20"
                              UniformCornerRadius="6">
             <Grid>
                 <Grid.RowDefinitions>
@@ -138,8 +121,8 @@
                     </Grid>
 
                     <Grid Height="45"
-                          Margin="0 40 0 0"
-                          VerticalAlignment="Top">
+                          Margin="0 40 0 200"
+                          >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="115" />
                             <ColumnDefinition />
@@ -153,7 +136,7 @@
                         <Button Grid.Column="2"
                                 Content="{materialDesign:PackIcon PhoneCheckOutline}"
                                 VerticalAlignment="Bottom"
-                                Margin="15 0 10 0"
+                                Margin="10 0 15 0"
                                 Command="{Binding CheckPhoneNumberCM}" />
 
                         <Grid.Style>
@@ -169,40 +152,9 @@
                         </Grid.Style>
                     </Grid>
 
-                    <!--#region Không hợp lệ-->
-                    <Grid Height="45"
-                          VerticalAlignment="Top"
-                          Margin="0 85 0 0">
-                        <Label Content="Số điện thoại chưa đăng ký!"
-                               FontSize="18"
-                               VerticalAlignment="Bottom"
-                               HorizontalAlignment="Center"
-                               Foreground="Red"
-                               FontWeight="DemiBold" />
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowPhoneError}"
-                                                 Value="false">
-                                        <Setter Property="Grid.Visibility"
-                                                Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-
-                    </Grid>
-
-
                     <Grid Height="43"
                           VerticalAlignment="Top"
                           Margin="0 130 0 0">
-                        <Label FontSize="18"
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Center">
-                            <Hyperlink Command="{Binding OpenSignUpCM}">Đăng ký tài khoản mới</Hyperlink>
-
-                        </Label>
                         <Grid.Style>
                             <Style>
                                 <Style.Triggers>
@@ -223,7 +175,7 @@
                             <ColumnDefinition Width="115" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Họ và tên:" />
+                        <TextBlock Text="Mã KH:" />
                         <TextBox Grid.Column="1"
                                  Margin="0 0 30 0"
                                  Text="{Binding NameSignUp, Mode=TwoWay}" />
@@ -267,12 +219,6 @@
                     <Grid Height="60"
                           VerticalAlignment="Top"
                           Margin="0 263 0 0">
-                        <Button Content="Đăng ký"
-                                Width="110"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Right"
-                                Margin="0 0 10 10"
-                                Command="{Binding SignUpCM}" />
                         <Grid.Style>
                             <Style>
                                 <Style.Triggers>
@@ -292,167 +238,11 @@
 
                     <Grid Height="45"
                           VerticalAlignment="Top"
-                          Margin="0 85 0 0">
+                          Margin="-29,317,29,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="115" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Họ và tên:" />
-                        <TextBox Grid.Column="1"
-                                 IsEnabled="False"
-                                 Margin="0 0 30 0"
-                                 VerticalContentAlignment="Bottom"
-                                 VerticalAlignment="Center"
-                                 Text="{Binding Name}"
-                                 TextAlignment="Center" />
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowInfoCustomer}"
-                                                 Value="False">
-                                        <Setter Property="Grid.Visibility"
-                                                Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
-
-                    <Grid Height="45"
-                          VerticalAlignment="Top"
-                          Margin="0 130 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="115" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Email:" />
-                        <TextBox Grid.Column="1"
-                                 IsEnabled="False"
-                                 Margin="0 0 30 0"
-                                 VerticalContentAlignment="Bottom"
-                                 VerticalAlignment="Center"
-                                 Text="{Binding Email}"
-                                 TextAlignment="Center" />
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowInfoCustomer}"
-                                                 Value="False">
-                                        <Setter Property="Grid.Visibility"
-                                                Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
-
-                    <Grid VerticalAlignment="Top"
-                          Margin="10 175 0 10"
-                          Height="45">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="95" />
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="65" />
-                        </Grid.ColumnDefinitions>
-
-                        <TextBox Grid.Column="1"
-                                 Margin="10 0 15 4"
-                                 Text="{Binding VoucherID, Mode=TwoWay}" />
-                        <Button Grid.Column="2"
-                                VerticalAlignment="Bottom"
-                                Margin="10 0 10 0"
-                                Command="{Binding AddVoucherCM}">
-                            <Button.ContentTemplate>
-                                <DataTemplate>
-                                    <materialDesign:PackIcon Kind="Plus"
-                                                             VerticalAlignment="Stretch"
-                                                             HorizontalAlignment="Stretch" />
-                                </DataTemplate>
-                            </Button.ContentTemplate>
-                        </Button>
-
-                        <Grid.Style>
-                            <Style>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ShowInfoCustomer}"
-                                                 Value="False">
-                                        <Setter Property="Grid.Visibility"
-                                                Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
-
-                    <Grid VerticalAlignment="Stretch"
-                          Margin="10 240 10 60">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                      >
-                            <ListBox ItemsSource="{Binding ListVoucher}"
-                                     x:Name="listBox"
-                                     SelectedItem="{Binding SelectedItem}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid Width="330">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="250" />
-                                                <ColumnDefinition />
-                                            </Grid.ColumnDefinitions>
-
-                                            <Grid Grid.Column="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
-
-                                                <TextBlock Grid.Row="0"
-                                                           Text="{Binding Code}"
-                                                           FontSize="18"
-                                                           FontWeight="DemiBold" />
-                                                <TextBlock Grid.Row="1"
-                                                           Text="{Binding VoucherInfoStr}"
-                                                           FontSize="16"
-                                                           FontWeight="Light"
-                                                           HorizontalAlignment="Right" />
-                                            </Grid>
-
-                                            <Grid Grid.Column="1">
-                                                <Border VerticalAlignment="Center"
-                                                        HorizontalAlignment="Right"
-                                                        Height="25"
-                                                        Width="25"
-                                                        Margin="0 0 25 0"
-                                                        Cursor="Hand"
-                                                        CornerRadius="8">
-                                                    <Label VerticalAlignment="Center"
-                                                           HorizontalAlignment="Center"
-                                                           Height="25"
-                                                           Width="25"
-                                                           Content="X"
-                                                           VerticalContentAlignment="Center"
-                                                           HorizontalContentAlignment="Center">
-                                                    </Label>
-                                                    <Border.Style>
-                                                        <Style TargetType="Border">
-                                                            <Style.Triggers>
-                                                                <Trigger Property="IsMouseOver"
-                                                                         Value="True">
-                                                                    <Setter Property="Background"
-                                                                            Value="#ff6255" />
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Border.Style>
-
-                                                </Border>
-
-                                            </Grid>
-
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </ScrollViewer>
                         <Grid.Style>
                             <Style>
                                 <Style.Triggers>
@@ -470,7 +260,7 @@
                             Height="32"
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Right"
-                            Margin="0 0 10 10"
+                            Margin="0,0,42,59"
                             Content="Thanh toán"
                             Command="{Binding PayFullCM}">
                         <Button.Style>
@@ -486,6 +276,32 @@
                             </Style>
                         </Button.Style>
                     </Button>
+                    <Grid Height="45"
+                        VerticalAlignment="Top"
+                        Margin="44,-16,-44,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="115" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ShowInfoCustomer}"
+                                        Value="False">
+                                        <Setter Property="UIElement.Visibility"
+                                            Value="Hidden" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+
+                    </Grid>
+                    <Button Content="Xuất hóa đơn"
+                                Width="125"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,180,59"
+                                Command="{Binding XuatHD}" />
 
                     <!--#endregion-->
 
@@ -513,8 +329,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="61" />
-                        <RowDefinition Height="447" />
-                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <!---HEADER-->
@@ -530,185 +345,170 @@
                     <!--#endregion-->
 
                     <!---BILL DETAIL-->
-                    <Grid Grid.Row="1"
-                          Height="490"
-                          VerticalAlignment="Top">
-                        <Border BorderBrush="Gray"
-                                BorderThickness="0,0,0,0"
-                                Height="432"
-                                VerticalAlignment="Top">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition Height="39" />
-                                </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ListBox Grid.Row="1"
+                                 x:Name="filmListBox"
+                                 Height="580"
+                                 VerticalAlignment="Top"
+                                 ScrollViewer.CanContentScroll="False"
+                                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                 >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="Transparent" 
+                                        BorderThickness="0,0,0,0"
+                                        Height="432"
+                                        VerticalAlignment="Top">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition Height="39" />
+                                            </Grid.RowDefinitions>
 
 
-                                <Border Grid.Row="0"
-                                        BorderThickness="0,0,0,1"
-                                        BorderBrush="Black"
-                                        Margin="10,0,10,0">
-                                    <StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380"
-                                                  Margin="0,15,0,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="15*" />
-                                                    <ColumnDefinition Width="85*" />
-                                                </Grid.ColumnDefinitions>
+                                            <Border Grid.Row="0"
+                                                BorderThickness="0,0,0,1"
+                                                BorderBrush="Black"
+                                                Margin="10,0,0,0">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid Width="380"
+                                                          Margin="0,15,0,0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="15*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
 
-                                                <Label Content="Phim"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <Label Grid.Column="1"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="20"
-                                                       x:Name="_moviename"
-                                                       Content="{Binding MovieName}"
-                                                       FontWeight="Bold" />
-                                            </Grid>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380"
-                                                  Margin="0,15,0,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
+                                                            <Label Content="Phim"
+                                                               Grid.Column="0"
+                                                               FontSize="20" />
+                                                            <Label Grid.Column="1"
+                                                               HorizontalAlignment="Right"
+                                                               FontSize="20"
+                                                               x:Name="_moviename"
+                                                               Content="{Binding TenPhim}"
+                                                               FontWeight="Bold" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid Width="380"
+                                                          Margin="0,15,0,0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
 
-                                                <Label Content="Ngày chiếu"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <Label Content="{Binding Date}"
-                                                       Grid.Column="1"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="20" />
-                                            </Grid>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380"
-                                                  Margin="0,15,0,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
+                                                            <Label Content="Ngày chiếu"
+                                                               Grid.Column="0"
+                                                               FontSize="20" />
+                                                            <Label Content="{Binding NgayChieu}"
+                                                               Grid.Column="1"
+                                                               HorizontalAlignment="Right"
+                                                               FontSize="20" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid Width="380"
+                                                          Margin="0,15,0,0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
 
-                                                <Label Content="Giờ chiếu"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <Label Content="{Binding Time}"
-                                                       Grid.Column="1"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="20"
-                                                       x:Name="_time"
-                                                       FontWeight="Bold" />
-                                            </Grid>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380"
-                                                  Margin="0,15,0,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
+                                                            <Label Content="Giờ chiếu"
+                                                               Grid.Column="0"
+                                                               FontSize="20" />
+                                                            <Label Content="{Binding ThoiGian}"
+                                                               Grid.Column="1"
+                                                               HorizontalAlignment="Right"
+                                                               FontSize="20"
+                                                               x:Name="_time"
+                                                               FontWeight="Bold" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid Width="380"
+                                                          Margin="0,15,0,0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
 
-                                                <Label Content="Rạp"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <Label Content="UIT Cinema"
-                                                       Grid.Column="1"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="20" />
-                                            </Grid>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380"
-                                                  Margin="0,15,0,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
+                                                            <Label Content="Rạp"
+                                                               Grid.Column="0"
+                                                               FontSize="20" />
+                                                            <Label Content="UIT Cinema"
+                                                               Grid.Column="1"
+                                                               HorizontalAlignment="Right"
+                                                               FontSize="20" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid Width="380"
+                                                         Margin="0,15,0,0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
 
-                                                <Label Content="Phòng chiếu"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <Label Content="{Binding Room}"
-                                                       Grid.Column="1"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="20"
-                                                       FontWeight="Bold" />
-                                            </Grid>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380"
-                                                  Margin="0,15,0,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
+                                                            <Label Content="Phòng chiếu"
+                                                               Grid.Column="0"
+                                                               FontSize="20" />
+                                                            <Label Content="{Binding Phong}"
+                                                               Grid.Column="1"
+                                                               HorizontalAlignment="Right"
+                                                               FontSize="20"
+                                                               FontWeight="Bold" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid Width="380"
+                                                         Margin="0,15,0,0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
 
-                                                <Label Content="Ghế"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <TextBlock Text="{Binding Seat}"
-                                                           TextWrapping="Wrap"
-                                                           Grid.Column="1"
-                                                           HorizontalAlignment="Right"
-                                                           FontSize="20"
-                                                           FontWeight="Bold" />
-                                            </Grid>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380"
-                                                  Margin="0,15,0,0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
+                                                            <Label Content="Ghế"
+                                                               Grid.Column="0"
+                                                               FontSize="20" />
+                                                            <TextBlock Text="{Binding Ghe}"
+                                                                   TextWrapping="Wrap"
+                                                                   Grid.Column="1"
+                                                                   HorizontalAlignment="Right"
+                                                                   Margin="0 0 5 0"    
+                                                                   FontSize="20"
+                                                                   FontWeight="Bold" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid Width="380"
+                                                          Margin="0,15,10,0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition />
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
 
-                                                <Label Content="Giá vé"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <Label Content="{Binding Price}"
-                                                       Grid.Column="1"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="20"
-                                                       x:Name="_price" />
-                                            </Grid>
-                                        </StackPanel>
+                                                            <Label Content="Giá vé"
+                                                               Grid.Column="0"
+                                                               FontSize="20" />
+                                                            <Label Content="{Binding GiaVe}"
+                                                               Grid.Column="1"
+                                                               HorizontalAlignment="Right"
+                                                               FontSize="20"
+                                                               x:Name="_price" />
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
 
-                                    </StackPanel>
-                                </Border>
-                                <Border Grid.Row="1"
-                                        BorderThickness="0,0,0,1"
-                                        BorderBrush="Black"
-                                        Margin="10,0,10,0">
-                                    <StackPanel VerticalAlignment="Center"
-                                                Margin="0 2 0 0">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-
-                                                <Label Content="Tổng"
-                                                       Grid.Column="0"
-                                                       FontSize="20" />
-                                                <Label x:Name="_totalticket"
-                                                       Grid.Column="1"
-                                                       HorizontalAlignment="Right"
-                                                       FontSize="20"
-                                                       Content="{Binding TotalPriceMovie}" />
-                                            </Grid>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Border>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                    <!--#endregion-->
-
+                        </ListBox>
+                        <!--#endregion-->
+                    </ScrollViewer>
                 </Grid>
                 <!--#region -->
 
@@ -945,5 +745,33 @@
                 </Style>
             </materialDesign:Card.Style>
         </materialDesign:Card>
+        <TextBox
+            Margin="150,298,120,365"
+            Text="{Binding TenKH, Mode=TwoWay}" />
+        <Grid VerticalAlignment="Top"
+                          Margin="60,295,50,0"
+                          Height="45">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="95" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="55" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Họ và tên:" FontSize="18" VerticalAlignment="Bottom" RenderTransformOrigin="0.547,1.264" />
+            <Button Grid.Column="2"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    
+                    Command="{Binding ShowInfoCM}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <materialDesign:PackIcon Kind="Plus"
+                                                             VerticalAlignment="Stretch"
+                                                             HorizontalAlignment="Stretch" />
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+        </Grid>
     </Grid>
 </Window>
