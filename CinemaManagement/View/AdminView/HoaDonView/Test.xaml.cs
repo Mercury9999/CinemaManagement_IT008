@@ -13,12 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CinemaManagement.View.AdminView.HoaDonView
+namespace CinemaManagement.View
 {
     /// <summary>
     /// Interaction logic for Test.xaml
     /// </summary>
-    public partial class Test : Page
+    public partial class Test : Window
     {
         public Test()
         {
