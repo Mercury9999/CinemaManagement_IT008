@@ -118,6 +118,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                     IsLoading = true;
                     var data = await Task.Run(async () => await PhongChieuDAL.Instance.GetAllRoom());
                     dsPhong = new ObservableCollection<PhongChieuDTO>(data);
+                    if (dsPhong.Any()) SelectedRoom = dsPhong[0].SoPhong;
                     IsLoading = false;
                 }
                 catch (Exception ex)
@@ -146,7 +147,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             ChangeInfoCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
-                await GetNewData();
+                GetNewData();
             });
             AddShowtimeCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
@@ -219,9 +220,11 @@ namespace CinemaManagement.ViewModel.AdminVM
         public async Task GetNewData()
         {
             if (!string.IsNullOrEmpty(SelectedRoom.ToString()))
-            { 
-                IsLoading = true; 
-                dsSuatChieu.Clear(); 
+            {
+                IsLoading = true;
+                await Task.Delay(100);
+                dsBanVe.Clear();
+                dsSuatChieu.Clear();
                 var data = await SuatChieuDAL.Instance.GetShowTimeByRoom(SelectedRoom, SelectedDate);
                 for (int i = 0; i < data.Count; i++) 
                 { 
@@ -231,7 +234,8 @@ namespace CinemaManagement.ViewModel.AdminVM
                         Phim = data[i].Phim,
                         BatDau = data[i].BatDau,
                         KetThuc = data[i].KetThuc,
-                        GiaVe = data[i].GiaVe, 
+                        GiaVe = data[i].GiaVe,
+                        PhongChieu = data[i].PhongChieu,
                     }); 
                 } 
                 IsLoading = false; 

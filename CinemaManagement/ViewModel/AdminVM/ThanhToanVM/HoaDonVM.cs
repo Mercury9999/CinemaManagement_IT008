@@ -1,10 +1,12 @@
 ﻿using CinemaManagement.DTOs;
 using CinemaManagement.Models.DAL;
 using CinemaManagement.View;
+using CinemaManagement.View.AdminView.HoaDonView;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +72,30 @@ namespace CinemaManagement.ViewModel.AdminVM
             get { return _dshd; }
             set { _dshd = value; OnPropertyChanged(); }
         }
+        private ObservableCollection<SanPhamDTO> _dsSanPham { get; set; } = new ObservableCollection<SanPhamDTO>();
+        public ObservableCollection<SanPhamDTO> dsSanPham
+        {
+            get
+            {
+                return _dsSanPham;
+            }
+            set
+            {
+                _dsSanPham = value; OnPropertyChanged();
+            }
+        }
+        private ObservableCollection<SanPhamDTO> _dsVe { get; set; } = new ObservableCollection<BanVeDTO>();
+        public ObservableCollection<SanPhamDTO> dsVe
+        {
+            get
+            {
+                return _dsVe;
+            }
+            set
+            {
+                _dsVe = value; OnPropertyChanged();
+            }
+        }
         public Window CurrentWindow { get; set; }
         public ICommand GetCurrentWindowCM { get; set; }
         public ICommand CloseWindowCM { get; set; }
@@ -88,7 +114,9 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             OpenPayBillCM = new RelayCommand<Window>(p => { return true; }, p =>
             {
-                Window w1 = new ThanhToan();
+                dsSanPham = billService.dsSanPhamHD;
+                dsVe = billService.dsVeHD;
+                Window w1 = new Test();
                 w1.ShowDialog();
             });
             GetDataCustomer = new RelayCommand<Window>(p => { return true; }, async (p) =>
