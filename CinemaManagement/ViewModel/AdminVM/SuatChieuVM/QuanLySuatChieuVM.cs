@@ -147,8 +147,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             ChangeInfoCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
-                dsBanVe.Clear();
-                await GetNewData();
+                GetNewData();
             });
             AddShowtimeCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
@@ -222,9 +221,10 @@ namespace CinemaManagement.ViewModel.AdminVM
         {
             if (!string.IsNullOrEmpty(SelectedRoom.ToString()))
             {
+                IsLoading = true;
+                await Task.Delay(100);
                 dsBanVe.Clear();
-                IsLoading = true; 
-                dsSuatChieu.Clear(); 
+                dsSuatChieu.Clear();
                 var data = await SuatChieuDAL.Instance.GetShowTimeByRoom(SelectedRoom, SelectedDate);
                 for (int i = 0; i < data.Count; i++) 
                 { 
@@ -234,7 +234,8 @@ namespace CinemaManagement.ViewModel.AdminVM
                         Phim = data[i].Phim,
                         BatDau = data[i].BatDau,
                         KetThuc = data[i].KetThuc,
-                        GiaVe = data[i].GiaVe, 
+                        GiaVe = data[i].GiaVe,
+                        PhongChieu = data[i].PhongChieu,
                     }); 
                 } 
                 IsLoading = false; 

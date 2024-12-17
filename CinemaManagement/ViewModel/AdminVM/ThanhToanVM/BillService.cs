@@ -39,7 +39,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             }
             set
             {
-                dsSanPhamHD = value; OnPropertyChanged();
+                _dsSanPhamHD = value; OnPropertyChanged();
             }
         }
         private ObservableCollection<BanVeDTO> _dsVeHD { get; set; } = new ObservableCollection<BanVeDTO>();
