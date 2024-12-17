@@ -102,6 +102,7 @@ namespace CinemaManagement.ViewModel.AdminVM
         public ICommand GetAllBillCM { get; set; }
         public ICommand OpenPayBillCM { get; set; }
         public ICommand DeleteCurrentBillCM { get; set; }
+        public ICommand PayCM {  get; set; }
         public HoaDonVM()
         {
             GetCurrentWindowCM = new RelayCommand<Window>(p => { return true; }, p =>
@@ -122,6 +123,10 @@ namespace CinemaManagement.ViewModel.AdminVM
             GetDataCustomer = new RelayCommand<Window>(p => { return true; }, async (p) =>
             {
                 KHMuaHang = await Task.Run(async () => await KhachHangDAL.Instance.GetCustomerById(MaKHMuaHang));
+            });
+            PayCM = new RelayCommand<Window>(p => { return true; }, p =>
+            {
+                SaveNewBill();
             });
         }
     }

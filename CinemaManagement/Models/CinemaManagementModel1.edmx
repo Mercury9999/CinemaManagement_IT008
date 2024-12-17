@@ -218,6 +218,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__HDNHAPHAN__MaNVN__59063A47">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="HDNhapHang" Type="Self.HDNhapHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="HDNhapHang">
+              <PropertyRef Name="MaNVNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__HoaDon__MaKH__03F0984C">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
@@ -360,6 +372,10 @@
             <End Role="PhongChieu" EntitySet="PhongChieu" />
             <End Role="Ghe" EntitySet="Ghe" />
           </AssociationSet>
+          <AssociationSet Name="FK__HDNHAPHAN__MaNVN__59063A47" Association="Self.FK__HDNHAPHAN__MaNVN__59063A47">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="HDNhapHang" EntitySet="HDNhapHang" />
+          </AssociationSet>
           <AssociationSet Name="FK__HoaDon__MaKH__03F0984C" Association="Self.FK__HoaDon__MaKH__03F0984C">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="HoaDon" EntitySet="HoaDon" />
@@ -448,6 +464,7 @@
           <Property Name="MaSPNhap" Type="Int32" />
           <Property Name="DonGiaNhap" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="SoLuong" Type="Int32" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HDNHAPHAN__MaNVN__59063A47" FromRole="HDNhapHang" ToRole="NhanVien" />
           <NavigationProperty Name="SanPham" Relationship="Self.fk_MASPNhap_MaSP" FromRole="HDNhapHang" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="HoaDon">
@@ -497,6 +514,7 @@
           <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Staff_Level" Type="Byte" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="HDNhapHangs" Relationship="Self.FK__HDNHAPHAN__MaNVN__59063A47" FromRole="NhanVien" ToRole="HDNhapHang" />
           <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaNV__04E4BC85" FromRole="NhanVien" ToRole="HoaDon" />
           <NavigationProperty Name="SuCoes" Relationship="Self.FK__SUCO__MaNVBao__60A75C0F" FromRole="NhanVien" ToRole="SuCo" />
         </EntityType>
@@ -655,6 +673,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__HDNHAPHAN__MaNVN__59063A47">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="HDNhapHang" Type="Self.HDNhapHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="HDNhapHang">
+              <PropertyRef Name="MaNVNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_MASPNhap_MaSP">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
           <End Role="HDNhapHang" Type="Self.HDNhapHang" Multiplicity="*" />
@@ -788,6 +818,10 @@
           <AssociationSet Name="FK__VE__MaGhe__5812160E" Association="Self.FK__VE__MaGhe__5812160E">
             <End Role="Ghe" EntitySet="Ghes" />
             <End Role="Ve" EntitySet="Ves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HDNHAPHAN__MaNVN__59063A47" Association="Self.FK__HDNHAPHAN__MaNVN__59063A47">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="HDNhapHang" EntitySet="HDNhapHangs" />
           </AssociationSet>
           <AssociationSet Name="fk_MASPNhap_MaSP" Association="Self.fk_MASPNhap_MaSP">
             <End Role="SanPham" EntitySet="SanPhams" />
