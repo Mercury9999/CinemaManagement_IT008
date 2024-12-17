@@ -14,33 +14,12 @@ namespace CinemaManagement.DTOs
         }
         public int SoHD { get; set; }
         public int MaKH { get; set; }
-        private string _TenKH;
-        public string TenKH
-        {
-            get
-            {
-                if (MaKH == 0) return "Khách vãng lai";
-                else return _TenKH;
-            }
-            set
-            {
-                _TenKH = value;
-            }
-        }
         public int MaNV { get; set; }
-        public string TenNV { get; set; }
         public System.DateTime NgayHD { get; set; }
         public int ChietKhau { get; set; }
         public decimal GiamGia { get; set; }
         public decimal GiaTriHD { get; set; }
-        public decimal ThanhTien
-        {
-            get
-            {
-                return ((GiaTriHD - GiamGia) * (100 - ChietKhau)) / 100;
-            }
-            set { }
-        }
+        public decimal ThanhTien { get; set; }
         public string ThanhTienStr
         {
             get
@@ -84,6 +63,7 @@ namespace CinemaManagement.DTOs
             }
         }
         public KhachHangDTO KhachHang { get; set; }
+        public NhanVienDTO NhanVien { get; set; }
         public int TuoiKH
         {
             get
@@ -98,7 +78,6 @@ namespace CinemaManagement.DTOs
                 return ConvertDateTime.Full(NgayHD);
             }
         }
-
         public List<CTHDSanPhamDTO> CTSP { get; set; }
         public List<VeDTO> CTVe { get; set; }
     }

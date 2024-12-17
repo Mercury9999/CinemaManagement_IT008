@@ -1,4 +1,5 @@
-﻿using CinemaManagement.DTOs;
+﻿using CinemaManagement.CustomControls;
+using CinemaManagement.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -146,6 +147,24 @@ namespace CinemaManagement.Models.DAL
                 return (false, ex.ToString(), newProductId);
             }
             return (true, "Thêm sản phẩm thành công", newProductId);
+        }
+        public async Task<bool> OrderProduct(List<SanPhamDTO> dsSPMua)
+        {
+            using (var context = new CinemaManagementEntities())
+            {
+                for(int  i = 0; i < dsSPMua.Count; i++)
+                {
+                    var sp = await context.SanPhams.FindAsync(dsSPMua[i].MaSP);
+                    if(sp != null) sp.SoLuong -= dsSPMua[i].SoLuong;
+                    else
+                    {
+                        MyMessageBox.Show("Lỗi CSDL sản phẩm");
+                        return false;
+                    }
+                }
+                await context.SaveChangesAsync();
+                return true;
+            }
         }
     }
 }
