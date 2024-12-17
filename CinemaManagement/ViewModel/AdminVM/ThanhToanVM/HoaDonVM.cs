@@ -84,8 +84,8 @@ namespace CinemaManagement.ViewModel.AdminVM
                 _dsSanPham = value; OnPropertyChanged();
             }
         }
-        private ObservableCollection<SanPhamDTO> _dsVe { get; set; } = new ObservableCollection<BanVeDTO>();
-        public ObservableCollection<SanPhamDTO> dsVe
+        private ObservableCollection<BanVeDTO> _dsVe { get; set; } = new ObservableCollection<BanVeDTO>();
+        public ObservableCollection<BanVeDTO> dsVe
         {
             get
             {
@@ -116,7 +116,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             {
                 dsSanPham = billService.dsSanPhamHD;
                 dsVe = billService.dsVeHD;
-                Window w1 = new Test();
+                Window w1 = new ThanhToan();
                 w1.ShowDialog();
             });
             GetDataCustomer = new RelayCommand<Window>(p => { return true; }, async (p) =>
