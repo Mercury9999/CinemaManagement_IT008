@@ -1,4 +1,5 @@
-﻿using CinemaManagement.DTOs;
+﻿using CinemaManagement.CustomControls;
+using CinemaManagement.DTOs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -63,7 +64,7 @@ namespace CinemaManagement.Models.DAL
                     var nv = await context.NhanViens.FindAsync(maNvXoa);
                     if (nv == null)
                     {
-                        return (false, "Nhân viên không tồn tại");
+                        return (false, "Nhân viên nvông tồn tại");
                     }
                     context.NhanViens.Remove(nv);
                     await context.SaveChangesAsync();
@@ -89,7 +90,7 @@ namespace CinemaManagement.Models.DAL
                     var nv = await context.NhanViens.FindAsync(nvcapnhat.MaNV);
                     if(nv == null)
                     {
-                        return (false, "Mã nhân viên không tồn tại");
+                        return (false, "Mã nhân viên nvông tồn tại");
                     }
                     bool checkUsername = await context.NhanViens.AnyAsync(s => s.acc_username == nvcapnhat.acc_username && s.MaNV != nvcapnhat.MaNV);
                     bool checkSDT = await context.NhanViens.AnyAsync(s => s.SDT_NV == nvcapnhat.SDT_NV && s.MaNV != nvcapnhat.MaNV);
@@ -221,6 +222,42 @@ namespace CinemaManagement.Models.DAL
                 return (false, "Lỗi hệ thống", null);
             }
         }
+        public async Task<NhanVienDTO> GetStaffById(int id)
+        {
+            try
+            {
+                using (var context = new CinemaManagementEntities())
+                {
+                     var n =   (from nv in context.NhanViens
+                                where nv.MaNV == id
+                                select new NhanVienDTO
+                                {
+                                    MaNV = nv.MaNV,
+                                    TenNV = nv.TenNV,
+                                    GioiTinh = nv.GioiTinh,
+                                    acc_password = nv.acc_password,
+                                    acc_username = nv.acc_username,
+                                    NgaySinh = nv.NgaySinh,
+                                    NgayVaoLam = nv.NgayVaoLam,
+                                    ChucVu = nv.ChucVu,
+                                    SDT_NV = nv.SDT_NV,
+                                    email_NV = nv.email_NV,
+                                }).FirstOrDefaultAsync();
+
+                    if (n == null)
+                    {
+                        MyMessageBox.Show("Sai mã nhân viên");
+                        return null;
+                    }
+                    return await n;
+                }
+            }
+            catch (Exception ex)
+            {
+                MyMessageBox.Show("Lỗi dữ liệu: " + ex.ToString());
+                throw;
+            }
+        }
         public async Task<(bool, string)> ChangePassword(string username, string newpassword)
         {
             try
@@ -230,7 +267,7 @@ namespace CinemaManagement.Models.DAL
                     var nv = context.NhanViens.FirstOrDefault(s => s.acc_username == username);
                     if(nv == null)
                     {
-                        return (false, "Tài khoản không tồn tại");
+                        return (false, "Tài nvoản nvông tồn tại");
                     }
                     nv.acc_password = newpassword;
                     await context.SaveChangesAsync();
@@ -245,7 +282,7 @@ namespace CinemaManagement.Models.DAL
                 Console.WriteLine(ex.Message);
                 return (false, "Lỗi hệ thống");
             }
-            return (true, "Đổi mật khẩu thành công");
+            return (true, "Đổi mật nvẩu thành công");
         }
     }
 }

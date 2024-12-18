@@ -26,6 +26,13 @@ namespace CinemaManagement.DTOs
                 return MoneyFormat.FormatToVND(GiaSP);
             }
         }
+        public string TongTienStr
+        {
+            get
+            {
+                return MoneyFormat.FormatToVND(GiaSP * SoLuong);
+            }
+        }
         public string MaSPStr
         {
             get
