@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 
 namespace CinemaManagement.Models.DAL
@@ -26,7 +27,7 @@ namespace CinemaManagement.Models.DAL
             }
             private set => _instance = value;
         }
-        public async Task<(bool, string, int)> AddNewBill(HoaDonDTO hoadon)
+        public async Task<(bool, string, int)> AddNewBill(HoaDonDTO hoadon, ObservableCollection<SanPhamDTO> dssp, ObservableCollection<BanVeDTO> dsve)
         {
             int newBillId = -1;
             try
@@ -48,6 +49,16 @@ namespace CinemaManagement.Models.DAL
                         GiaTriHD = hoadon.GiaTriHD,
                         ThanhTien = hoadon.ThanhTien
                     };
+                    for(int i = 0; i < dssp.Count; i++)
+                    {
+                        var sp = await context.SanPhams.FindAsync(dssp[i].MaSP);
+                        sp.SoLuong -= dssp[i].SoLuong;
+                    }
+                    for(int i = 0; i < dsve.Count; i++)
+                    {
+                        var ve = await context.BanVes.FindAsync(dsve[i].MaSC, dsve[i].MaGhe);
+                        ve.DaBan = true;
+                    }
                     context.HoaDons.Add(hd);
                     await context.SaveChangesAsync();
                 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CinemaManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CinemaManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BanVe">
           <Key>
             <PropertyRef Name="MaSC" />
@@ -413,7 +413,8 @@
             <End Role="Ve" EntitySet="Ve" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CinemaManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -457,7 +458,7 @@
             <PropertyRef Name="SoHDNhap" />
           </Key>
           <Property Name="SoHDNhap" Type="Int32" Nullable="false" />
-          <Property Name="NgayNhap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayNhap" Type="DateTime" Nullable="false" />
           <Property Name="ThanhTien" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="MaNVNhap" Type="Int32" Nullable="false" />
           <Property Name="MaSPNhap" Type="Int32" />
@@ -473,7 +474,7 @@
           <Property Name="SoHD" Type="Int32" Nullable="false" />
           <Property Name="MaKH" Type="Int32" Nullable="false" />
           <Property Name="MaNV" Type="Int32" Nullable="false" />
-          <Property Name="NgayHD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayHD" Type="DateTime" Nullable="false" />
           <Property Name="ChietKhau" Type="Int32" Nullable="false" />
           <Property Name="GiaTriHD" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ThanhTien" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
@@ -492,9 +493,9 @@
           <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SDT_KH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="email_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgaySinh" Type="DateTime" Nullable="false" />
           <Property Name="HDTichLuy" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="NgayDK" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayDK" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaKH__03F0984C" FromRole="KhachHang" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="NhanVien">
@@ -507,9 +508,9 @@
           <Property Name="acc_password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SDT_NV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="email_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgaySinh" Type="DateTime" Nullable="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="NgayVaoLam" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayVaoLam" Type="DateTime" Nullable="false" />
           <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Staff_Level" Type="Byte" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
@@ -525,7 +526,7 @@
           <Property Name="TheLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ThoiLuong" Type="Int32" Nullable="false" />
           <Property Name="NuocSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayPH" Type="DateTime" Precision="3" />
+          <Property Name="NgayPH" Type="DateTime" />
           <Property Name="DaoDien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GioiHanTuoi" Type="Byte" Nullable="false" />
@@ -564,8 +565,8 @@
           <Property Name="MaSC" Type="Int32" Nullable="false" />
           <Property Name="MaPhim" Type="Int32" Nullable="false" />
           <Property Name="SoPhongChieu" Type="Int32" Nullable="false" />
-          <Property Name="BatDau" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="KetThuc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BatDau" Type="DateTime" Nullable="false" />
+          <Property Name="KetThuc" Type="DateTime" Nullable="false" />
           <Property Name="GiaVe" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="BanVes" Relationship="Self.FK__BanVe__MaSC__160F4887" FromRole="SuatChieu" ToRole="BanVe" />
           <NavigationProperty Name="Phim" Relationship="Self.FK__SUATCHIEU__MaPhi__5BE2A6F2" FromRole="SuatChieu" ToRole="Phim" />
@@ -582,7 +583,7 @@
           <Property Name="CTSuCo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TinhTrang" Type="Boolean" Nullable="false" />
           <Property Name="PhiSuaChua" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="NgayBaoSC" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayBaoSC" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__SUCO__MaNVBao__60A75C0F" FromRole="SuCo" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="Ve">
