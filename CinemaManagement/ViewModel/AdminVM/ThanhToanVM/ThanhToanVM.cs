@@ -23,7 +23,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             if (KHMuaHang is null)
             {
                 MyMessageBox.Show("Chưa nhập thông tin khách hàng.");
-                return false;
+//                return false;
             }
             HoaDonDTO hoadon = new HoaDonDTO()
             {
@@ -38,10 +38,10 @@ namespace CinemaManagement.ViewModel.AdminVM
             if (trangthai)
             {
                 MyMessageBox.Show(messages);
-                IsLoading = true;
+//                IsLoading = true;
                 hoadon.SoHD = newid;
                 dsHoaDon.Add(hoadon);
-                IsLoading = false;
+  //              IsLoading = false;
                 CurrentWindow.Close();
             }
             else
