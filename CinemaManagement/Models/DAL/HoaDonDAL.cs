@@ -59,6 +59,8 @@ namespace CinemaManagement.Models.DAL
                         var ve = await context.BanVes.FindAsync(dsve[i].MaSC, dsve[i].MaGhe);
                         ve.DaBan = true;
                     }
+                    var kh = await context.KhachHangs.FindAsync(hoadon.MaKH);
+                    kh.HDTichLuy += hoadon.ThanhTien;
                     context.HoaDons.Add(hd);
                     await context.SaveChangesAsync();
                 }
@@ -71,7 +73,7 @@ namespace CinemaManagement.Models.DAL
             {
                 return (false, ex.ToString(), newBillId);
             }
-            return (true, "Thêm sản phẩm thành công", newBillId);
+            return (true, "Đã thanh toán", newBillId);
         }
         public async Task<List<HoaDonDTO>> GetAllBill()
         {
@@ -79,7 +81,7 @@ namespace CinemaManagement.Models.DAL
             {
                 using (var context = new CinemaManagementEntities())
                 {
-                    var dshoadon = (from hoadon in context.HoaDons
+                    var dshoadon = await (from hoadon in context.HoaDons
                                     orderby hoadon.NgayHD descending
                                     select new HoaDonDTO
                                     {
@@ -92,7 +94,12 @@ namespace CinemaManagement.Models.DAL
                                         GiaTriHD = hoadon.GiaTriHD,
                                         ThanhTien = hoadon.ThanhTien
                                     }).ToListAsync();
-                    return await dshoadon;
+                    foreach(HoaDonDTO hoadon in dshoadon)
+                    {
+                        hoadon.NhanVien = await NhanVienDAL.Instance.GetStaffById(hoadon.MaNV);
+                        hoadon.KhachHang = await KhachHangDAL.Instance.GetCustomerById(hoadon.MaKH);
+                    }
+                    return dshoadon;
                 }
             }
             catch (Exception ex)

@@ -32,7 +32,7 @@ namespace CinemaManagement.DTOs
         {
             get
             {
-                return $"{BatDau:dd:MM:yyyy}";
+                return $"{BatDau:dd/MM/yyyy}";
             }
         }
         public PhimDTO Phim { get; set; }
