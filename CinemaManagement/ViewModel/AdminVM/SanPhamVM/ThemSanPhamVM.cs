@@ -27,7 +27,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 (bool trangthai, string messages, int newid) = await SanPhamDAL.Instance.AddProduct(sanPham);
                 if (trangthai)
                 {
-                    MessageBox.Show(messages);
+                    CustomControls.MyMessageBox.Show(messages);
                     IsLoading = true;
                     sanPham.MaSP = newid;
                     dsSP.Add(sanPham);

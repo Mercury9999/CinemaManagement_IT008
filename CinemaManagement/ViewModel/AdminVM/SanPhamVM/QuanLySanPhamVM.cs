@@ -36,6 +36,9 @@ namespace CinemaManagement.ViewModel.AdminVM
         public ICommand UploadImageCM { get; set; }
         public ICommand SaveNewProductCM { get; set; }
         public ICommand SaveProductCM { get; set; }
+        public ICommand ImportProductCM { get; set; }
+        public ICommand SaveImportProductCM { get; set; }
+
         public ICommand GetCurrentWindowCM { get; set; }
         public ICommand NameSearchProductCM { get; set; }
         public ICommand TypeSearchProductCM { get; set; }
@@ -78,6 +81,11 @@ namespace CinemaManagement.ViewModel.AdminVM
         public string TimLoaiSP { get; set; }
         public string TimTenSP {  get; set; }
         public int SoLuongMua {  get; set; }
+        public int SoLuongNhap { get; set; }
+        public decimal GiaNhap { get; set; }
+
+
+
         #endregion
         public QuanLySanPhamVM()
         {
@@ -120,6 +128,19 @@ namespace CinemaManagement.ViewModel.AdminVM
             {
                 IsSaving = true;
                 await SaveNewProduct(p);
+                IsSaving = false;
+            });
+            ImportProductCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
+            {
+                GetDataProduct();
+                NhapHang w1 = new NhapHang();
+                w1.ShowDialog();
+
+            });
+            SaveImportProductCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
+            {
+                IsSaving = true;
+                await ImportProduct(p);
                 IsSaving = false;
             });
             DeleteProductCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
