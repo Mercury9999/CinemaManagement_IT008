@@ -12,20 +12,7 @@ namespace CinemaManagement.DTOs
 
         public GheDTO Ghe { get; set; }
         public SuatChieuDTO SuatChieu { get; set; }
-        public string SoGheStr
-        {
-            get
-            {
-                return Ghe.SoGheStr;
-            }
-        }
-        public string SoPhongStr
-        {
-            get
-            {
-                return $"P{Ghe.SoPhong}";
-            }
-        }
+
         public string DaBanStr
         {
             get

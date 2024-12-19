@@ -35,14 +35,6 @@ namespace CinemaManagement.View
         public ThanhToan()
         {
             InitializeComponent();
-
-            TestData = new ObservableCollection<testData>()
-            {
-                new testData { TenPhim = "Chu Meo con biet di", NgayChieu = "16/12/2024", ThoiGian = "9:00", Phong = "2", Ghe = "A01, A02, A03, A07", GiaVe = "100000" },
-                new testData { TenPhim = "Aquaman", NgayChieu = "16/12/2024", ThoiGian = "9:00", Phong = "2", Ghe = "A01, A02, A03, A07", GiaVe = "100000" },
-                new testData { TenPhim = "Doreamon va chu khung long", NgayChieu = "16/12/2024", ThoiGian = "9:00", Phong = "2", Ghe = "A01, A02, A03, A07", GiaVe = "100000" }
-            };
-            filmListBox.ItemsSource = TestData;
         }
     }
 }

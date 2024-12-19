@@ -15,21 +15,24 @@
         TextOptions.TextRenderingMode="Auto"
         Background="#f3f5f7"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        d:DesignHeight="720"
-        d:DesignWidth="1300"
         Title="TicketBillPage"
         x:Name="thanhtoanWindow"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        DataContext="{StaticResource BillVM}">
+        DataContext="{StaticResource BillVM}"
+        SizeToContent="WidthAndHeight" Height="737" Width="1277">
 
     <ei:Interaction.Triggers>
         <ei:EventTrigger EventName="Loaded">
             <ei:InvokeCommandAction Command="{Binding GetCurrentWindowCM}"
                                    CommandParameter="{Binding ElementName=thanhtoanWindow}"/>
         </ei:EventTrigger>
+        <ei:EventTrigger EventName="Loaded">
+            <ei:InvokeCommandAction Command="{Binding SetDafaultDataCM}"/>
+        </ei:EventTrigger>
     </ei:Interaction.Triggers>
 
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -84,17 +87,6 @@
                            Padding="10,10,0,0"
                            Margin="10 8 10 0" />
 
-                    <CheckBox Grid.Row="1"
-                        IsThreeState="False"
-                        IsChecked="{Binding IsWalkinGuest}"
-                        Content="Khách vãng lai"
-                        Margin="10 20 0 0"
-                        FontSize="18"
-                        VerticalAlignment="Bottom"
-                        x:Name="KHcheckBox"
-                        Command="{Binding CboxWalkinGuestCM}"
-                        CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" />
-
                     <StackPanel Orientation="Horizontal" Grid.Row="2">
                         <TextBlock Text="Họ và tên:" FontWeight="SemiBold" FontSize="18" Grid.Row="2" Margin="10 20 0 0"/>
                         <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" 
@@ -109,7 +101,7 @@
                             Margin="20 0 0 0"
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Center"
-                            Command="{Binding ShowInfoCM}">
+                            Command="{Binding GetDataCustomerCM}">
                             <Button.ContentTemplate>
                                 <DataTemplate>
                                     <materialDesign:PackIcon Kind="Plus"
@@ -127,22 +119,9 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="170" Height="26"
                                  Margin="16 20 0 0"
                                  Padding="0 -5 0 0" 
-                                 Text="{Binding TenKH}"
+                                 Text="{Binding SDTKH}"
                                  />
                         <!--Button trang tri-->
-                        <Button
-                            Margin="20 0 0 0"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Center"
-                            Command="{Binding ShowInfoCM}">
-                            <Button.ContentTemplate>
-                                <DataTemplate>
-                                    <materialDesign:PackIcon Kind="PhoneCheckOutline"
-                                                 VerticalAlignment="Stretch"
-                                                 HorizontalAlignment="Stretch" />
-                                </DataTemplate>
-                            </Button.ContentTemplate>
-                        </Button>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="4">
@@ -152,25 +131,16 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="230" Height="26"
                                  Margin="42 20 0 0"
                                  Padding="0 -5 0 0" 
-                                 Text="{Binding TenKH}"
+                                 Text="{Binding MaKHMuaHang}"
                                  />
 
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Grid.Row="5">
-                        <TextBlock Text="Email:" FontWeight="SemiBold" FontSize="18" Grid.Row="2" Margin="10 20 0 0"/>
-                        <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" 
-                                 FontSize="18"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="230" Height="26"
-                                 Margin="50 20 0 0"
-                                 Padding="0 -5 0 0" 
-                                 Text="{Binding TenKH}"
-                                 />
-                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="5"/>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="6" Margin="60 70 0 0">
                         <Button Content="Xuất hóa đơn"/>
-                        <Button Content="Thanh toán" Margin="15 0 0 0"/>
+                        <Button Content="Thanh toán" Margin="15 0 0 0" Command="{Binding PayCM}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="7" Margin="10 40 0 0" Orientation="Horizontal">
@@ -191,7 +161,7 @@ FontSize="18"
 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="220" Height="26"
 Margin="39 0 0 0"
 Padding="0 -5 0 0" 
-Text="{Binding TenKH}"
+Text="{Binding MaNV}"
 />
                     </StackPanel>
 
@@ -237,7 +207,7 @@ Text="{Binding TenKH}"
                              VerticalAlignment="Top"
                              ScrollViewer.CanContentScroll="False"
                              ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                             >
+                             ItemsSource="{Binding dsVe}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Transparent" 
@@ -271,7 +241,7 @@ Text="{Binding TenKH}"
                                                                HorizontalAlignment="Right"
                                                                FontSize="20"
                                                                x:Name="_moviename"
-                                                               Content="{Binding TenPhim}"
+                                                               Content="{Binding SuatChieu.Phim.TenPhim}"
                                                                FontWeight="Bold" />
                                                     </Grid>
                                                 </StackPanel>
@@ -286,7 +256,7 @@ Text="{Binding TenKH}"
                                                         <Label Content="Ngày chiếu"
                                                                Grid.Column="0"
                                                                FontSize="20" />
-                                                        <Label Content="{Binding NgayChieu}"
+                                                        <Label Content="{Binding SuatChieu.NgayChieuStr}"
                                                                Grid.Column="1"
                                                                HorizontalAlignment="Right"
                                                                FontSize="20" />
@@ -303,7 +273,7 @@ Text="{Binding TenKH}"
                                                         <Label Content="Giờ chiếu"
                                                                Grid.Column="0"
                                                                FontSize="20" />
-                                                        <Label Content="{Binding ThoiGian}"
+                                                        <Label Content="{Binding SuatChieu.GioChieuStr}"
                                                                Grid.Column="1"
                                                                HorizontalAlignment="Right"
                                                                FontSize="20"
@@ -339,7 +309,7 @@ Text="{Binding TenKH}"
                                                         <Label Content="Phòng chiếu"
                                            Grid.Column="0"
                                            FontSize="20" />
-                                                        <Label Content="{Binding Phong}"
+                                                        <Label Content="{Binding SuatChieu.SoPhongChieu}"
                                            Grid.Column="1"
                                            HorizontalAlignment="Right"
                                            FontSize="20"
@@ -357,8 +327,7 @@ Text="{Binding TenKH}"
                                                         <Label Content="Ghế"
                                            Grid.Column="0"
                                            FontSize="20" />
-                                                        <TextBlock Text="{Binding Ghe}"
-                                               TextWrapping="Wrap"
+                                                        <Label Content="{Binding Ghe.SoGheStr}"
                                                Grid.Column="1"
                                                HorizontalAlignment="Right"
                                                Margin="0 0 5 0"    
@@ -377,7 +346,7 @@ Text="{Binding TenKH}"
                                                         <Label Content="Giá vé"
                                            Grid.Column="0"
                                            FontSize="20" />
-                                                        <Label Content="{Binding GiaVe}"
+                                                        <Label Content="{Binding SuatChieu.GiaVeStr}"
                                            Grid.Column="1"
                                            HorizontalAlignment="Right"
                                            FontSize="20"
@@ -489,31 +458,6 @@ Text="{Binding TenKH}"
                                         </ItemsControl>
                                     </ScrollViewer>
                                 </Border>
-                                <Border Grid.Row="1"
-                BorderThickness="0,0,0,1"
-                BorderBrush="Black"
-                Margin="10,0,10,11">
-                                    <StackPanel VerticalAlignment="Center"
-                                                Margin="0 2 0 0">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-
-                                                <Label Content="Tổng"
-                                   Grid.Column="0"
-                                   FontSize="20" />
-                                                <Label x:Name="_totalproduct"
-                               Grid.Column="1"
-                               HorizontalAlignment="Right"
-                               FontSize="20"
-                               Content="{Binding TotalPriceFood}" />
-                                            </Grid>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Border>
 
 
 
@@ -537,7 +481,7 @@ Text="{Binding TenKH}"
                                 <Label Content="Tổng tiền"
            FontSize="20"
            Grid.Column="0" />
-                                <Label Content="{Binding GiaTriHD}"
+                                <Label Content="{Binding GiaTriHDStr}"
            FontSize="20"
            Grid.Column="1"
            HorizontalAlignment="Right" />
@@ -563,9 +507,9 @@ Text="{Binding TenKH}"
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Label Content="Khuyến mãi"
-           FontSize="20"
-           Grid.Column="0" />
-                                <Label Content="{Binding GiamGia}"
+                                       FontSize="20"
+                                       Grid.Column="0" />
+                                <Label Content="{Binding GiamGiaStr}"
            FontSize="20"
            Grid.Column="1"
            HorizontalAlignment="Right" />
@@ -579,7 +523,7 @@ Text="{Binding TenKH}"
                                 <Label Content="Thành tiền"
            FontSize="20"
            Grid.Column="0" />
-                                <Label Content="{Binding ThanhTien}"
+                                <Label Content="{Binding ThanhTienStr}"
            FontSize="20"
            Grid.Column="1"
            FontWeight="Bold"

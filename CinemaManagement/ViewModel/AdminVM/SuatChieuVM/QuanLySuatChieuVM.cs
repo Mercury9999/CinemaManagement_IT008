@@ -203,7 +203,14 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             OrderTicketCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
-                billService.dsVeHD.Add(SelectedTicket);
+                billService.dsVeHD.Add(new BanVeDTO()
+                {
+                    MaSC = SelectedTicket.MaSC,
+                    MaGhe = SelectedTicket.MaGhe,
+                    DaBan = SelectedTicket.DaBan,
+                    SuatChieu = SelectedTicket.SuatChieu,
+                    Ghe = SelectedTicket.Ghe
+                });
                 MyMessageBox.Show("Đã thêm vé vào hoá đơn");
             });
         }

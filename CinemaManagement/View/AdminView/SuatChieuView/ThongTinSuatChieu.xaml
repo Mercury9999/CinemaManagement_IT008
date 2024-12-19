@@ -137,7 +137,7 @@
                                           Height="38"                                 
                                           Style="{StaticResource SelectableBorderStyle}">
 
-                                    <Label Content="{Binding SoGheStr}"
+                                    <Label Content="{Binding Ghe.SoGheStr}"
                                            Background="Transparent"
                                            Foreground="Black"
                                            FontSize="11"
