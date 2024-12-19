@@ -402,7 +402,7 @@ Text="{Binding MaNV}"
                                 <Border Grid.Row="0"
                                         BorderThickness="0,0,0,1"
                                         BorderBrush="Black"
-                                        Margin="10,10,10,0">
+                                        Margin="10,10,5,0">
                                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                                   x:Name="scrollview">
                                         <ItemsControl ItemsSource="{Binding dsSanPham}">
@@ -442,12 +442,12 @@ Text="{Binding MaNV}"
                                                             </StackPanel>
                                                             <StackPanel Grid.Column="1"
                                                 Orientation="Horizontal"
-                                                HorizontalAlignment="Right"
+                                                HorizontalAlignment="Right" 
                                                 VerticalAlignment="Bottom">
                                                                 <TextBlock Text="{Binding TongTienStr}"
                                                    FontSize="20"
                                                    FontWeight="Medium"
-                                                   Margin="0 0 5 10" />
+                                                   Margin="-3 0 -2 10" />
                                                             </StackPanel>
 
                                                         </Grid>

@@ -784,11 +784,11 @@
                         <!--<Trigger Property="IsSelected"
                                          Value="true">
                             <Setter TargetName="Border" Property="Background" Value="Green"/>
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Cursor" Value="Hand"/>
-                            <Setter TargetName="Border" Property="Background" Value="Green"/>
-                        </Trigger>-->
+                            <!--<Setter TargetName="Border" Property="Background" Value="Green"/>-->
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -808,13 +808,15 @@
     </Style>
 
     <Style x:Key="SelectableBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="White"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Green"/>
+                <Setter Property="Background" Value="LightGreen"/>
                 <Setter Property="BorderBrush" Value="White"/>
             </Trigger>
             <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
-                <Setter Property="Background" Value="Green"/>
+                <Setter Property="Background" Value="LightGreen"/>
                 <Setter Property="BorderBrush" Value="White"/>
             </DataTrigger>
         </Style.Triggers>
