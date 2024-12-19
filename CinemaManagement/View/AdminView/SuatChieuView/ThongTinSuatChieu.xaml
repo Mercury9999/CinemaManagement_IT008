@@ -22,7 +22,10 @@
                                CommandParameter="{Binding ElementName=suasanphamWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border CornerRadius="25" Background="#eff2f7">
+
+    
+
+    <Border CornerRadius="25" Background="#be93d4">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -91,12 +94,13 @@
                     <TextBlock Text="K" Margin="0 30 0 0" FontSize="20" FontWeight="Bold" Foreground="Black"/>
                 </StackPanel>
 
+                <Button Style="{StaticResource buttonClose}" HorizontalAlignment="Right" Foreground="White" Content="X" Width="64" Height="39" VerticalAlignment="Top" Background="Red" Command="{Binding CloseWindowCM}" CommandParameter="{Binding ElementName=thongtinscWindow}"/>
                 <StackPanel>
-                    <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="Black" Text="CHỌN GHẾ - PHÒNG X" FontFamily="Cooper Black"/>
+                    <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="Black" Text="MÀN HÌNH" FontFamily="Showcard Gothic"/>
 
                     <Line X1="80" Y1="50" X2="650" Y2="50" Stroke="Black" StrokeThickness="2"/>
 
-                    <TextBlock Foreground="Black" HorizontalAlignment="Center" Margin="20" Text="Màn hình" FontSize="25"/>
+                    <TextBlock Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="20" Text="CHỌN GHẾ" FontSize="25"/>
 
                     <ListBox ItemsSource="{Binding dsBanVe}"
                              x:Name="SeatListBox1"
@@ -104,7 +108,7 @@
                              HorizontalAlignment="Right"
                              VerticalAlignment="Top"
                              Grid.Column="0"
-                             Margin="0 0 90 40" SelectionMode="Multiple"
+                             Margin="0 0 90 40" SelectionMode="Single"
                              SelectedItem="{Binding SelectedTicket}">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem"
@@ -112,12 +116,12 @@
                                 <!--<Style.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter Property="Background" Value="Green"/>
-                                        <Setter Property="Foreground" Value="White"/>
                                     </Trigger>
                                 </Style.Triggers>-->
                             </Style>
 
                         </ListBox.ItemContainerStyle>
+                        
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="10"
@@ -126,7 +130,7 @@
                         </ListBox.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border   BorderBrush="Green"
+                                <Border   BorderBrush="White"
                                           BorderThickness="2"
                                           CornerRadius="3"
                                           Width="38"
@@ -138,9 +142,10 @@
                                            Foreground="Black"
                                            FontSize="11"
                                            FontWeight="Bold"
-                                           x:Name="lbl1"
+                                           x:Name="label1"
                                            VerticalContentAlignment="Center"
                                            HorizontalContentAlignment="Center">
+                                        
                                     </Label>
                                 </Border>
                             </DataTemplate>

@@ -1,19 +1,9 @@
 ﻿using CinemaManagement.DTOs;
 using CinemaManagement.Models.DAL;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Media3D;
 using CinemaManagement.View;
-using System.Reflection;
-using CinemaManagement.Models;
-using System.Runtime.Remoting.Messaging;
 using CinemaManagement.CustomControls;
 
 namespace CinemaManagement.ViewModel.AdminVM
