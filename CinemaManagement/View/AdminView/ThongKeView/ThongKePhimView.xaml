@@ -1,16 +1,18 @@
-﻿<Page x:Class="CinemaManagement.View.AdminView.ThongKeView.ThongKePhimView"
+﻿<Page x:Class="CinemaManagement.View.ThongKePhimView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagement.View.AdminView.ThongKeView"
+      xmlns:local="clr-namespace:CinemaManagement.View"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:ThongKePhimVM}"
       FontFamily="{DynamicResource MaterialDesignFont}"
       mc:Ignorable="d" 
-      d:DesignHeight="700" 
-      d:DesignWidth="850"
-      Title="ThongKePhimView">
+      Height="700" 
+      Width="850"
+      Title="ThongKePhimView"
+      DataContext="{StaticResource StasticVM}"
+      >
 
     
     <Border Background="#eff2f7">
@@ -25,24 +27,10 @@
                 <TextBlock Text="Xếp hạng doanh thu phim" FontSize="25" FontWeight="Bold" VerticalAlignment="Center"/>
 
                 <!-- chọn chu kỳ tháng-năm-->
-                <ComboBox 
-                        x:Name="comboBoxChuKy"
-                        HorizontalAlignment="Right" Margin="0 0 270 0"
-                        Width="200"
-                        materialDesign:HintAssist.Hint="Chọn chu kỳ"                       
-                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                    <ComboBoxItem Content="Theo tháng"/>
-                    <ComboBoxItem Content="Theo năm"/>
-                </ComboBox>
+                
 
                 <!-- Thgian tháng: tháng 1->tháng 12, tgian năm: năm tương ứng-->
-                <ComboBox 
-                        x:Name="comboBoxThoiGian"
-                        HorizontalAlignment="Right" Margin="0 0 50 0"
-                        Width="200"
-                        materialDesign:HintAssist.Hint="Chọn thời gian"
-                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                </ComboBox>
+                
             </Grid>
             
             <!-- Chart Grid-->
@@ -60,7 +48,7 @@
                     <materialDesign:Card Width="700"
                                      UniformCornerRadius="5">
                         <Grid>
-                            <lvc:CartesianChart>
+                            <lvc:CartesianChart Series="{Binding Top5MovieData, UpdateSourceTrigger=PropertyChanged}">
                                 <lvc:CartesianChart.AxisX>
                                     <lvc:AxesCollection>
                                         <lvc:Axis MinValue="1">
@@ -88,7 +76,7 @@
                                  Height="300"
                                  VerticalAlignment="Bottom"
                                  Grid.Row="2">
-                        <ListView
+                        <ListView ItemsSource="{Binding Top5Movie}"
                           ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Width="830">
                             <ListView.View>
 
@@ -107,7 +95,7 @@
                                             Width="180">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DoanhThu}"
+                                                <TextBlock Text="{Binding DoanhThuStr}"
                                                    FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
@@ -115,7 +103,7 @@
                                     <GridViewColumn Header="Lượt xem" Width="130">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding LuotXem}"
+                                                <TextBlock Text="{Binding DaoDien}"
                                                    FontSize="18"
                                                    Margin="20,0,0,0" />
                                             </DataTemplate>

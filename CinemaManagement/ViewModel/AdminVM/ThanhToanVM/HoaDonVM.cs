@@ -43,7 +43,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             get { return _makh; }
             set { _makh = value; OnPropertyChanged(); }
         }
-        private int _manv { get; set; } = 1;
+        private int _manv { get; set; } = 2;
         public int MaNV
         {
             get { return _manv; }
