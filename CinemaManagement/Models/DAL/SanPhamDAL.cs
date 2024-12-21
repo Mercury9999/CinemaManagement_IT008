@@ -166,5 +166,61 @@ namespace CinemaManagement.Models.DAL
                 return true;
             }
         }
+        public async Task<(bool, string)> ImportProduct(HDNhapHangDTO nhaphang)
+        {
+            int newID = -1;
+            try
+            {
+                using (var context = new CinemaManagementEntities())
+                {
+                    int maxID;
+                    if (await context.HDNhapHangs.AnyAsync()) maxID = await context.HDNhapHangs.MaxAsync(s => s.SoHDNhap);
+                    else maxID = 0;
+                    newID = maxID + 1;
+
+
+
+                    var hdNhapHang = new HDNhapHang()
+                    {
+
+                        SoHDNhap = newID,
+                        NgayNhap = DateTime.Now,
+                        ThanhTien = nhaphang.DonGiaNhap * nhaphang.SoLuong,
+                        MaNVNhap = 1,
+                        DonGiaNhap = nhaphang.DonGiaNhap,
+                        MaSPNhap = nhaphang.MaSPNhap,
+                        SoLuong = nhaphang.SoLuong,
+                    };
+
+
+
+                    context.HDNhapHangs.Add(hdNhapHang);
+                    await context.SaveChangesAsync();
+                }
+                using (var context1 = new CinemaManagementEntities())
+                {
+                    // Tìm hàng cần cập nhật
+                    var sp = await context1.SanPhams.FirstOrDefaultAsync(h => h.MaSP == nhaphang.MaSPNhap);
+
+                    // Cập nhật số lượng
+                    sp.SoLuong = nhaphang.SoLuong + sp.SoLuong;
+
+                    // Lưu thay đổi vào cơ sở dữ liệu
+                    await context1.SaveChangesAsync();
+
+                }
+            }
+            catch (DbUpdateException e)
+            {
+                return (false, "Lỗi CSDL");
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.ToString());
+            }
+            return (true, "Nhập sản phẩm thành công");
+        }
+
     }
 }
+

@@ -14,11 +14,12 @@
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        Name="nhaphangWindow"
         DataContext="{StaticResource ProductVM}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding GetCurrentWindowCM}"
-                                   CommandParameter="{Binding ElementName=themsanphamWindow}"/>
+                                   CommandParameter="{Binding ElementName=nhaphangWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Border CornerRadius="30" BorderThickness="2" BorderBrush="Black" Background="#ffffff">
@@ -59,7 +60,7 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="149" Height="26"
                                      Margin="20 0 0 0"
                                      Padding="0"
-                                     Text="{Binding SoLuong}"
+                                     Text="{Binding SoLuongNhap}"
                              />
 
                         </StackPanel>
@@ -71,7 +72,7 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="147" Height="26"
                                      Margin="23 0 0 0"
                                      Padding="0"
-                                     Text="{Binding GiaSP}"
+                                     Text="{Binding GiaNhap}"
 />
 
                         </StackPanel>
@@ -85,11 +86,11 @@
 
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="50">
-                    <Button BorderThickness="0" Width="80" Padding="0" Command="{Binding SaveNewProductCM}" Height="44">
+                    <Button BorderThickness="0" Width="80" Padding="0" Command="{Binding SaveImportProductCM}" Height="44">
                         <TextBlock Text="Xác nhận" FontSize="15"/>
                     </Button>
                     <Button BorderThickness="0" Margin="20 0 0 0" Width="80" Padding="0" Background="#FFD93434"
-                            Command="{Binding CloseCM}" CommandParameter="{Binding ElementName=themsanphamWindow}" Height="44">
+                            Command="{Binding CloseCM}" CommandParameter="{Binding ElementName=nhaphangWindow}" Height="44">
                         <TextBlock Text="Hủy bỏ" FontSize="15"/>
                     </Button>
                 </StackPanel>
