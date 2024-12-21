@@ -124,7 +124,7 @@
             </Button>
             
 
-            <Button Style="{StaticResource menuButton}" Margin="0 180 -20 0">
+            <Button Style="{StaticResource menuButton}" Margin="0 180 -20 0" Command="{Binding AccountCM}">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <fa:ImageAwesome Icon="User" Style="{StaticResource buttonIcon }"/>

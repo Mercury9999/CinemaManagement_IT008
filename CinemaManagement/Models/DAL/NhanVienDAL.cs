@@ -204,7 +204,9 @@ namespace CinemaManagement.Models.DAL
                                            NgaySinh = nv.NgaySinh,
                                            GioiTinh = nv.GioiTinh,
                                            ChucVu = nv.ChucVu,
-                                           NgayVaoLam = nv.NgayVaoLam
+                                           NgayVaoLam = nv.NgayVaoLam,
+                                           acc_password = nv.acc_password,
+                                           acc_username = nv.acc_username
                                        }).FirstOrDefaultAsync();
                     if (staff == null)
                     {
