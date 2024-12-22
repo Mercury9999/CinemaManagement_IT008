@@ -31,6 +31,7 @@ namespace CinemaManagement.Models.DAL
                 using (var context = new CinemaManagementEntities())
                 {
                     var dsphim = (from p in context.Phims
+                                  where p.IsDeleted == false
                                   select new PhimDTO
                                   {
                                       MaPhim = p.MaPhim,
@@ -61,11 +62,11 @@ namespace CinemaManagement.Models.DAL
                 using (var context = new CinemaManagementEntities())
                 {
                     var p = await context.Phims.FindAsync(maPhimXoa);
-                    if (p == null)
+                    if (p == null || p.IsDeleted == true)
                     {
                         return (false, "Phim không tồn tại");
                     }
-                    context.Phims.Remove(p);
+                    p.IsDeleted = true;
                     await context.SaveChangesAsync();
                     return (true, "Đã xoá phim");
                 }
@@ -87,7 +88,7 @@ namespace CinemaManagement.Models.DAL
                 using (var context = new CinemaManagementEntities())
                 {
                     var p = await context.Phims.FindAsync(pcapnhat.MaPhim);
-                    if (p == null)
+                    if (p == null || p.IsDeleted == true)
                     {
                         return (false, "Phim không tồn tại");
                     }
@@ -108,7 +109,7 @@ namespace CinemaManagement.Models.DAL
             }
             catch (DbUpdateException e)
             {
-                return (false, "Lỗi CSDL");
+                return (false, "Lỗi CSDL: " + e.ToString());
             }
             catch (Exception ex)
             {
@@ -140,8 +141,8 @@ namespace CinemaManagement.Models.DAL
                         NoiDung = phim.NoiDung,
                         GioiHanTuoi = phim.GioiHanTuoi,
                         Poster = phim.Poster,
+                        IsDeleted = false
                     };
-
                     context.Phims.Add(p);
                     await context.SaveChangesAsync();
                 }
@@ -163,7 +164,7 @@ namespace CinemaManagement.Models.DAL
                 using (var context = new CinemaManagementEntities())
                 {
                     PhimDTO phim = (from p in context.Phims
-                                    where p.MaPhim == Id
+                                    where p.MaPhim == Id 
                                     select new PhimDTO
                                     {
                                         MaPhim = p.MaPhim,

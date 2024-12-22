@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Windows;
 using System.Collections.ObjectModel;
 using CinemaManagement.Ultis;
+using CinemaManagement.CustomControls;
 
 namespace CinemaManagement.ViewModel.AdminVM
 {
@@ -36,7 +37,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 (bool trangthai, string messages) = await NhanVienDAL.Instance.UpdateStaff(NhanVien);
                 if (trangthai)
                 {
-                    MessageBox.Show(messages);
+                    MyMessageBox.Show(messages);
                     IsSaving = true;
                     var NhanVienUpdated = dsNV.FirstOrDefault(s => s.MaNV == NhanVien.MaNV);
                     if (NhanVienUpdated != null)

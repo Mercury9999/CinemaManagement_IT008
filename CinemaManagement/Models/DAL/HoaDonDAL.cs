@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
+using CinemaManagement.CustomControls;
 
 
 namespace CinemaManagement.Models.DAL
@@ -181,7 +182,7 @@ namespace CinemaManagement.Models.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MyMessageBox.Show(ex.ToString());
                 return null;
             }
         }

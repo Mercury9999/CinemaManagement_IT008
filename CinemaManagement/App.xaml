@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CinemaManagement"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+<<<<<<< Updated upstream
              StartupUri="View\LoginWindow\LoginWindow.xaml">
+=======
+             StartupUri="MainNavigation.xaml">
+>>>>>>> Stashed changes
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
