@@ -21,17 +21,7 @@ namespace CinemaManagement.View
     /// </summary>
     public partial class ThanhToan : Window
     {
-        public class testData
-        {
-            public string TenPhim { get; set; }
-            public string NgayChieu { get; set; }
-            public string ThoiGian { get; set; }
-            public string Phong { get; set; }
-            public string Ghe { get; set; }
-            public string GiaVe { get; set; }
-        }
 
-        public ObservableCollection<testData> TestData { get; set; }
         public ThanhToan()
         {
             InitializeComponent();

@@ -19,6 +19,7 @@ namespace CinemaManagement.ViewModel.AdminVM
 {
     public partial class HoaDonVM : BaseViewModel
     {
+        public AccountService accountService { get; set; } = AccountService.Instance;
         private string tenkh {  get; set; }
         public string TenKH
         {
@@ -42,12 +43,6 @@ namespace CinemaManagement.ViewModel.AdminVM
         {
             get { return _makh; }
             set { _makh = value; OnPropertyChanged(); }
-        }
-        private int _manv { get; set; } = 2;
-        public int MaNV
-        {
-            get { return _manv; }
-            set { _manv = value; OnPropertyChanged(); }
         }
         private DateTime _ngayhd { get; set; }
         public DateTime NgayHD
@@ -181,9 +176,9 @@ namespace CinemaManagement.ViewModel.AdminVM
                 TenKH = KHMuaHang.TenKH;
                 SDTKH = KHMuaHang.SDT_KH;
             });
-            PayCM = new RelayCommand<Window>(p => { return true; }, p =>
+            PayCM = new RelayCommand<Window>(p => { return true; }, async (p) =>
             {
-                SaveNewBill();
+                await SaveNewBill();
                 ClearData();
                 billService.dsVeHD.Clear();
                 billService.dsSanPhamHD.Clear();

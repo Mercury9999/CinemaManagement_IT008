@@ -64,7 +64,7 @@ namespace CinemaManagement.Models.DAL
                     var nv = await context.NhanViens.FindAsync(maNvXoa);
                     if (nv == null)
                     {
-                        return (false, "Nhân viên nvông tồn tại");
+                        return (false, "Nhân viên không tồn tại");
                     }
                     context.NhanViens.Remove(nv);
                     await context.SaveChangesAsync();
@@ -90,7 +90,7 @@ namespace CinemaManagement.Models.DAL
                     var nv = await context.NhanViens.FindAsync(nvcapnhat.MaNV);
                     if(nv == null)
                     {
-                        return (false, "Mã nhân viên nvông tồn tại");
+                        return (false, "Mã nhân viên không tồn tại");
                     }
                     bool checkUsername = await context.NhanViens.AnyAsync(s => s.acc_username == nvcapnhat.acc_username && s.MaNV != nvcapnhat.MaNV);
                     bool checkSDT = await context.NhanViens.AnyAsync(s => s.SDT_NV == nvcapnhat.SDT_NV && s.MaNV != nvcapnhat.MaNV);
@@ -269,7 +269,7 @@ namespace CinemaManagement.Models.DAL
                     var nv = context.NhanViens.FirstOrDefault(s => s.acc_username == username);
                     if(nv == null)
                     {
-                        return (false, "Tài nvoản nvông tồn tại");
+                        return (false, "Tài khoản không tồn tại");
                     }
                     nv.acc_password = newpassword;
                     await context.SaveChangesAsync();
@@ -284,7 +284,7 @@ namespace CinemaManagement.Models.DAL
                 Console.WriteLine(ex.Message);
                 return (false, "Lỗi hệ thống");
             }
-            return (true, "Đổi mật nvẩu thành công");
+            return (true, "Đổi mật khẩu thành công");
         }
     }
 }

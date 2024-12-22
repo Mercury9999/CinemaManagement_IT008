@@ -177,23 +177,17 @@ namespace CinemaManagement.Models.DAL
                     if (await context.HDNhapHangs.AnyAsync()) maxID = await context.HDNhapHangs.MaxAsync(s => s.SoHDNhap);
                     else maxID = 0;
                     newID = maxID + 1;
-
-
-
                     var hdNhapHang = new HDNhapHang()
                     {
 
                         SoHDNhap = newID,
                         NgayNhap = DateTime.Now,
                         ThanhTien = nhaphang.DonGiaNhap * nhaphang.SoLuong,
-                        MaNVNhap = 1,
+                        MaNVNhap = nhaphang.MaNVNhap,
                         DonGiaNhap = nhaphang.DonGiaNhap,
                         MaSPNhap = nhaphang.MaSPNhap,
                         SoLuong = nhaphang.SoLuong,
                     };
-
-
-
                     context.HDNhapHangs.Add(hdNhapHang);
                     await context.SaveChangesAsync();
                 }
