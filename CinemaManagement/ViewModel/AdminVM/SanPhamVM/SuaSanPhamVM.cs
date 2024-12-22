@@ -32,7 +32,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                     (bool trangthai, string messages) = await SanPhamDAL.Instance.UpdateProduct(sanPham);
                     if (trangthai)
                     {
-                        MessageBox.Show(messages);
+                        CustomControls.MyMessageBox.Show(messages);
                         IsLoading = true;
                         for (int i = 0; i < dsSP.Count; i++)
                         if (dsSP[i].MaSP == sanPham.MaSP)

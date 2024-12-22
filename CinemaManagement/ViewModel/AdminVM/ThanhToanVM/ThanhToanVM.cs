@@ -29,7 +29,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             HoaDonDTO hoadon = new HoaDonDTO()
             {
                 MaKH = KHMuaHang.MaKH,
-                MaNV = MaNV,
+                MaNV = accountService.CurrentAccount.MaNV,
                 ChietKhau = 0,
                 GiamGia = 0,
                 GiaTriHD = GiaTriHD,
