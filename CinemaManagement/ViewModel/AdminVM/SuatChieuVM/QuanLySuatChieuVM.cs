@@ -1,19 +1,9 @@
 ﻿using CinemaManagement.DTOs;
 using CinemaManagement.Models.DAL;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Media3D;
 using CinemaManagement.View;
-using System.Reflection;
-using CinemaManagement.Models;
-using System.Runtime.Remoting.Messaging;
 using CinemaManagement.CustomControls;
 
 namespace CinemaManagement.ViewModel.AdminVM
@@ -21,14 +11,14 @@ namespace CinemaManagement.ViewModel.AdminVM
     public class QuanLySuatChieuVM : BaseViewModel
     {
         BillService billService = BillService.Instance;
-        private int _masc { get; set; }
-        public int MaSC
+        private string _masc { get; set; }
+        public string MaSC
         {
             get { return _masc; }
             set { _masc = value; OnPropertyChanged(); }
         }
-        private int _maphim;
-        public int MaPhim
+        private string _maphim;
+        public string MaPhim
         {
             get { return _maphim; }
             set { _maphim = value; OnPropertyChanged(); }
@@ -69,7 +59,7 @@ namespace CinemaManagement.ViewModel.AdminVM
         public string BatDauStr { get; set; }
         public string KetThucStr { get; set; }
         public string NgayChieu { get; set; }
-        public decimal GiaVe { get; set; }
+        public string GiaVe { get; set; }
         public bool IsSaving { get; set; }
         public bool IsLoading { get; set; }
         private ObservableCollection<SuatChieuDTO> _dsSuatChieu = new ObservableCollection<SuatChieuDTO>();
@@ -118,6 +108,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                     IsLoading = true;
                     var data = await Task.Run(async () => await PhongChieuDAL.Instance.GetAllRoom());
                     dsPhong = new ObservableCollection<PhongChieuDTO>(data);
+                    if (dsPhong.Any()) SelectedRoom = dsPhong[0].SoPhong;
                     IsLoading = false;
                 }
                 catch (Exception ex)
@@ -146,7 +137,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             ChangeInfoCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
-                await GetNewData();
+                GetNewData();
             });
             AddShowtimeCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
@@ -160,7 +151,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 {
                     BatDau = ConvertDateTimeToString(BatDauStr);
                     KetThuc = ConvertDateTimeToString(KetThucStr);
-                    PhimDTO phim = PhimDAL.Instance.GetMovieById(MaPhim);
+                    PhimDTO phim = PhimDAL.Instance.GetMovieById(Int32.Parse(MaPhim));
                     PhimDTO tmpphim = new PhimDTO()
                     {
                         TenPhim = phim.TenPhim,
@@ -170,10 +161,10 @@ namespace CinemaManagement.ViewModel.AdminVM
                     };
                     SuatChieuDTO suatChieu = new SuatChieuDTO()
                     {
-                        MaPhim = MaPhim,
+                        MaPhim = Int32.Parse(MaPhim),
                         BatDau = BatDau,
                         KetThuc = KetThuc,
-                        GiaVe = GiaVe,
+                        GiaVe = Decimal.Parse(MaPhim),
                         SoPhongChieu = SelectedRoom,
                         Phim = tmpphim
                     };
@@ -212,46 +203,45 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             OrderTicketCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
-                billService.dsVeHD.Add(SelectedTicket);
+                billService.dsVeHD.Add(new BanVeDTO()
+                {
+                    MaSC = SelectedTicket.MaSC,
+                    MaGhe = SelectedTicket.MaGhe,
+                    DaBan = SelectedTicket.DaBan,
+                    SuatChieu = SelectedTicket.SuatChieu,
+                    Ghe = SelectedTicket.Ghe
+                });
                 MyMessageBox.Show("Đã thêm vé vào hoá đơn");
             });
         }
         public async Task GetNewData()
         {
             if (!string.IsNullOrEmpty(SelectedRoom.ToString()))
-            { 
-                IsLoading = true; 
-                dsSuatChieu.Clear(); 
+            {
+                IsLoading = true;
+                await Task.Delay(20);
+                dsBanVe.Clear();
+                dsSuatChieu.Clear();
                 var data = await SuatChieuDAL.Instance.GetShowTimeByRoom(SelectedRoom, SelectedDate);
-                for (int i = 0; i < data.Count; i++) 
-                { 
-                    dsSuatChieu.Add(new SuatChieuDTO()
-                    { 
-                        MaSC = data[i].MaSC,
-                        Phim = data[i].Phim,
-                        BatDau = data[i].BatDau,
-                        KetThuc = data[i].KetThuc,
-                        GiaVe = data[i].GiaVe, 
-                    }); 
-                } 
+                dsSuatChieu = new ObservableCollection<SuatChieuDTO>(data);
                 IsLoading = false; 
             }
         }
         public bool CheckNonEmpty()
         {
             return !string.IsNullOrEmpty(BatDauStr) && !string.IsNullOrEmpty(KetThucStr)
-            && MaPhim != null && GiaVe.ToString() != null;
+            && MaPhim.ToString() != null && GiaVe.ToString() != null;
         }
         public void ClearData()
         {
-            MaSC = 0;
-            MaPhim = 0;
+            MaSC = null;
+            MaPhim = null;
             SoPhong = SelectedRoom;
             BatDau = DateTime.Now;
             KetThuc = DateTime.Now;
             BatDauStr = null;
             KetThucStr = null;
-            GiaVe = 0;
+            GiaVe = null;
         }
         public static DateTime ConvertDateTimeToString(string timeString)
         {
@@ -264,12 +254,12 @@ namespace CinemaManagement.ViewModel.AdminVM
         }
         public async void GetShowtimeData()
         {
-            MaSC = SelectedShowtime.MaSC;
+            MaSC = SelectedShowtime.MaSC.ToString();
             Phim = SelectedShowtime.Phim;
-            GiaVe = SelectedShowtime.GiaVe;
+            GiaVe = SelectedShowtime.GiaVe.ToString();
             NgayChieu = SelectedShowtime.GioChieuStr;
             SoPhong = SelectedRoom;
-            var data = await BanVeDAL.Instance.GetTicketSell(MaSC);
+            var data = await BanVeDAL.Instance.GetTicketSell(Int32.Parse(MaSC));
             dsBanVe = new ObservableCollection<BanVeDTO>(data);
         }
     }

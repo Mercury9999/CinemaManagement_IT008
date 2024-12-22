@@ -1,9 +1,9 @@
-﻿<Page x:Class="CinemaManagement.View.AdminView.ThongKeView.ThongKeSanPhamView"
+﻿<Page x:Class="CinemaManagement.View.ThongKeSanPhamView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagement.View.AdminView.ThongKeView"
+      xmlns:local="clr-namespace:CinemaManagement.View"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       FontFamily="{DynamicResource MaterialDesignFont}"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
@@ -25,24 +25,10 @@
                 <TextBlock Text="Sản phẩm xu hướng" FontSize="25" FontWeight="Bold" VerticalAlignment="Center"/>
 
                 <!-- chọn chu kỳ tháng-năm-->
-                <ComboBox 
-                        x:Name="comboBoxChuKy"
-                        HorizontalAlignment="Right" Margin="0 0 270 0"
-                        Width="200"
-                        materialDesign:HintAssist.Hint="Chọn chu kỳ"                       
-                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                    <ComboBoxItem Content="Theo tháng"/>
-                    <ComboBoxItem Content="Theo năm"/>
-                </ComboBox>
+               
 
                 <!-- Thgian tháng: tháng 1->tháng 12, tgian năm: năm tương ứng-->
-                <ComboBox 
-                        x:Name="comboBoxThoiGian"
-                        HorizontalAlignment="Right" Margin="0 0 50 0"
-                        Width="200"
-                        materialDesign:HintAssist.Hint="Chọn thời gian"
-                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                </ComboBox>
+                
             </Grid>
 
             <!--Chart grid-->

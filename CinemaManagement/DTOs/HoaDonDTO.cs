@@ -20,7 +20,21 @@ namespace CinemaManagement.DTOs
         public decimal GiamGia { get; set; }
         public decimal GiaTriHD { get; set; }
         public decimal ThanhTien { get; set; }
+        public string GiaTriHDStr
+        {
+            get
+            {
+                return MoneyFormat.FormatToVND(GiaTriHD);
+            }
+        }
         public string ThanhTienStr
+        {
+            get
+            {
+                return MoneyFormat.FormatToVND(ThanhTien);
+            }
+        }
+        public string GiamGiaStr
         {
             get
             {
@@ -32,13 +46,6 @@ namespace CinemaManagement.DTOs
             get
             {
                 return Convert.ToString(ChietKhau) + "%";
-            }
-        }
-        public string GiamGiaStr
-        {
-            get
-            {
-                return MoneyFormat.FormatToVND(GiamGia);
             }
         }
         public string MaKHStr

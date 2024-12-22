@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 
 namespace CinemaManagement.Models.DAL
@@ -26,7 +27,7 @@ namespace CinemaManagement.Models.DAL
             }
             private set => _instance = value;
         }
-        public async Task<(bool, string, int)> AddNewBill(HoaDonDTO hoadon)
+        public async Task<(bool, string, int)> AddNewBill(HoaDonDTO hoadon, ObservableCollection<SanPhamDTO> dssp, ObservableCollection<BanVeDTO> dsve)
         {
             int newBillId = -1;
             try
@@ -48,6 +49,18 @@ namespace CinemaManagement.Models.DAL
                         GiaTriHD = hoadon.GiaTriHD,
                         ThanhTien = hoadon.ThanhTien
                     };
+                    for(int i = 0; i < dssp.Count; i++)
+                    {
+                        var sp = await context.SanPhams.FindAsync(dssp[i].MaSP);
+                        sp.SoLuong -= dssp[i].SoLuong;
+                    }
+                    for(int i = 0; i < dsve.Count; i++)
+                    {
+                        var ve = await context.BanVes.FindAsync(dsve[i].MaSC, dsve[i].MaGhe);
+                        ve.DaBan = true;
+                    }
+                    var kh = await context.KhachHangs.FindAsync(hoadon.MaKH);
+                    kh.HDTichLuy += hoadon.ThanhTien;
                     context.HoaDons.Add(hd);
                     await context.SaveChangesAsync();
                 }
@@ -60,7 +73,7 @@ namespace CinemaManagement.Models.DAL
             {
                 return (false, ex.ToString(), newBillId);
             }
-            return (true, "Thêm sản phẩm thành công", newBillId);
+            return (true, "Đã thanh toán", newBillId);
         }
         public async Task<List<HoaDonDTO>> GetAllBill()
         {
@@ -68,7 +81,7 @@ namespace CinemaManagement.Models.DAL
             {
                 using (var context = new CinemaManagementEntities())
                 {
-                    var dshoadon = (from hoadon in context.HoaDons
+                    var dshoadon = await (from hoadon in context.HoaDons
                                     orderby hoadon.NgayHD descending
                                     select new HoaDonDTO
                                     {
@@ -81,7 +94,12 @@ namespace CinemaManagement.Models.DAL
                                         GiaTriHD = hoadon.GiaTriHD,
                                         ThanhTien = hoadon.ThanhTien
                                     }).ToListAsync();
-                    return await dshoadon;
+                    foreach(HoaDonDTO hoadon in dshoadon)
+                    {
+                        hoadon.NhanVien = await NhanVienDAL.Instance.GetStaffById(hoadon.MaNV);
+                        hoadon.KhachHang = await KhachHangDAL.Instance.GetCustomerById(hoadon.MaKH);
+                    }
+                    return dshoadon;
                 }
             }
             catch (Exception ex)

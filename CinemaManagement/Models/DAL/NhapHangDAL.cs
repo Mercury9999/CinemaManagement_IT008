@@ -51,7 +51,7 @@ namespace CinemaManagement.Models.DAL
                     }
                     spnhap.SoLuong += hdNhap.SoLuong;
                     context.HDNhapHangs.Add(HDNhap);
-                    context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
                     return newBillReceiptId;
                 }
             }

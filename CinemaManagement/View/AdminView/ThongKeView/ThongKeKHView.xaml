@@ -1,16 +1,19 @@
-﻿<Page x:Class="CinemaManagement.View.AdminView.ThongKeView.ThongKeKHView"
+﻿<Page x:Class="CinemaManagement.View.ThongKeKHView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagement.View.AdminView.ThongKeView"
+      xmlns:local="clr-namespace:CinemaManagement.View"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       FontFamily="{DynamicResource MaterialDesignFont}"
-      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" xmlns:i="http://schemas.microsoft.com/netfx/2009/xaml/presentation" xmlns:i1="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=adminvm:ThongKeKHVM}"
       mc:Ignorable="d" 
       d:DesignHeight="700" 
       d:DesignWidth="850"
-      Title="ThongKeKHView">
+      Title="ThongKeKHView"
+      DataContext="{StaticResource StasticVM}">
+
+
 
     <Border Background="#eff2f7">
 
@@ -31,7 +34,7 @@
                                      Height="300"
                                      VerticalAlignment="Center"
                                      Grid.Row="2">
-                    <ListView 
+                    <ListView x:Name="listKH" ItemsSource="{Binding Top5Customer}"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Width="830">
                         <ListView.View>
 
@@ -50,7 +53,7 @@
                                                 Width="180">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding DoanhThu}" 
+                                            <TextBlock Text="{Binding HDTichLuyStr}" 
                                                        FontSize="18" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -58,7 +61,7 @@
                                 <GridViewColumn Header="Số điện thoại" Width="160">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding SDT}"
+                                            <TextBlock Text="{Binding SDT_KH}"
                                                        FontSize="18"
                                                        Margin="20,0,0,0" />
                                         </DataTemplate>

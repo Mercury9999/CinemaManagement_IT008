@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,9 +21,26 @@ namespace CinemaManagement.View.AdminView.HoaDonView
     /// </summary>
     public partial class ThanhToanBeta : Window
     {
+        public class testData
+        {
+            public string TenPhim { get; set; }
+            public string NgayChieu { get; set; }
+            public string ThoiGian { get; set; }
+            public string Phong { get; set; }
+            public string Ghe { get; set; }
+            public string GiaVe { get; set; }
+        }
+        public ObservableCollection<testData> TestData { get; set; }
         public ThanhToanBeta()
         {
             InitializeComponent();
+            TestData = new ObservableCollection<testData>()
+            {
+                new testData { TenPhim = "Chu Meo con biet di", NgayChieu = "16/12/2024", ThoiGian = "9:00", Phong = "2", Ghe = "A01, A02, A03, A07", GiaVe = "100000" },
+                new testData { TenPhim = "Aquaman", NgayChieu = "16/12/2024", ThoiGian = "9:00", Phong = "2", Ghe = "A01, A02, A03, A07", GiaVe = "100000" },
+                new testData { TenPhim = "Doreamon va chu khung long", NgayChieu = "16/12/2024", ThoiGian = "9:00", Phong = "2", Ghe = "A01, A02, A03, A07", GiaVe = "100000" }
+            };
+            filmListBox.ItemsSource = TestData;
         }
     }
 }

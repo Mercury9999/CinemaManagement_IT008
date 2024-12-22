@@ -272,6 +272,9 @@ namespace CinemaManagement.ViewModel.AdminVM
             OpenOrderProductCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 SoLuongMua = 0;
+                MaSP = SPSelected.MaSP;
+                TenSP = SPSelected.TenSP;
+                GiaSP = SPSelected.GiaSP;
                 Window w1 = new MuaHang();
                 MaSP = SPSelected.MaSP;
                 w1.ShowDialog();
@@ -281,6 +284,8 @@ namespace CinemaManagement.ViewModel.AdminVM
                 billService.dsSanPhamHD.Add(new SanPhamDTO
                 {
                     MaSP = MaSP ?? 0,
+                    TenSP = TenSP,
+                    GiaSP = GiaSP ?? 0,
                     SoLuong = SoLuongMua
                 });
                 CurrentWindow.Close();
