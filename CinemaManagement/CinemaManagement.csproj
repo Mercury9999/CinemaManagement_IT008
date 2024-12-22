@@ -25,6 +25,7 @@
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <None Remove="CinemaManagement.edmx" />
     <None Remove="Models\CinemaManagementModel1.edmx" />
+    <None Remove="Resource\avatar.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +47,10 @@
   <ItemGroup>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Security" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\avatar.jpg" />
   </ItemGroup>
 
   <ItemGroup>
