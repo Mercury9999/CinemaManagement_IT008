@@ -257,7 +257,7 @@
                                                             </icon:PackIconMaterial>
                                                             <i:Interaction.Triggers>
                                                                 <i:EventTrigger EventName="MouseLeftButtonDown">
-                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.NhapHangCM}"/>
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=sanphamlistBox, Path=DataContext.ImportProductCM}"/>
                                                                 </i:EventTrigger>
                                                             </i:Interaction.Triggers>
                                                         </Border>

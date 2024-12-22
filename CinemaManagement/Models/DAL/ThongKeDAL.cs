@@ -74,5 +74,46 @@ namespace CinemaManagement.Models.DAL
                 throw ex;
             }
         }
+        public async Task<List<SanPhamDTO>> GetTop5ProductBySales()
+        {
+            try
+            {
+                using (var context = new CinemaManagementEntities())
+                {
+                    var dsPhim = await (from sp in context.SanPhams
+                                        join cthd in context.CTHDSanPhams on sp.MaSP equals cthd.MaSP
+                                        group new { sp, cthd } by new { sp.MaSP, sp.TenSP } into s
+                                        orderby s.Sum(s => s.cthd.SoLuong) descending
+                                        select new SanPhamDTO
+                                        {
+                                            MaSP = s.Key.MaSP,
+                                            TenSP = s.Key.TenSP,
+                                            SoLuong = s.Sum(s => s.cthd.SoLuong)
+                                        }).Take(5).ToListAsync();
+                    return dsPhim;
+                }
+            }
+            catch (Exception ex)
+            {
+                MyMessageBox.Show("Lỗi dữ liệu: " + ex.ToString());
+                throw ex;
+            }
+        }
+        public async Task<decimal> GetRevenue()
+        {
+            try
+            {
+                using (var context = new CinemaManagementEntities())
+                {
+                    var doanhthu = await context.HoaDons.SumAsync(s => s.ThanhTien);
+                    return doanhthu;
+                }
+            }
+            catch (Exception ex)
+            {
+                MyMessageBox.Show("Lỗi dữ liệu: " + ex.ToString());
+                throw ex;
+            }
+        }
     }
 }

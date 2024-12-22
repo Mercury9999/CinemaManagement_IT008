@@ -60,6 +60,7 @@ namespace CinemaManagement.ViewModel.AdminVM
         public string KetThucStr { get; set; }
         public string NgayChieu { get; set; }
         public string GiaVe { get; set; }
+        public string GiaVeStr { get; set; }
         public bool IsSaving { get; set; }
         public bool IsLoading { get; set; }
         private ObservableCollection<SuatChieuDTO> _dsSuatChieu = new ObservableCollection<SuatChieuDTO>();
@@ -259,6 +260,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             GiaVe = SelectedShowtime.GiaVe.ToString();
             NgayChieu = SelectedShowtime.GioChieuStr;
             SoPhong = SelectedRoom;
+            GiaVeStr = SelectedShowtime.GiaVeStr;
             var data = await BanVeDAL.Instance.GetTicketSell(Int32.Parse(MaSC));
             dsBanVe = new ObservableCollection<BanVeDTO>(data);
         }

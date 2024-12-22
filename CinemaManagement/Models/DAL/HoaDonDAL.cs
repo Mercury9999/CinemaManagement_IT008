@@ -34,6 +34,8 @@ namespace CinemaManagement.Models.DAL
             {
                 using (var context = new CinemaManagementEntities())
                 {
+                    List<Ve> DsVe = new List<Ve>();
+                    List<CTHDSanPham> dsCTHDSP = new List<CTHDSanPham>();
                     int maxBillId;
                     if (await context.HoaDons.AnyAsync()) maxBillId = await context.HoaDons.MaxAsync(s => s.SoHD);
                     else maxBillId = 0;
@@ -52,16 +54,46 @@ namespace CinemaManagement.Models.DAL
                     for(int i = 0; i < dssp.Count; i++)
                     {
                         var sp = await context.SanPhams.FindAsync(dssp[i].MaSP);
+                        if (sp == null)
+                        {
+                            return (false, "Sản phẩm " + sp.TenSP + " không tồn tại, vui lòng nhập sản phẩm", -1);
+                        }
+                        if (sp.SoLuong < dssp[i].SoLuong)
+                        {
+                            return (false, "Sản phẩm " + sp.TenSP + " không đủ hàng", -1);
+                        }
+                        dsCTHDSP.Add(new CTHDSanPham
+                        {
+                            SoHD = newBillId,
+                            MaSP = dssp[i].MaSP,
+                            DonGia = dssp[i].GiaSP,
+                            SoLuong = dssp[i].SoLuong,
+                        });
                         sp.SoLuong -= dssp[i].SoLuong;
                     }
-                    for(int i = 0; i < dsve.Count; i++)
+                    int TicketId;
+                    if (await context.Ves.AnyAsync()) TicketId = await context.Ves.MaxAsync(s => s.MaVe);
+                    else TicketId = 0;
+                    for (int i = 0; i < dsve.Count; i++)
                     {
                         var ve = await context.BanVes.FindAsync(dsve[i].MaSC, dsve[i].MaGhe);
+                        TicketId++;
+                        DsVe.Add(new Ve
+                        {
+                            SoHD = newBillId,
+                            MaVe = TicketId,
+                            MaSC = dsve[i].MaSC,
+                            MaGhe = dsve[i].MaGhe,
+                            GiaVe = dsve[i].SuatChieu.GiaVe,
+                            SoGhe = dsve[i].Ghe.SoGhe
+                        });
                         ve.DaBan = true;
                     }
                     var kh = await context.KhachHangs.FindAsync(hoadon.MaKH);
                     kh.HDTichLuy += hoadon.ThanhTien;
                     context.HoaDons.Add(hd);
+                    context.Ves.AddRange(DsVe);
+                    context.CTHDSanPhams.AddRange(dsCTHDSP);
                     await context.SaveChangesAsync();
                 }
             }
