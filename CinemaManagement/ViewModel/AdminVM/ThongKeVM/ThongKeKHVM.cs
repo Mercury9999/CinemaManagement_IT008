@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CinemaManagement.DTOs;
+﻿using CinemaManagement.DTOs;
 using CinemaManagement.Models.DAL;
 using LiveCharts;
 using LiveCharts.Wpf;
