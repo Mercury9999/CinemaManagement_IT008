@@ -19,6 +19,7 @@
     <viewmodel2:QuanLySuatChieuVM x:Key="ShowtimeVM"/>
     <viewmodel2:HoaDonVM x:Key="BillVM"/>
     <viewmodel2:ThongKeVM x:Key="StasticVM"/>
+    <viewmodel2:AccountVM x:Key="AccountVM"/>
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     <!--Navigation Control-->
     
