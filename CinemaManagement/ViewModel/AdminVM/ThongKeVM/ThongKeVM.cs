@@ -43,7 +43,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             }
             catch (Exception ex)
             {
-                CustomControls.MyMessageBox.Show("Lỗi hệ thống");
+//                CustomControls.MyMessageBox.Show("Lỗi hệ thống");
                 return;
             }
 
