@@ -11,11 +11,16 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using CinemaManagement.View.AdminView.AccountView;
+using CinemaManagement.ViewModel.AdminVM;
+using CinemaManagement.DTOs;
+using System.Collections.ObjectModel;
 
 namespace CinemaManagement.ViewModel.NavigationVM
 {
     public class MainNavigationVM : BaseViewModel
     {
+        public BillService billService = BillService.Instance;
+        public AccountService accountService = AccountService.Instance;
         public ICommand QuanLyPhimCM { get; set; }
         public ICommand QuanLySuatChieuCM { get; set; }
         public ICommand QuanLySanPhamCM { get; set; }
@@ -25,6 +30,7 @@ namespace CinemaManagement.ViewModel.NavigationVM
         public ICommand AccountCM { get; set; }
         public ICommand ThongKeCM { get; set; }
         public ICommand GetNavigationFrameCM {  get; set; }
+        public ICommand LogoutCM { get; set; }
 
         public Frame NavigationFrame { get; set; }
         
@@ -65,8 +71,16 @@ namespace CinemaManagement.ViewModel.NavigationVM
             AccountCM = new RelayCommand<object> ((p) => { return true; }, (p) =>
             {
                 NavigationFrame.Navigate(new AccountView());
-            }
-            );
+            });
+            LogoutCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                billService.dsVeHD = new ObservableCollection<BanVeDTO>();
+                billService.dsSanPhamHD = new ObservableCollection<SanPhamDTO>();
+                accountService.CurrentAccount = null;
+                Window w1 = new LoginWindow();
+                p.Close();
+                w1.ShowDialog();
+            });
         }
     }
 }
