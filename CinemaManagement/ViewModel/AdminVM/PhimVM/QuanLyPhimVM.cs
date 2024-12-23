@@ -125,8 +125,8 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             DeleteFilmCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
-                MessageBoxResult result = MessageBox.Show("Xoá sẽ mất hết dữ liệu", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if(result == MessageBoxResult.Yes)
+                bool result = MyMessageBox.ShowYesNo("Xoá sẽ mất hết dữ liệu?");
+                if (result)
                 {
                     IsLoading = true;
                     GetDataFilm();
@@ -143,8 +143,6 @@ namespace CinemaManagement.ViewModel.AdminVM
                             }
                         }
                     }
-                    
-
                     CustomControls.MyMessageBox.Show(message);
                 }
             });

@@ -1,4 +1,5 @@
-﻿using CinemaManagement.DTOs;
+﻿using CinemaManagement.CustomControls;
+using CinemaManagement.DTOs;
 using CinemaManagement.Models.DAL;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 (bool trangthai, string messages, int newid) = await SanPhamDAL.Instance.AddProduct(sanPham);
                 if (trangthai)
                 {
-                    MessageBox.Show(messages);
+                    MyMessageBox.Show(messages);
                     IsLoading = true;
                     sanPham.MaSP = newid;
                     dsSP.Add(sanPham);

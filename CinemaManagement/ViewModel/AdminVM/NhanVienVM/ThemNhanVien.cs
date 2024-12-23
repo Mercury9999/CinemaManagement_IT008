@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Collections.ObjectModel;
+using CinemaManagement.CustomControls;
 
 namespace CinemaManagement.ViewModel.AdminVM
 {
@@ -40,7 +41,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 (bool trangthai, string messages, int newStaffId) = await NhanVienDAL.Instance.AddStaff(NhanVien);
                 if (trangthai)
                 {
-                    MessageBox.Show(messages);
+                    MyMessageBox.Show(messages);
                     IsLoading = true;
                     NhanVien.MaNV = newStaffId;
                     dsNV.Add(NhanVien);

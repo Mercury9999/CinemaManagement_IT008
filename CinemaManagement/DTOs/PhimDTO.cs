@@ -44,5 +44,6 @@ namespace CinemaManagement.DTOs
                 return MoneyFormat.FormatToVND(DoanhThu);
             }
         }
+        public Nullable<bool> IsDeleted { get; set; } = false;
     }
 }
