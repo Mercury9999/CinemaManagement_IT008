@@ -12,6 +12,7 @@ namespace CinemaManagement.ViewModel.AdminVM
 {
     public partial class QuanLySanPhamVM : BaseViewModel
     {
+        public AccountService accountService { get; set; } = AccountService.Instance;
         private async Task ImportProduct(Window w1)
         {
 
@@ -20,6 +21,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 MaSPNhap = (int)MaSP,
                 DonGiaNhap = GiaNhap,
                 SoLuong = SoLuongNhap,
+                MaNVNhap = accountService.CurrentAccount.MaNV
             };
             (bool trangthai, string messages) = await SanPhamDAL.Instance.ImportProduct(hdnhaphang);
             if (trangthai)

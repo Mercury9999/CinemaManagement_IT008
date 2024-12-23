@@ -18,6 +18,8 @@
     <viewmodel2:QuanLySanPhamVM x:Key="ProductVM"/>
     <viewmodel2:QuanLySuatChieuVM x:Key="ShowtimeVM"/>
     <viewmodel2:HoaDonVM x:Key="BillVM"/>
+    <viewmodel2:ThongKeVM x:Key="StasticVM"/>
+    <viewmodel2:AccountVM x:Key="AccountVM"/>
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     <!--Navigation Control-->
     
@@ -750,9 +752,9 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <ScrollContentPresenter Grid.Column="0" Grid.Row="0"/>
-                        <ScrollBar Name="PART_VerticalScrollBar" Grid.Column="1" Grid.Row="0" Orientation="Vertical" Visibility="Collapsed" />
-                        <ScrollBar Name="PART_HorizontalScrollBar" Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed" />
+                        <ScrollContentPresenter Grid.Column="0" Grid.Row="0" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}"/>
+                        <ScrollBar Name="PART_VerticalScrollBar" Grid.Column="1" Grid.Row="0" Orientation="Vertical" Visibility="Hidden" />
+                        <ScrollBar Name="PART_HorizontalScrollBar" Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Visibility="Hidden" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -784,11 +786,11 @@
                         <!--<Trigger Property="IsSelected"
                                          Value="true">
                             <Setter TargetName="Border" Property="Background" Value="Green"/>
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Cursor" Value="Hand"/>
-                            <Setter TargetName="Border" Property="Background" Value="Green"/>
-                        </Trigger>-->
+                            <!--<Setter TargetName="Border" Property="Background" Value="Green"/>-->
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -808,13 +810,15 @@
     </Style>
 
     <Style x:Key="SelectableBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="White"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Green"/>
+                <Setter Property="Background" Value="LightGreen"/>
                 <Setter Property="BorderBrush" Value="White"/>
             </Trigger>
             <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
-                <Setter Property="Background" Value="Green"/>
+                <Setter Property="Background" Value="LightGreen"/>
                 <Setter Property="BorderBrush" Value="White"/>
             </DataTrigger>
         </Style.Triggers>

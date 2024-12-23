@@ -1,4 +1,5 @@
-﻿using CinemaManagement.DTOs;
+﻿using CinemaManagement.CustomControls;
+using CinemaManagement.DTOs;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Reflection;
@@ -41,7 +42,7 @@ namespace CinemaManagement.Models.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.ToString());
+                MyMessageBox.Show("Lỗi: " + ex.ToString());
                 return null;
             }
         }

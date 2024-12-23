@@ -11,6 +11,7 @@ using System.Windows.Input;
 using CinemaManagement.ViewModel.AdminVM;
 using CinemaManagement.Ultis;
 using System.Collections.ObjectModel;
+using CinemaManagement.CustomControls;
 
 namespace CinemaManagement.ViewModel.AdminVM
 {
@@ -42,7 +43,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 (bool trangthai, string messages, int newId) = await PhimDAL.Instance.AddMovie(Phim);
                 if (trangthai)
                 {
-                    MessageBox.Show(messages);
+                    MyMessageBox.Show(messages);
                     IsLoading = true;
                     var data = await Task.Run(async () => await PhimDAL.Instance.GetAllMovie());
                     dsPhim = new ObservableCollection<PhimDTO>(data);

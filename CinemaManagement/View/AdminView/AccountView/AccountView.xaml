@@ -5,14 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaManagement.View" 
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:accountvm="clr-namespace:CinemaManagement.ViewModel.AdminVM.AccountVM" d:DataContext="{d:DesignInstance Type=accountvm:AccountVM}"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:AccountVM}"
       FontFamily="{DynamicResource MaterialDesignFont }"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       mc:Ignorable="d" 
       d:DesignHeight="810" 
       d:DesignWidth="900"
       x:Name="AccountPage"
-      Background="Transparent">
+      Background="Transparent"
+      DataContext="{StaticResource AccountVM}">
 
     <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">

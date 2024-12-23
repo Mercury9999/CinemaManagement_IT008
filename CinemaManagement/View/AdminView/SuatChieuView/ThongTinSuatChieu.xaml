@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:CinemaManagement.View" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:QuanLySuatChieuVM}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
@@ -15,8 +16,16 @@
         Background="Transparent"
         DataContext="{StaticResource ShowtimeVM}"
         x:Name="thongtinscWindow">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetCurrentWindowCM}"
+                               CommandParameter="{Binding ElementName=suasanphamWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
-    <Border CornerRadius="25" Background="#eff2f7">
+    
+
+    <Border CornerRadius="25" Background="#be93d4">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -53,10 +62,10 @@
                     <TextBlock Text="{Binding NgayChieu}" Margin="23 0 0 0"/>
 
                     <Label FontSize="13" Content="Giá vé" FontWeight="Bold" Margin="20 20 0 0"/>
-                    <TextBlock Text="{Binding GiaVe}" Margin="23 0 0 0"/>
+                    <TextBlock Text="{Binding GiaVeStr}" Margin="23 0 0 0"/>
 
                     <StackPanel HorizontalAlignment="Right" Margin="0 15 60 0" Orientation="Horizontal">
-                        <Button Padding="0" Margin="0 0 30 0" Width="90" BorderThickness="0"  Background="Green">
+                        <Button Padding="0" Margin="0 0 30 0" Width="90" BorderThickness="0"  Background="Green" Command="{Binding OrderTicketCM}">
                             <TextBlock Text="Đặt vé"/>
                         </Button>
                         <Button Padding="0" Width="90" BorderThickness="0"  Background="Red" Command="{Binding CloseWindowCM}" CommandParameter="{Binding ElementName=thongtinscWindow}">
@@ -85,12 +94,13 @@
                     <TextBlock Text="K" Margin="0 30 0 0" FontSize="20" FontWeight="Bold" Foreground="Black"/>
                 </StackPanel>
 
+                <Button Style="{StaticResource buttonClose}" HorizontalAlignment="Right" Foreground="White" Content="X" Width="64" Height="39" VerticalAlignment="Top" Background="Red" Command="{Binding CloseWindowCM}" CommandParameter="{Binding ElementName=thongtinscWindow}"/>
                 <StackPanel>
-                    <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="Black" Text="CHỌN GHẾ - PHÒNG X" FontFamily="Cooper Black"/>
+                    <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="Black" Text="MÀN HÌNH" FontFamily="Showcard Gothic"/>
 
                     <Line X1="80" Y1="50" X2="650" Y2="50" Stroke="Black" StrokeThickness="2"/>
 
-                    <TextBlock Foreground="Black" HorizontalAlignment="Center" Margin="20" Text="Màn hình" FontSize="25"/>
+                    <TextBlock Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="20" Text="CHỌN GHẾ" FontSize="25"/>
 
                     <ListBox ItemsSource="{Binding dsBanVe}"
                              x:Name="SeatListBox1"
@@ -98,7 +108,7 @@
                              HorizontalAlignment="Right"
                              VerticalAlignment="Top"
                              Grid.Column="0"
-                             Margin="0 0 90 40" SelectionMode="Multiple"
+                             Margin="0 0 90 40" SelectionMode="Single"
                              SelectedItem="{Binding SelectedTicket}">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem"
@@ -106,12 +116,12 @@
                                 <!--<Style.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter Property="Background" Value="Green"/>
-                                        <Setter Property="Foreground" Value="White"/>
                                     </Trigger>
                                 </Style.Triggers>-->
                             </Style>
 
                         </ListBox.ItemContainerStyle>
+                        
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="10"
@@ -120,21 +130,22 @@
                         </ListBox.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border   BorderBrush="Green"
+                                <Border   BorderBrush="White"
                                           BorderThickness="2"
                                           CornerRadius="3"
                                           Width="38"
                                           Height="38"                                 
                                           Style="{StaticResource SelectableBorderStyle}">
 
-                                    <Label Content="{Binding SoGheStr}"
+                                    <Label Content="{Binding Ghe.SoGheStr}"
                                            Background="Transparent"
                                            Foreground="Black"
                                            FontSize="11"
                                            FontWeight="Bold"
-                                           x:Name="lbl1"
+                                           x:Name="label1"
                                            VerticalContentAlignment="Center"
                                            HorizontalContentAlignment="Center">
+                                        
                                     </Label>
                                 </Border>
                             </DataTemplate>

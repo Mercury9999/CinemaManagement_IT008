@@ -1,5 +1,6 @@
 ﻿using CinemaManagement.DTOs;
 using CinemaManagement.Models.DAL;
+using CinemaManagement.ViewModel.AdminVM;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,7 +49,7 @@ namespace CinemaManagement.ViewModel.LoginVM
         }
         private bool IsLoading { get; set; }
         #endregion
-
+        public AccountService accountService { get; set; } = AccountService.Instance;
         public LoginViewModel() 
         {
             LoginCM = new RelayCommand<Label>((p) => { return true; }, async (p) =>
@@ -85,6 +86,7 @@ namespace CinemaManagement.ViewModel.LoginVM
             if(loginStatus)
             {
                 LoginWindow.Hide();
+                accountService.CurrentAccount = nhanvien;
                 MainNavigation w1 = new MainNavigation();
                 w1.Show();
                 LoginWindow.Close();

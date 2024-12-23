@@ -1,4 +1,5 @@
-﻿using CinemaManagement.DTOs;
+﻿using CinemaManagement.CustomControls;
+using CinemaManagement.DTOs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -203,7 +204,9 @@ namespace CinemaManagement.Models.DAL
                                            NgaySinh = nv.NgaySinh,
                                            GioiTinh = nv.GioiTinh,
                                            ChucVu = nv.ChucVu,
-                                           NgayVaoLam = nv.NgayVaoLam
+                                           NgayVaoLam = nv.NgayVaoLam,
+                                           acc_password = nv.acc_password,
+                                           acc_username = nv.acc_username
                                        }).FirstOrDefaultAsync();
                     if (staff == null)
                     {
@@ -219,6 +222,42 @@ namespace CinemaManagement.Models.DAL
             catch(Exception ex)
             {
                 return (false, "Lỗi hệ thống", null);
+            }
+        }
+        public async Task<NhanVienDTO> GetStaffById(int id)
+        {
+            try
+            {
+                using (var context = new CinemaManagementEntities())
+                {
+                     var n =   (from nv in context.NhanViens
+                                where nv.MaNV == id
+                                select new NhanVienDTO
+                                {
+                                    MaNV = nv.MaNV,
+                                    TenNV = nv.TenNV,
+                                    GioiTinh = nv.GioiTinh,
+                                    acc_password = nv.acc_password,
+                                    acc_username = nv.acc_username,
+                                    NgaySinh = nv.NgaySinh,
+                                    NgayVaoLam = nv.NgayVaoLam,
+                                    ChucVu = nv.ChucVu,
+                                    SDT_NV = nv.SDT_NV,
+                                    email_NV = nv.email_NV,
+                                }).FirstOrDefaultAsync();
+
+                    if (n == null)
+                    {
+                        MyMessageBox.Show("Sai mã nhân viên");
+                        return null;
+                    }
+                    return await n;
+                }
+            }
+            catch (Exception ex)
+            {
+                MyMessageBox.Show("Lỗi dữ liệu: " + ex.ToString());
+                throw;
             }
         }
         public async Task<(bool, string)> ChangePassword(string username, string newpassword)
