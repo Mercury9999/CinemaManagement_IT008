@@ -19,11 +19,9 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding GetCurrentWindowCM}"
-                               CommandParameter="{Binding ElementName=suasanphamWindow}"/>
+                               CommandParameter="{Binding ElementName=thongtinscWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-
-    
 
     <Border CornerRadius="25" Background="#be93d4">
         <Grid>
@@ -145,7 +143,7 @@
                                            x:Name="label1"
                                            VerticalContentAlignment="Center"
                                            HorizontalContentAlignment="Center">
-                                        
+
                                     </Label>
                                 </Border>
                             </DataTemplate>

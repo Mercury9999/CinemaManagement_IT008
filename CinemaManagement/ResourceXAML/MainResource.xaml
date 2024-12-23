@@ -821,6 +821,12 @@
                 <Setter Property="Background" Value="LightGreen"/>
                 <Setter Property="BorderBrush" Value="White"/>
             </DataTrigger>
+            <DataTrigger Binding="{Binding DaBan}" Value="True">
+                <Setter Property="Background" Value="Gray"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding DaBan}" Value="True">
+                <Setter Property="IsEnabled" Value="False"/>
+            </DataTrigger>
         </Style.Triggers>
     </Style>
     
