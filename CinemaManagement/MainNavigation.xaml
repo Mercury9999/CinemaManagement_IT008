@@ -92,7 +92,7 @@
                     <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                 </Grid>
             </Button>
-            
+
             <Button Command="{Binding QuanLyKhachHangCM}" Style="{StaticResource menuButton}">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -106,13 +106,13 @@
             <Button Command="{Binding QuanLyHoaDonCM}" Style="{StaticResource menuButton}">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <fa:ImageAwesome Icon="Users" Style="{StaticResource buttonIcon}"/>
+                        <fa:ImageAwesome Icon="Safari" Style="{StaticResource buttonIcon}"/>
                         <TextBlock Style="{StaticResource buttonText }">Quản lý hoá đơn</TextBlock>
                     </StackPanel>
                     <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                 </Grid>
             </Button>
-            
+
             <Button Command="{Binding QuanLyNhanVienCM}" Style="{StaticResource menuButton}">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -122,18 +122,19 @@
                     <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                 </Grid>
             </Button>
-
+            
             <Button Command="{Binding ThongKeCM}" Style="{StaticResource menuButton}">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <fa:ImageAwesome Icon="Users" Style="{StaticResource buttonIcon }"/>
+                        <fa:ImageAwesome Icon="Money" Style="{StaticResource buttonIcon }"/>
                         <TextBlock Style="{StaticResource buttonText }">Thống kê</TextBlock>
                     </StackPanel>
                     <fa:ImageAwesome Icon="AngleRight" HorizontalAlignment="Right" Visibility="Visible" Style="{StaticResource buttonIconExpanded}"/>
                 </Grid>
             </Button>
 
-            <Button Style="{StaticResource menuButton}" Margin="0 180 -20 0" Command="{Binding AccountCM}">
+
+            <Button Style="{StaticResource menuButton}" Margin="0 100 -20 0" Command="{Binding AccountCM}">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <fa:ImageAwesome Icon="User" Style="{StaticResource buttonIcon }"/>

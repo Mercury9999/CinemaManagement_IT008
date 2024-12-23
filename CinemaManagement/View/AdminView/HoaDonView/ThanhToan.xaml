@@ -94,6 +94,7 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="170" Height="26"
                                  Margin="20 20 0 0"
                                  Padding="0 -5 0 0" 
+                                 IsReadOnly="True"
                                  Text="{Binding TenKH}"
                                  />
                         <!-- Button binding Info KH-->
@@ -118,7 +119,7 @@
                                  FontSize="18"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="170" Height="26"
                                  Margin="16 20 0 0"
-                                 Padding="0 -5 0 0" 
+                                 Padding="0 -5 0 0" IsReadOnly="True"
                                  Text="{Binding SDTKH}"
                                  />
                         <!--Button trang tri-->

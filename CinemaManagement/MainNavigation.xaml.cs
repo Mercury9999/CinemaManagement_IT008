@@ -27,7 +27,7 @@ namespace CinemaManagement
         public MainNavigation()
         {
             InitializeComponent();
-            mainFrame.Navigate(new ThongKeView());
+            mainFrame.Navigate(new AccountView());
         }
         private void Closebutton_Click(object sender, RoutedEventArgs e)
         {

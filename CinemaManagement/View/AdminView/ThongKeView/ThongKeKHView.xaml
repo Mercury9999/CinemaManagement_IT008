@@ -75,7 +75,7 @@
 
             <materialDesign:Card Grid.Row="1" Grid.Column="0"
                                  UniformCornerRadius="20"
-                                 Margin="20"
+                                 Margin="45,50,80,220"
                                  Height="80"
                                  Width="300">
                 <TextBlock Text="Sản phẩm mua" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
@@ -84,7 +84,7 @@
             <!-- Chart vé / sản phẩm-->
             <materialDesign:Card Grid.Row="1" Grid.Column="1"
                                  UniformCornerRadius="20"
-                                 Margin="20"
+                                 Margin="20 0 20 80"
                                  Height="250">
                 <lvc:PieChart Grid.Row="1"
                               Margin="5"

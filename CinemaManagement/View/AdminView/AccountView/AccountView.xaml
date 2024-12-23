@@ -48,7 +48,7 @@
                     <TextBlock Text="{Binding CurrentStaff.MaNVStr}" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Margin="70 30 0 10" Foreground="#E5531795" Width="198"/>
                     <Ellipse Margin="0 0 0 10" Width="190" Height="179" Stroke="Black" StrokeThickness="2">
                         <Ellipse.Fill>
-                            <ImageBrush Stretch="UniformToFill"/>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="pack://application:,,,/Resource/avatar.jpg"/>
                         </Ellipse.Fill>
                     </Ellipse>
 

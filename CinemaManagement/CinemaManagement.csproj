@@ -22,15 +22,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <None Remove="CinemaManagement.edmx" />
-    <None Remove="Models\CinemaManagememtModel1.edmx" />
+    <None Remove="Models\CinemaManagementModel1.edmx" />
+    <None Remove="Resource\avatar.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EntityDeploy Include="Models\CinemaManagememtModel1.edmx">
+    <EntityDeploy Include="Models\CinemaManagementModel1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CinemaManagememtModel1.Designer.cs</LastGenOutput>
+      <LastGenOutput>CinemaManagementModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
 
@@ -49,15 +51,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resource\avatar.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Models\CinemaManagememtModel1.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CinemaManagememtModel1.edmx</DependentUpon>
-    </Compile>
     <Compile Update="Models\CinemaManagementModel1.Context.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -67,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>CinemaManagementModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Models\CinemaManagementModel1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CinemaManagementModel1.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
 
