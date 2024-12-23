@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CinemaManagement.View
+namespace CinemaManagement.View.AdminView.HoaDonView
 {
     /// <summary>
-    /// Interaction logic for ThongKeDoanhThuView.xaml
+    /// Interaction logic for ThongTinHoaDon.xaml
     /// </summary>
-    public partial class ThongKeDoanhThuView : Page
+    public partial class ThongTinHoaDon : Window
     {
-        public ThongKeDoanhThuView()
+        public ThongTinHoaDon()
         {
             InitializeComponent();
         }

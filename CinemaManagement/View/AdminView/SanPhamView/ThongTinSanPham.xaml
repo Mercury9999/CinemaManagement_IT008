@@ -49,7 +49,7 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="203" Height="26"
                                      Margin="20 0 0 0"
                                      Padding="0 -5 0 0"
-                                     FontSize="20"
+                                     FontSize="20" IsReadOnly="True"
                                 Text="{Binding TenSP}"/>
                         </StackPanel>
 
@@ -58,7 +58,7 @@
                             <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
                               Width="120" Height="26"
                               Margin="20 0 0 0"
-                              Padding="0 -5 0 0"
+                              Padding="0 -5 0 0" IsReadOnly="True"
                               Text="{Binding LoaiSP}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -66,7 +66,7 @@
                             <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="90" Height="26"
                                      Margin="50 0 0 0"
-                                     Padding="0"
+                                     Padding="0" IsReadOnly="True"
                                      Text="{Binding GiaSP}"/>
 
                         </StackPanel>
@@ -87,7 +87,7 @@
                     <TextBlock Text="Mã sản phẩm" Margin="10 10 0 0" Name="txtMaSP" FontSize="20"/>
                     <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="121" Height="26"
-                        FontSize="20"
+                        FontSize="20" IsReadOnly="True"
                         Margin="20 0 0 0"
                         Padding="0"
                         Text="{Binding MaSPStr}"/>
@@ -96,7 +96,7 @@
                     <TextBlock Text="Số lượng còn" Margin="10 10 0 0" Name="txtSoLuong" FontSize="20"/>
                     <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="127" Height="26"
-                        Margin="20 0 0 0"
+                        Margin="20 0 0 0" IsReadOnly="True"
                         Padding="0"
                         Text="{Binding SoLuong}"/>
                     <Button BorderThickness="0" Margin="70 0 0 0" Width="70" Padding="0" Background="#FFD93434" Command="{Binding CloseCM}"

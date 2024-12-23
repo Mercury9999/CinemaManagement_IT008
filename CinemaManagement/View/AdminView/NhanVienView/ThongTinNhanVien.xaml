@@ -66,7 +66,7 @@
                  Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                  Margin="47 0 0 0" Height="26"
                  Padding="0 0 0 0"
-                 FontSize="20"
+                 FontSize="20" 
            Text="{Binding NgaySinh}"
        />
                 </StackPanel>
@@ -93,13 +93,17 @@
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Chức vụ" Margin="10 10 0 0" FontSize="20"/>
-                    <ComboBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
+                    <!--<ComboBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
                  Width="253" Height="26"
                  Margin="60 0 0 0"
                  ItemsSource="{Binding dsChucVu}"
                  SelectedItem="{Binding ChucVu, Mode=TwoWay}"
                  Padding="0"
-                 IsReadOnly="True"/>
+                 IsReadOnly="True"/>-->
+                    <TextBox materialDesign:TextFieldAssist.TextBoxViewMargin="0 0 10 0" FontSize="20"
+Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="253" Height="26"
+Margin="62 0 0 0" IsReadOnly="True"
+Padding="0 -5 0 0" Text="{Binding ChucVu}"/>
                 </StackPanel>
 
                 <TextBlock Text="Tài khoản đăng nhập" FontSize="20" Margin="10 20 0 0" FontWeight="DemiBold"/>

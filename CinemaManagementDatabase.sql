@@ -103,10 +103,9 @@ CREATE TABLE [dbo].[Phim] (
     [GioiHanTuoi] tinyint  NOT NULL,
     [Poster] varbinary(max)  NOT NULL,
     [TenPhim] nvarchar(100)  NOT NULL,
-    [DoanhThu] decimal  NOT NULL
+    [DoanhThu] decimal  NOT NULL,
 );
 GO
-
 
 CREATE TABLE [dbo].[PhongChieu] (
     [SoPhong] int  NOT NULL,

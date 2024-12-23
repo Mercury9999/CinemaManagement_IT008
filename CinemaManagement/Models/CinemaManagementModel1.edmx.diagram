@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3aa02f8439ca46829099dc780a79a6d8" Name="Diagram1">
+      <Diagram DiagramId="ca742fd87ec04490ac792fd28be457d2" Name="Diagram1">
         <EntityTypeShape EntityType="CinemaManagementModel.BanVe" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementModel.CTHDSanPham" Width="1.5" PointX="11" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementModel.CTHDSanPham" Width="1.5" PointX="11" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.Ghe" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementModel.HDNhapHang" Width="1.5" PointX="11" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementModel.HDNhapHang" Width="1.5" PointX="11" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.HoaDon" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementModel.KhachHang" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementModel.NhanVien" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementModel.KhachHang" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementModel.NhanVien" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.Phim" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.PhongChieu" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementModel.SanPham" Width="1.5" PointX="8.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementModel.SanPham" Width="1.5" PointX="8.75" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.SuatChieu" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.SuCo" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.Ve" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
@@ -24,7 +24,6 @@
         <AssociationConnector Association="CinemaManagementModel.FK__CTHDSanPha__SoHD__06CD04F7" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementModel.FK__Ghe__SoPhong__5DCAEF64" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementModel.FK__VE__MaGhe__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="CinemaManagementModel.FK__HDNHAPHAN__MaNVN__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementModel.fk_MASPNhap_MaSP" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementModel.FK__HoaDon__MaKH__03F0984C" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementModel.FK__HoaDon__MaNV__04E4BC85" ManuallyRouted="false" />

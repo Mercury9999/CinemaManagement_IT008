@@ -6,11 +6,12 @@
       xmlns:local="clr-namespace:CinemaManagement.View"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       FontFamily="{DynamicResource MaterialDesignFont}"
-      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:adminvm="clr-namespace:CinemaManagement.ViewModel.AdminVM" d:DataContext="{d:DesignInstance Type=adminvm:ThongKeSanPhamVM}"
       mc:Ignorable="d" 
       d:DesignHeight="700" 
       d:DesignWidth="850"
-      Title="ThongKeSanPhamView">
+      Title="ThongKeSanPhamView"
+      DataContext="{StaticResource StasticVM}">
 
     <Border Background="#eff2f7">
         <Grid>
@@ -46,7 +47,7 @@
                     <materialDesign:Card Width="700"
                          UniformCornerRadius="5">
                         <Grid>
-                            <lvc:CartesianChart>
+                            <lvc:CartesianChart Series="{Binding Top5ProductData, UpdateSourceTrigger=PropertyChanged}">
                                 <lvc:CartesianChart.AxisX>
                                     <lvc:AxesCollection>
                                         <lvc:Axis MinValue="1">
@@ -74,7 +75,7 @@
                      Height="300"
                      VerticalAlignment="Bottom"
                      Grid.Row="2">
-                        <ListView
+                        <ListView ItemsSource="{Binding Top5Product}"
               ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Width="830">
                             <ListView.View>
 
@@ -83,25 +84,17 @@
                                 Width="290">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding TenSanPham}"
+                                                <TextBlock Text="{Binding TenSP}"
                                        FontSize="18"
                                        Height="34" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Doanh thu"
-                                Width="180">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding DoanhThu}"
-                                       FontSize="18" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
+                                   
                                     <GridViewColumn Header="Lượt mua" Width="130">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding LuotMua}"
+                                                <TextBlock Text="{Binding SoLuong}"
                                        FontSize="18"
                                        Margin="20,0,0,0" />
                                             </DataTemplate>

@@ -33,7 +33,6 @@
             <!-- Navigation bar-->
             <Border CornerRadius="30" BorderBrush="Black" BorderThickness="1" Margin="100,20,100,10">
                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0">
-                    <Button Content="Doanh thu" FontWeight="DemiBold" Foreground="MediumPurple" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource barButton}" Height="50" Width="120" Margin="15 0 0 0" Command="{Binding ThongKeDoanhThuCM}"/>
                     <Button Content="Phim" FontWeight="DemiBold" Foreground="MediumPurple" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource barButton}" Height="50" Width="150" Margin="15 0 0 0" Command="{Binding ThongKePhimCM}"/>
                     <Button Content="Sản phẩm" FontWeight="DemiBold" Foreground="MediumPurple" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource barButton}" Height="50" Width="150" Margin="15 0 0 0" Command="{Binding ThongKeSanPhamCM}"/>
                     <Button Content="Khách hàng" FontWeight="DemiBold" Foreground="MediumPurple" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource barButton}" Height="50" Width="150" Margin="15 0 0 0" Command="{Binding ThongKeKHCM}"/>
