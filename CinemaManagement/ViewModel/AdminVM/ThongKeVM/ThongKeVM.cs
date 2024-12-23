@@ -86,7 +86,6 @@ namespace CinemaManagement.ViewModel.AdminVM
             try
             {
                 Top5Movie = await Task.Run(() => ThongKeDAL.Instance.GetTop5FilmByBenefit());
-                CustomControls.MyMessageBox.Show(Top5Movie[0].DoanhThuStr);
             }
             catch (Exception ex)
             {
@@ -157,6 +156,21 @@ namespace CinemaManagement.ViewModel.AdminVM
             };
         }
         //end region
+
+        //revenue region
+        public decimal Revenue;
+        private async Task LoadRevenue()
+        {
+            try 
+            {
+                Revenue = await Task.Run(() => ThongKeDAL.Instance.GetRevenue());
+            }
+            catch (Exception ex)
+            {
+                CustomControls.MyMessageBox.Show("Lỗi hệ thống");
+                return;
+            }
+        }
         public ThongKeVM()
         {
             GetNavigationFrameCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
@@ -167,18 +181,13 @@ namespace CinemaManagement.ViewModel.AdminVM
             ThongKePhimCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 NavigationFrame.Navigate(new ThongKePhimView());
-//                await LoadBestSellMovie();
+                await LoadBestSellMovie();
             });
 
             ThongKeSanPhamCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 NavigationFrame.Navigate(new ThongKeSanPhamView());
                 await LoadBestSellProduct();
-            });
-
-            ThongKeDoanhThuCM = new RelayCommand<object>((p) => { return true; }, (p) =>
-            {
-                NavigationFrame.Navigate(new ThongKeDoanhThuView());
             });
 
             ThongKeKHCM = new RelayCommand<object>((p) => { return true; }, async (p) =>

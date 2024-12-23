@@ -90,15 +90,7 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Loại sản phẩm"
-                                Width="180">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding LoaiSP}"
-                                       FontSize="18" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
+                                   
                                     <GridViewColumn Header="Lượt mua" Width="130">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>

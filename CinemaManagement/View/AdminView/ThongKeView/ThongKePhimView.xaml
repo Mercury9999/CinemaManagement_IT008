@@ -95,20 +95,12 @@
                                             Width="180">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DoanhThuStr}"
+                                                <TextBlock Text="{Binding DoanhThu}"
                                                    FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Lượt xem" Width="130">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding DaoDien}"
-                                                   FontSize="18"
-                                                   Margin="20,0,0,0" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
+                                    
                                 </GridView>
                             </ListView.View>
                         </ListView>
