@@ -156,7 +156,7 @@
                 </StackPanel>
 
                 <StackPanel Margin="200 160 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button HorizontalAlignment="Center" Cursor="Hand" Height="50" Style="{StaticResource ultisButton}" Width="187">
+                    <Button HorizontalAlignment="Center" Cursor="Hand" Height="50" Style="{StaticResource ultisButton}" Width="187" Command="{Binding ChangePassCM}">
                         <TextBlock Text="Đổi mật khẩu" HorizontalAlignment="Center" FontSize="20"/>
                     </Button>
                     <Button HorizontalAlignment="Center" Cursor="Hand" Margin="10 20 0 0" Height="50" Style="{StaticResource ultisButton}" Width="187">

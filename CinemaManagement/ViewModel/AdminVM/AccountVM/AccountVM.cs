@@ -1,4 +1,5 @@
-﻿using CinemaManagement.DTOs;
+﻿using CinemaManagement.CustomControls;
+using CinemaManagement.DTOs;
 using CinemaManagement.Models;
 using CinemaManagement.Models.DAL;
 using CinemaManagement.View;
@@ -27,12 +28,17 @@ namespace CinemaManagement.ViewModel.AdminVM
         {
             get { return accountService.CurrentAccount; }
         }
+        public ICommand ChangePassCM {  get; set; }
         #endregion
         #region 
         #endregion
         public AccountVM()
         {
-
+            ChangePassCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
+            {
+                NhanVienDAL.Instance.UpdateStaff(CurrentStaff);
+                MyMessageBox.Show("Đổi mật khảu thành công");
+            });
         }
     }
 }
