@@ -52,6 +52,7 @@ namespace CinemaManagement.Models.DAL
                                                  SoPhongChieu = sc.SoPhongChieu,
                                                  MaPhim = sc.MaPhim
                                              },
+                                             DaBan = s.DaBan
                                          }).ToListAsync();
                     return dsBanVe;
                 }
