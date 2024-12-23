@@ -145,7 +145,7 @@
             </Button>
 
 
-            <Button Command="{Binding LogoutCM}" Style="{StaticResource menuButton}" Margin="0 10 -20 0">
+            <Button Command="{Binding LogoutCM}" CommandParameter="{Binding ElementName=MainNavigationWindow}" Style="{StaticResource menuButton}" Margin="0 10 -20 0">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <fa:ImageAwesome Icon="CircleOutlineNotch" Style="{StaticResource buttonIcon }"/>

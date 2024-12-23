@@ -51,7 +51,7 @@ namespace CinemaManagement.ViewModel.AdminVM
             }
             set
             {
-                dsVeHD = value; OnPropertyChanged();
+                _dsVeHD = value; OnPropertyChanged();
             }
         }
 
