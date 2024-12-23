@@ -4,15 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+<<<<<<< HEAD:CinemaManagement/Models/CinemaManagementModel1.edmx.diagram
       <Diagram DiagramId="14264698f6f74f7eb29a57b6c5abb3bf" Name="Diagram1">
+=======
+      <Diagram DiagramId="3aa02f8439ca46829099dc780a79a6d8" Name="Diagram1">
+>>>>>>> 5fc666f347e0ab05d0b1ac68a34bc3ab73346c91:CinemaManagement/Models/CinemaManagememtModel1.edmx.diagram
         <EntityTypeShape EntityType="CinemaManagementModel.BanVe" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.CTHDSanPham" Width="1.5" PointX="11" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.Ghe" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.HDNhapHang" Width="1.5" PointX="11" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.HoaDon" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+<<<<<<< HEAD:CinemaManagement/Models/CinemaManagementModel1.edmx.diagram
         <EntityTypeShape EntityType="CinemaManagementModel.KhachHang" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.NhanVien" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.Phim" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+=======
+        <EntityTypeShape EntityType="CinemaManagementModel.KhachHang" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementModel.NhanVien" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementModel.Phim" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+>>>>>>> 5fc666f347e0ab05d0b1ac68a34bc3ab73346c91:CinemaManagement/Models/CinemaManagememtModel1.edmx.diagram
         <EntityTypeShape EntityType="CinemaManagementModel.PhongChieu" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.SanPham" Width="1.5" PointX="8.75" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementModel.SuatChieu" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />

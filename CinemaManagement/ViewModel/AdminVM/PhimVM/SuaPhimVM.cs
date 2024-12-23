@@ -14,6 +14,7 @@ using CinemaManagement.Models.DAL;
 using CinemaManagement.Models;
 using System.Collections.ObjectModel;
 using CinemaManagement.Ultis;
+using CinemaManagement.CustomControls;
 
 
 namespace CinemaManagement.ViewModel.AdminVM
@@ -40,7 +41,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                 (bool trangthai, string messages) = await PhimDAL.Instance.UpdateMovie(Phim);
                 if (trangthai)
                 {
-                    MessageBox.Show(messages);
+                    MyMessageBox.Show(messages);
                     CurrentWindow.Close();
                     IsLoading = true;
                     for (int i = 0; i < dsPhim.Count; i++)

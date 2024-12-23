@@ -33,6 +33,7 @@ namespace CinemaManagement.Models
         public byte Staff_Level { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
+        public virtual ICollection<HDNhapHang> HDNhapHangs { get; set; }
         public virtual ICollection<HoaDon> HoaDons { get; set; }
         public virtual ICollection<SuCo> SuCoes { get; set; }
     }

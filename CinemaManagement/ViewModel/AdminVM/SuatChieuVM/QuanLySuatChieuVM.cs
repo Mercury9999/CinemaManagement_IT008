@@ -175,7 +175,7 @@ namespace CinemaManagement.ViewModel.AdminVM
                         IsLoading = true;
                         suatChieu.MaSC = newId;
                         dsSuatChieu.Add(suatChieu);
-                        MessageBox.Show(messages);
+                        MyMessageBox.Show(messages);
                         p.Close();
                         IsLoading = false;
                         return;

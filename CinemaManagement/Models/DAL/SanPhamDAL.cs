@@ -49,7 +49,7 @@ namespace CinemaManagement.Models.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.ToString());
+                MyMessageBox.Show("Lỗi: " + ex.ToString());
                 return null;
             }
         }

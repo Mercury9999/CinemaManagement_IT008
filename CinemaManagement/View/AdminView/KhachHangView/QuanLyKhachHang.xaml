@@ -76,7 +76,7 @@
                 </ComboBox>
 
                 <!-- Add button-->
-                <Button Margin="717,24,30,25" Background="#FF2ABF2B" BorderBrush="#FFEDE7F8">
+                <Button Margin="717,24,30,25" Background="#FF2ABF2B" BorderBrush="#FFEDE7F8" Click="Button_Click">
                     <StackPanel Orientation="Horizontal">
                         <icon:PackIconMaterial Kind="BookAccount" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
                         <TextBlock Text="Xuất file Excel"/>

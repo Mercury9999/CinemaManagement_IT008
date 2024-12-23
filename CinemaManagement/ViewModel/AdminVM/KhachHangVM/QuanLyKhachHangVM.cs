@@ -15,6 +15,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using CinemaManagement.CustomControls;
 
 namespace CinemaManagement.ViewModel.AdminVM
 {
@@ -195,8 +196,8 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             DeleteCustomerCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
-                MessageBoxResult result = MessageBox.Show("Xoá sẽ mất hết dữ liệu", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                bool result = MyMessageBox.ShowYesNo("Xoá sẽ mất hết dữ liệu?");
+                if (result)
                 {
                     IsLoading = true;
                     (bool trangthai, string message) = await KhachHangDAL.Instance.Deletecustomer(KHSelected.MaKH);

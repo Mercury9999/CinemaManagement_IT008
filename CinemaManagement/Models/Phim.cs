@@ -30,6 +30,7 @@ namespace CinemaManagement.Models
         public byte[] Poster { get; set; }
         public string TenPhim { get; set; }
         public decimal DoanhThu { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual ICollection<SuatChieu> SuatChieux { get; set; }
     }

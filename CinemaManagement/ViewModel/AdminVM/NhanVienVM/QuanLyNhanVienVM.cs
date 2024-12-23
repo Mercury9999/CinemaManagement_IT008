@@ -111,8 +111,8 @@ namespace CinemaManagement.ViewModel.AdminVM
             });
             DeleteStaffCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
-                MessageBoxResult result = MessageBox.Show("Xác nhận muốn xoá?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                bool result = MyMessageBox.ShowYesNo("Xoá sẽ mất hết dữ liệu?");
+                if (result)
                 {
                     IsLoading = true;
                     (bool trangthai, string message) = await NhanVienDAL.Instance.DeleteStaff(NVSelected.MaNV);

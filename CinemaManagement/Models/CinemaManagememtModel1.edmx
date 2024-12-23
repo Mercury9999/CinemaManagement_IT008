@@ -103,6 +103,7 @@
           <Property Name="Poster" Type="varbinary(max)" Nullable="false" />
           <Property Name="TenPhim" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DoanhThu" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="PhongChieu">
           <Key>
@@ -515,6 +516,7 @@
           <Property Name="Poster" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="TenPhim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DoanhThu" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="SuatChieux" Relationship="Self.FK__SUATCHIEU__MaPhi__5BE2A6F2" FromRole="Phim" ToRole="SuatChieu" />
         </EntityType>
         <EntityType Name="PhongChieu">
@@ -930,6 +932,7 @@
                 <ScalarProperty Name="Poster" ColumnName="Poster" />
                 <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
                 <ScalarProperty Name="DoanhThu" ColumnName="DoanhThu" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
